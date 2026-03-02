@@ -1,0 +1,18 @@
+{
+  "name": "content-analysis",
+  "version": "4.0.0",
+  "description": "Scientific content analysis for academic research. Systematic coding, codebook development, frequency analysis, and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, and Braun & Clarke.",
+  "author": {
+    "name": "Peter Malmkjaer"
+  },
+  "keywords": [
+    "content-analysis",
+    "qualitative-research",
+    "coding",
+    "codebook",
+    "thematic-analysis",
+    "academic",
+    "social-science"
+  ],
+  "license": "SEE LICENSE"
+}
