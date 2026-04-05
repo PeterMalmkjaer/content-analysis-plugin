@@ -1,10 +1,14 @@
 {
   "name": "content-analysis",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Scientific content analysis for academic research. Systematic coding, codebook development, frequency analysis, and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, and Braun & Clarke.",
   "author": {
-    "name": "Peter Malmkjaer"
+    "name": "Peter Malmkjaer",
+    "email": "spm.om@cbs.dk"
   },
+  "homepage": "https://github.com/PeterMalmkjaer/content-analysis-plugin",
+  "repository": "https://github.com/PeterMalmkjaer/content-analysis-plugin",
+  "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "content-analysis",
     "qualitative-research",
@@ -13,6 +17,5 @@
     "thematic-analysis",
     "academic",
     "social-science"
-  ],
-  "license": "SEE LICENSE"
+  ]
 }
