@@ -54,6 +54,26 @@ Before touching any text, establish two things with the user:
 
 Ask the user to specify the unit. If they are unsure, recommend the unit that best matches their RQ and material.
 
+### Multiple Interviews?
+
+After clarifying the RQ and unit of analysis, check whether the corpus contains more than one document.
+
+```
+Single document or file?
+  └─ Yes → proceed with standard single-interview workflow below.
+
+Multiple documents for the same RQ?
+  └─ Yes → use a cumulative codebook shared across all documents.
+            See references/multi-interview-guide.md for:
+            • interview-by-interview workflow
+            • codebook versioning
+            • retroactive coding
+            • theoretical saturation tracking
+            • cross-interview output files
+```
+
+The choice affects Step 4 (codebook stays open across documents), Step 7 (code each document against the current codebook version), and Step 8 (add cross-interview outputs). These steps include a note flagging the multi-interview behaviour.
+
 ---
 
 ## Step 2: Select the Approach
@@ -211,6 +231,8 @@ If the corpus is large, also produce a **summary sheet** with:
 - Code co-occurrence matrix (which codes appear together)
 - Distribution across documents
 
+> **Multi-interview corpus:** After coding each document, check whether any uncoded units warrant a new code. If a new code is added, apply it retroactively to previously coded documents and increment the codebook version. Once all documents are coded, produce `coded_data_ALL.xlsx` (merged corpus) in addition to the per-document files. Track new-codes-per-document to monitor theoretical saturation. Full guidance in `references/multi-interview-guide.md`.
+
 ---
 
 ## Step 8: Analyze and Report
@@ -240,14 +262,27 @@ If the corpus is large, also produce a **summary sheet** with:
 
 All structured outputs should be saved to the workspace output directory.
 
+#### Single-interview outputs
+
 | Output | Format | Naming convention |
 |--------|--------|-------------------|
 | Codebook | .xlsx | `codebook_[project-name].xlsx` |
-| Coded data | .xlsx | `coded_data_[project-name].xlsx` |
-| Frequency report | .xlsx | `frequency_report_[project-name].xlsx` |
-| Theme summary | .md or .docx | `theme_summary_[project-name].md` |
-| Thematic map | .mermaid or .svg | `thematic_map_[project-name].mermaid` |
+| Coded data | .xlsx | `coded_data_[ParticipantID].xlsx` |
+| Frequency report | .xlsx | `frequency_report_[ParticipantID].xlsx` |
+| Theme summary | .md or .docx | `theme_summary_[ParticipantID].md` |
+| Thematic map | .mermaid or .svg | `thematic_map_[ParticipantID].mermaid` |
 | Reliability report | .xlsx | `reliability_[project-name].xlsx` |
+
+#### Additional outputs for multi-interview corpora
+
+| Output | Format | Naming convention |
+|--------|--------|-------------------|
+| Merged coded data | .xlsx | `coded_data_ALL.xlsx` |
+| Cross-interview frequency matrix | .xlsx | `frequency_report_CROSS.xlsx` |
+| Comparative theme summary | .md | `theme_summary_CROSS.md` |
+| Full corpus thematic map | .mermaid | `thematic_map_CROSS.mermaid` |
+
+All files for a participant go in `output/[ParticipantID]/`. Cross-interview files go in `output/[project-name]/`. See `references/multi-interview-guide.md` for the full folder structure.
 
 When producing Excel files, follow the xlsx skill conventions for professional formatting.
 When producing Word documents, follow the docx skill conventions.
@@ -300,6 +335,7 @@ For detailed guidance on specific topics, consult:
 
 - `references/reliability-guide.md` — Formulas and worked examples for Cohen's κ, Fleiss' κ, Krippendorff's α, and percentage agreement
 - `references/coding-approaches.md` — Detailed comparison of Mayring's, Hsieh & Shannon's, and Braun & Clarke's frameworks with decision criteria
+- `references/multi-interview-guide.md` — Managing a multi-interview corpus: cumulative codebook growth, codebook versioning, retroactive coding, theoretical saturation, and cross-interview output files
 
 ### Key Methodological Sources
 - Krippendorff, K. (2018). *Content Analysis: An Introduction to Its Methodology* (4th ed.). Sage.
