@@ -34,9 +34,24 @@ Before asking the user anything, inspect the `input/` directory:
 
 5. **Empty `input/`** — ask the user to paste or upload the material to be analysed.
 
+## Description Folder
+
+After identifying the corpus, check for a `description/` folder:
+
+- **Standalone mode**: look for `input/description/`
+- **Project mode**: look for `input/[subfolder-name]/description/`
+
+If a `description/` folder exists, read **all files inside it** before doing anything else. These files contain research context — study background, research questions, interview guide, theoretical framework, or any other study materials the researcher has prepared. Use this content to:
+
+- Pre-populate the research question, unit of analysis, approach, and coding logic where the materials make them clear.
+- Inform the user what was found: summarise the key context in 2–3 sentences.
+- Only ask clarifying questions for items that the description materials do not already answer.
+
+If no `description/` folder exists, proceed with the standard clarifying questions below.
+
 ## Starting the Workflow
 
-Once the corpus is identified, clarify with the user:
+Once the corpus is identified, clarify with the user (skipping any items already answered by the description folder):
 
 1. The research question
 2. The unit of analysis
