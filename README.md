@@ -20,7 +20,7 @@ claude plugin marketplace add PeterMalmkjaer/content-analysis-plugin --name cont
 **From a local clone:**
 
 ```bash
-git clone https://github.com/PeterMalmkjaer/content-analysis-plugin
+git clone https://github.com/serbestonline/content-analysis-plugin
 bash content-analysis-plugin/install.sh
 ```
 
@@ -42,9 +42,9 @@ It supports the full workflow from research question to publication-ready output
 
 See [Quick Install](#quick-install) above. After installation the plugin is available globally — you do not need to keep the repository in your project directory.
 
-### 2. Place your transcripts in the `input/` folder
+### 2. Set up your project folder
 
-The `input/` folder controls how Claude interprets your corpus. There are two modes:
+The `input/` folder controls how Claude interprets your corpus.
 
 #### Standalone mode — one file, one analysis
 
@@ -52,43 +52,53 @@ Drop transcript files directly into `input/`. Each file is treated as an indepen
 
 ```
 input/
-├── Participant_1.txt     → analysed independently → output/Participant_1/
-├── Participant_2.txt     → analysed independently → output/Participant_2/
-└── Participant_3.txt     → analysed independently → output/Participant_3/
+├── Participant_1.txt
+├── Participant_2.txt
+└── Participant_3.txt
 ```
 
 #### Project mode — a folder, one shared codebook
 
-Create a subfolder inside `input/` and place all transcripts that belong to the **same research project** inside it. Claude will treat them as a multi-interview corpus, build a shared cumulative codebook, and produce both per-interview and cross-interview outputs.
+Create a subfolder inside `input/` for each research project. Place all transcripts that belong to the same study inside it. Claude will build a shared cumulative codebook and produce both per-participant and cross-participant outputs.
 
 ```
 input/
-└── my-study/                  → one project, shared codebook
+└── my-study/
+    ├── materials/              ← research context (see below)
+    ├── project-description.md  ← auto-generated on first run
+    ├── progress.md             ← auto-generated, tracks analysis state
     ├── Participant_1.txt
     ├── Participant_2.txt
     └── Participant_3.txt
 ```
 
-Output will mirror the structure:
-
-```
-output/
-└── my-study/
-    ├── codebook_my-study.xlsx          ← shared, versioned
-    ├── coded_data_Participant_1.xlsx
-    ├── coded_data_Participant_2.xlsx
-    ├── coded_data_Participant_3.xlsx
-    ├── coded_data_ALL.xlsx             ← merged corpus
-    ├── frequency_report_Participant_1.xlsx
-    ├── frequency_report_CROSS.xlsx     ← cross-interview comparison
-    ├── theme_summary_Participant_1.md
-    ├── theme_summary_CROSS.md          ← comparative findings
-    └── thematic_map_CROSS.mermaid
-```
-
 You can mix both modes — standalone files and project folders can coexist in `input/` at the same time.
 
-### 3. Start the analysis
+### 3. Add research context (optional but recommended)
+
+Place any study materials inside `input/[project-name]/materials/`. These can be:
+
+- Research questions or study purpose
+- Interview guide or topic list
+- Theoretical framework notes
+- Participant profile descriptions
+- Any other background documents
+
+On first run, Claude will read everything in `materials/`, extract what it can, and write a `project-description.md` file in the project folder. It will only ask you for information it could not find in the materials. On subsequent runs it reads the existing `project-description.md` directly and skips this step.
+
+The `project-description.md` follows this structure:
+
+```
+# Project Description — [Study name]
+
+## Purpose & Research Questions
+## Theoretical Framework
+## Method (approach, coding logic, unit of analysis)
+## Participant Profile
+## Interview Guide
+```
+
+### 4. Start the analysis
 
 Open your project directory in Claude Code and run:
 
@@ -97,11 +107,12 @@ Open your project directory in Claude Code and run:
 ```
 
 Claude will:
-- Immediately scan `input/` in your current working directory
-- Detect standalone files or project subfolders automatically
-- Ask you to confirm the research question, unit of analysis, approach, and coding logic
+- Scan `input/` and detect standalone files or project subfolders
+- Check for `project-description.md` — build it from `materials/` if missing
+- Check for `progress.md` — resume from where the project left off if it exists
+- Ask you to confirm or fill in any missing research parameters
 - Guide you through the eight-step workflow
-- Write all output files to `output/` in your current working directory
+- Write all output files to `output/`
 
 ---
 
@@ -124,24 +135,51 @@ For multi-interview corpora, the codebook grows cumulatively across interviews. 
 
 ## Output Files
 
-### Per-interview outputs
+### Per-participant outputs
+
+Written to `output/[project-name]/[participant-name]/`:
 
 | File | Format | Description |
 |------|--------|-------------|
-| `codebook_[project].xlsx` | .xlsx | Codes with definitions, inclusion/exclusion criteria, examples |
-| `coded_data_[ID].xlsx` | .xlsx | Every coded unit with excerpts, codes, and coder notes |
-| `frequency_report_[ID].xlsx` | .xlsx | Code frequencies for this interview |
-| `theme_summary_[ID].md` | .md | Narrative findings with method note |
-| `thematic_map_[ID].mermaid` | .mermaid | Visual theme hierarchy |
+| `codebook_[participant].xlsx` | .xlsx | Codes with definitions, inclusion/exclusion criteria, examples |
+| `coded_data_[participant].xlsx` | .xlsx | Every coded unit with excerpts, codes, and coder notes |
+| `frequency_report_[participant].xlsx` | .xlsx | Code frequencies for this participant |
+| `theme_summary_[participant].md` | .md | Narrative findings with method note |
+| `thematic_map_[participant].mermaid` | .mermaid | Visual theme hierarchy |
 
-### Cross-interview outputs (project mode only)
+### Project-level outputs (project mode only)
 
-| File | Format | Description |
-|------|--------|-------------|
-| `coded_data_ALL.xlsx` | .xlsx | All coded units from all interviews in one table |
-| `frequency_report_CROSS.xlsx` | .xlsx | Code × participant frequency matrix |
-| `theme_summary_CROSS.md` | .md | Comparative narrative: core vs. idiosyncratic themes |
-| `thematic_map_CROSS.mermaid` | .mermaid | Full corpus thematic map |
+Written to `output/[project-name]/` root. Cumulative files are updated after each participant; summary files are written after the full corpus is coded.
+
+| File | Format | When written | Description |
+|------|--------|-------------|-------------|
+| `codebook_[project].xlsx` | .xlsx | After each participant | Cumulative codebook merging all codes |
+| `frequency_report_[project].xlsx` | .xlsx | After each participant | Participant × code frequency matrix |
+| `theme_summary_[project].md` | .md | After full corpus | Cross-participant theme analysis |
+| `thematic_map_[project].mermaid` | .mermaid | After full corpus | Project-level thematic map |
+
+### Example output structure
+
+```
+output/
+└── my-study/
+    ├── codebook_my-study.xlsx
+    ├── frequency_report_my-study.xlsx
+    ├── theme_summary_my-study.md
+    ├── thematic_map_my-study.mermaid
+    ├── Participant_1/
+    │   ├── codebook_Participant_1.xlsx
+    │   ├── coded_data_Participant_1.xlsx
+    │   ├── frequency_report_Participant_1.xlsx
+    │   ├── theme_summary_Participant_1.md
+    │   └── thematic_map_Participant_1.mermaid
+    └── Participant_2/
+        └── ...
+```
+
+### Progress tracking
+
+`input/[project-name]/progress.md` is created automatically when analysis begins. It tracks which participants have been coded, notes any new codes added to the cumulative codebook, and records the next step. On subsequent runs Claude reads this file to resume without repeating completed work.
 
 ---
 
