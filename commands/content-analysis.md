@@ -1,7 +1,7 @@
 ---
 description: Run a scientific content analysis on uploaded documents
-allowed-tools: Read, Write, Edit, Bash, Glob, Grep
-argument-hint: [documents or instructions]
+allowed-tools: ["Read", "Write", "Edit", "Bash", "Glob", "Grep"]
+argument-hint: "[documents or instructions]"
 ---
 
 Read the content-analysis skill at ${CLAUDE_PLUGIN_ROOT}/skills/content-analysis/SKILL.md and follow its eight-step workflow.

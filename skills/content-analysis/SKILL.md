@@ -5,7 +5,7 @@ description: "Systematic scientific content analysis of textual material. Use th
 
 # Scientific Content Analysis
 
-This skill enables Claude to perform rigorous, methodologically grounded content analysis following established social-science conventions (Krippendorff, 2018; Hsieh & Shannon, 2005; Mayring, 2014; Schreier, 2012). It supports the full workflow from research question to coded output, for both qualitative and quantitative approaches.
+This skill enables Claude to perform rigorous, methodologically grounded content analysis following established social-science conventions (Krippendorff, 2018; Hsieh & Shannon, 2005; Mayring, 2014; Braun & Clarke, 2006). It supports the full workflow from research question to coded output, for both qualitative and quantitative approaches.
 
 ## When to Use This Skill
 
@@ -138,7 +138,7 @@ Every codebook produced by this skill should contain these columns:
 5. Present the emergent codebook to the user for discussion and refinement
 
 ### Codebook Output Format
-Generate the codebook as an Excel file (.xlsx) using the xlsx skill conventions. The codebook should be a clean, professional table that the user can share with co-coders or include as an appendix in a paper.
+Generate the codebook as an Excel file (.xlsx) with professional formatting: bold header row, column widths sized to content, and frozen header row. The codebook should be a clean table that the user can share with co-coders or include as an appendix in a paper.
 
 ---
 
@@ -249,8 +249,8 @@ All structured outputs should be saved to the workspace output directory.
 | Thematic map | .mermaid or .svg | `thematic_map_[project-name].mermaid` |
 | Reliability report | .xlsx | `reliability_[project-name].xlsx` |
 
-When producing Excel files, follow the xlsx skill conventions for professional formatting.
-When producing Word documents, follow the docx skill conventions.
+When producing Excel files, apply professional formatting: bold headers, appropriate column widths, frozen header row, and zebra-striping for readability where helpful.
+When producing Word documents, use clear heading hierarchy (Heading 1 for main sections, Heading 2 for sub-sections), consistent paragraph spacing, and a final references section.
 
 ---
 
