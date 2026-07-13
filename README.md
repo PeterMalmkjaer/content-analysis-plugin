@@ -23,7 +23,14 @@ Add the plugin to your Claude marketplace and install it:
 
 ```bash
 /plugin marketplace add PeterMalmkjaer/content-analysis-plugin
-/plugin install content-analysis@PeterMalmkjaer
+/plugin install content-analysis@content-analysis-plugin
+```
+
+Or from the terminal with the Claude Code CLI:
+
+```bash
+claude plugin marketplace add PeterMalmkjaer/content-analysis-plugin
+claude plugin install content-analysis@content-analysis-plugin
 ```
 
 Once installed, the skill activates automatically when you describe a content-analysis task. You can also invoke the workflow explicitly with the `/content-analysis` command.
