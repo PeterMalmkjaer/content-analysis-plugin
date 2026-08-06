@@ -5,7 +5,7 @@ Scientific content analysis for academic research, built for Claude.
 **Author:** Peter Malmkjaer ([spm.om@cbs.dk](mailto:spm.om@cbs.dk))
 Independent project by Peter Malmkjaer. Thanks to Copenhagen Business School (CBS) and the Department of Operations Management for institutional support.
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 ---
 
@@ -58,6 +58,7 @@ Provides an eight-step workflow:
 
 - [`skills/content-analysis/references/reliability-guide.md`](skills/content-analysis/references/reliability-guide.md) — Inter-coder reliability metrics (Cohen's κ, Fleiss' κ, Krippendorff's α, percentage agreement) with formulas, worked examples, and Python implementation.
 - [`skills/content-analysis/references/coding-approaches.md`](skills/content-analysis/references/coding-approaches.md) — Comparative reference for Mayring's qualitative content analysis, Hsieh & Shannon's three approaches, and Braun & Clarke's thematic analysis, with a decision guide.
+- [`skills/content-analysis/references/protocol-driven-runs.md`](skills/content-analysis/references/protocol-driven-runs.md) — Rules for analyses commissioned in writing or run unattended: deriving the research question when the brief does not state one, the required report skeleton, output-format precedence, and how to proceed without blocking on unanswerable questions.
 
 ### Command: `/content-analysis`
 
@@ -101,6 +102,21 @@ The skill always begins by clarifying your research question and unit of analysi
 
 ---
 
+## Written Briefs and Unattended Runs
+
+The workflow above assumes a conversation. Analyses are often commissioned differently: a written protocol defines the task, names the deliverables, and no one is available to answer questions while the run proceeds.
+
+For those cases the skill loads `references/protocol-driven-runs.md`, which supplies four rules that replace the conversational assumptions:
+
+1. **Derive the research question.** Briefs typically specify what to do but not what the analysis is for. A deliverable list is not a research question. The skill derives one from the brief's own terms, marks it explicitly as derived, decomposes it into one sub-question per coded dimension, and never proceeds without one.
+2. **Use the full report skeleton.** Task · problem statement and analysis questions · constraints declaration · method · findings (one section per question) · uncertainties · deliverables · references. Written briefs mean the report will be read by someone who was not present.
+3. **The brief's formats take precedence.** Named deliverables, names and paths override the `.xlsx` conventions in the Output Files table above. The format changes; the substance does not.
+4. **Do not block.** In an unattended run, make the most defensible choice, state the assumption at the point it applies, record the rejected alternative, and continue.
+
+Nothing changes for conversational use — the rules apply only when the run is protocol-driven or unattended.
+
+---
+
 ## Methodological Transparency
 
 Every analysis produced with this skill includes a method note documenting the research question, corpus description, unit of analysis, approach, coding logic, codebook development process, reliability assessment (when applicable), and limitations. This is essential for academic credibility and reviewers in any peer-reviewed venue.
@@ -133,4 +149,4 @@ Any commercial use — including integration into paid products, consulting serv
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin for Claude* (Version 1.0.0) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin for Claude* (Version 1.1.0) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
