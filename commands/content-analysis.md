@@ -14,8 +14,10 @@ Always start by clarifying:
 3. The approach (quantitative, qualitative, or mixed)
 4. The coding logic (deductive, inductive, or abductive)
 
+If the task arrived as a written brief or protocol rather than as a conversation, or if the run is unattended, read `${CLAUDE_PLUGIN_ROOT}/skills/content-analysis/references/protocol-driven-runs.md` first: it replaces the four clarification points above with rules for deriving the research question from the brief, and it governs the report structure and output formats.
+
 Then proceed through the full workflow: codebook development, pilot coding, reliability assessment, full coding, and reporting.
 
-Produce all outputs as structured files: codebook (.xlsx), coded data (.xlsx), theme summary (.md or .docx), and thematic map (.mermaid).
+Produce all outputs as structured files: codebook (.xlsx), coded data (.xlsx), theme summary (.md or .docx), and thematic map (.mermaid) — unless a brief names its own deliverables and formats, in which case those take precedence.
 
 $ARGUMENTS

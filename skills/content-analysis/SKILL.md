@@ -37,6 +37,8 @@ Every content analysis follows this sequence. Steps can be revisited iteratively
 
 ## Step 1: Clarify the Research Question & Unit of Analysis
 
+> **If the task arrived as a written brief, protocol, or unattended/scheduled run rather than as a live conversation, read `references/protocol-driven-runs.md` before continuing.** It covers deriving the research question when the brief does not state one, the required report skeleton, and how a brief's own deliverable and format requirements take precedence over the conventions below.
+
 Before touching any text, establish two things with the user:
 
 **Research question.** What is the analysis trying to answer? The RQ determines everything downstream — the approach, the categories, and the level of inference. If the user's RQ is vague, help sharpen it. A good content-analysis RQ typically asks "what", "how often", or "in what way" rather than "why" (causal questions require different methods).
@@ -300,6 +302,7 @@ For detailed guidance on specific topics, consult:
 
 - `references/reliability-guide.md` — Formulas and worked examples for Cohen's κ, Fleiss' κ, Krippendorff's α, and percentage agreement
 - `references/coding-approaches.md` — Detailed comparison of Mayring's, Hsieh & Shannon's, and Braun & Clarke's frameworks with decision criteria
+- `references/protocol-driven-runs.md` — Rules for analyses commissioned in writing or run unattended: deriving the research question, the full report skeleton, format precedence, and not blocking on unanswerable questions
 
 ### Key Methodological Sources
 - Krippendorff, K. (2018). *Content Analysis: An Introduction to Its Methodology* (4th ed.). Sage.
