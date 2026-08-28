@@ -2,10 +2,10 @@
 
 Scientific content analysis for academic research, built for Claude.
 
-**Author:** Peter Malmkjaer ([spm.om@cbs.dk](mailto:spm.om@cbs.dk))
-Independent project by Peter Malmkjaer. Thanks to Copenhagen Business School (CBS) and the Department of Operations Management for institutional support.
+**Author:** Peter Malmkjaer ([Peter.Malmkjaer@mail.dk](mailto:Peter.Malmkjaer@mail.dk))
+Independent project by Peter Malmkjaer.
 
-**Version:** 1.1.0
+**Version:** 4.2.2
 
 ---
 
@@ -133,13 +133,13 @@ This plugin is released under a **dual license**. See [LICENSE](LICENSE) for ful
 
 Free for academic research, teaching, and non-commercial use. You may use, copy, and adapt the skill for scholarly purposes provided you credit the author:
 
-> Content Analysis Skill by Peter Malmkjaer, Copenhagen Business School ([spm.om@cbs.dk](mailto:spm.om@cbs.dk))
+> Content Analysis Skill by Peter Malmkjaer
 
 ### Commercial Use (Paid License Required)
 
 Any commercial use — including integration into paid products, consulting services, corporate training, or resale on marketplaces — requires a separate commercial license. Contact the author for terms and pricing:
 
-**Peter Malmkjaer** — [spm.om@cbs.dk](mailto:spm.om@cbs.dk)
+**Peter Malmkjaer** — [Peter.Malmkjaer@mail.dk](mailto:Peter.Malmkjaer@mail.dk)
 
 © 2026 Peter Malmkjaer. All rights reserved.
 

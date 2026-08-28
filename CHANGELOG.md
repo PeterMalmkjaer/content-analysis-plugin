@@ -5,6 +5,16 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.2.2] - 2026-08-28
+
+### Changed
+- Al institutionsomtale fjernet fra LICENSE og README, og kontaktadressen ændret til Peter.Malmkjaer@mail.dk i LICENSE, README og `plugin.json`. Begge filer erklærer projektet uafhængigt; taksigelsen til Copenhagen Business School og Department of Operations Management kunne læses som en modsigelse af netop det.
+- Krediteringsformlen i README rettet til "Content Analysis Skill by Peter Malmkjaer", så den svarer til den ordlyd, LICENSE faktisk kræver. README bad hidtil om en anden kreditering end licensen.
+- Versionslinjen i README fulgte ikke længere `plugin.json`; den opdateres nu sammen med den.
+
+### Notes
+- Ingen ændring af licensvilkårene. Ophavsretsangivelsen og begge licensspor står urørt.
+
 ## [4.2.1] - 2026-08-18
 
 ### Fixed
