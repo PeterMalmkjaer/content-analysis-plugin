@@ -1,23 +1,36 @@
 # Content Analysis Plugin
 
-Scientific content analysis for academic research, built for Claude.
+Scientific content analysis for academic research, available for ChatGPT, Codex, and Claude.
 
 **Author:** Peter Malmkjaer ([Peter.Malmkjaer@mail.dk](mailto:Peter.Malmkjaer@mail.dk))
 Independent project by Peter Malmkjaer.
 
-**Version:** 4.2.2
+**Version:** 4.3.0
 
 ---
 
 ## What It Does
 
-This plugin enables Claude to perform rigorous, methodologically grounded content analysis on textual material. It follows established social-science conventions from Krippendorff (2018), Hsieh & Shannon (2005), Mayring (2014), and Braun & Clarke (2006).
+This plugin enables an AI assistant to perform rigorous, methodologically grounded content analysis on textual material. It follows established social-science conventions from Krippendorff (2018), Hsieh & Shannon (2005), Mayring (2014), and Braun & Clarke (2006).
 
 It supports the full workflow from research question to publication-ready output files.
 
 ---
 
 ## Installation
+
+### Codex
+
+Add the GitHub marketplace and install the plugin with Codex CLI:
+
+```bash
+codex plugin marketplace add PeterMalmkjaer/content-analysis-plugin --ref main
+codex plugin add content-analysis@content-analysis-plugin
+```
+
+Restart Codex or start a new session after installation. The skill activates automatically when you describe a content-analysis task.
+
+### Claude
 
 Add the plugin to your Claude marketplace and install it:
 
@@ -33,7 +46,7 @@ claude plugin marketplace add PeterMalmkjaer/content-analysis-plugin
 claude plugin install content-analysis@content-analysis-plugin
 ```
 
-Once installed, the skill activates automatically when you describe a content-analysis task. You can also invoke the workflow explicitly with the `/content-analysis` command.
+Once installed, the skill activates automatically when you describe a content-analysis task. In Claude, you can also invoke the workflow explicitly with the `/content-analysis` command.
 
 ---
 
@@ -60,7 +73,7 @@ Provides an eight-step workflow:
 - [`skills/content-analysis/references/coding-approaches.md`](skills/content-analysis/references/coding-approaches.md) — Comparative reference for Mayring's qualitative content analysis, Hsieh & Shannon's three approaches, and Braun & Clarke's thematic analysis, with a decision guide.
 - [`skills/content-analysis/references/protocol-driven-runs.md`](skills/content-analysis/references/protocol-driven-runs.md) — Rules for analyses commissioned in writing or run unattended: deriving the research question when the brief does not state one, the required report skeleton, output-format precedence, and how to proceed without blocking on unanswerable questions.
 
-### Command: `/content-analysis`
+### Claude command: `/content-analysis`
 
 Run `/content-analysis` to start a content-analysis session directly. Optionally pass arguments describing your documents or research focus.
 
@@ -85,7 +98,7 @@ User: "Use Content analysis. I have 12 interview transcripts about
 remote work attitudes among knowledge workers. I want to identify
 themes inductively."
 
-Claude will:
+The assistant will:
 1. Confirm the research question and propose speaking turns as the
    unit of analysis.
 2. Recommend Hsieh & Shannon's Conventional approach (data-driven,
@@ -149,4 +162,4 @@ Any commercial use — including integration into paid products, consulting serv
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin for Claude* (Version 1.1.0) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 4.3.0) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin

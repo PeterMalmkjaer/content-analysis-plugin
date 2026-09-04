@@ -5,7 +5,7 @@ description: "Systematic scientific content analysis of textual material. Use th
 
 # Scientific Content Analysis
 
-This skill enables Claude to perform rigorous, methodologically grounded content analysis following established social-science conventions (Krippendorff, 2018; Hsieh & Shannon, 2005; Mayring, 2014; Braun & Clarke, 2006). It supports the full workflow from research question to coded output, for both qualitative and quantitative approaches.
+This skill enables the assistant to perform rigorous, methodologically grounded content analysis following established social-science conventions (Krippendorff, 2018; Hsieh & Shannon, 2005; Mayring, 2014; Braun & Clarke, 2006). It supports the full workflow from research question to coded output, for both qualitative and quantitative approaches.
 
 ## When to Use This Skill
 
@@ -88,7 +88,7 @@ When the user hasn't specified, ask which approach fits their research question.
 
 ### Deductive Coding (Theory-Driven)
 - Start with a predefined framework, taxonomy, or set of categories from existing literature
-- The user provides (or Claude helps identify) the theoretical framework
+- The user provides (or the assistant helps identify) the theoretical framework
 - Categories are fixed before coding begins; the analyst applies them to the data
 - Strength: directly tests or applies existing theory
 - Risk: may miss themes not anticipated by the framework
@@ -162,14 +162,14 @@ This step is critical for quality. Skipping it produces unreliable results.
 
 Reliability matters most for quantitative and mixed approaches, and for any study where the user plans to report inter-coder agreement.
 
-### When Claude is the sole coder
-Since Claude is a single "coder," traditional inter-coder reliability (ICR) cannot be computed in the usual sense. Instead:
+### When the assistant is the sole coder
+Since the assistant is a single "coder," traditional inter-coder reliability (ICR) cannot be computed in the usual sense. Instead:
 - **Intra-coder consistency**: Code the same sample twice (at different points in the session) and compare
 - **Transparency**: Document every coding decision with the exact text excerpt and the reasoning
 - **Codebook precision**: The more precise the codebook, the more replicable the coding
 
 ### When the user has human coders
-If the user intends to use the codebook with human coders, Claude should:
+If the user intends to use the codebook with human coders, the assistant should:
 - Produce a codebook clear enough for independent application
 - Suggest an ICR metric appropriate to the data:
   - **Cohen's kappa (κ)**: Two coders, nominal categories
@@ -275,16 +275,16 @@ This note can be appended to the theme summary or produced as a standalone secti
 
 ## Important Considerations for LLM-Assisted Content Analysis
 
-Claude should be transparent about what LLM-assisted content analysis can and cannot do:
+The assistant should be transparent about what LLM-assisted content analysis can and cannot do:
 
 **Strengths of LLM-assisted coding:**
-- Consistency: Claude applies the same codebook uniformly across the corpus (no coder fatigue)
+- Consistency: The assistant applies the same codebook uniformly across the corpus (no coder fatigue)
 - Speed: large corpora can be coded much faster than by human coders
 - Documentation: every coding decision can be traced to a specific excerpt and rationale
 
 **Limitations to acknowledge:**
 - Latent content: subtle irony, sarcasm, cultural subtext, and implicit meaning may be missed
-- Context dependence: Claude's interpretation depends on the text provided; it does not have the ethnographic or field knowledge a human researcher brings
+- Context dependence: The assistant's interpretation depends on the text provided; it does not have the ethnographic or field knowledge a human researcher brings
 - Validation: LLM-coded results should ideally be validated against a human-coded subsample
 - Reproducibility: different LLM versions or prompting strategies may produce different results; document the model and approach used
 

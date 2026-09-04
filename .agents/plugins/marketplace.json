@@ -1,0 +1,21 @@
+{
+  "name": "content-analysis-plugin",
+  "interface": {
+    "displayName": "Content Analysis Plugin"
+  },
+  "plugins": [
+    {
+      "name": "content-analysis",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/PeterMalmkjaer/content-analysis-plugin.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
