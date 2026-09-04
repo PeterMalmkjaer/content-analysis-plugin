@@ -15,6 +15,21 @@ This plugin enables an AI assistant to perform rigorous, methodologically ground
 
 It supports the full workflow from research question to publication-ready output files.
 
+## How This Plugin Can Help You
+
+Use the plugin when you need to turn a collection of texts into systematic, transparent, and research-ready findings. It can help you:
+
+- Analyse interview transcripts, focus-group discussions, open-ended survey responses, reports, policy documents, articles, and other textual material.
+- Develop a clear codebook with definitions, inclusion and exclusion criteria, and examples.
+- Apply deductive codes from an existing theory or discover inductive themes from the material.
+- Pilot and refine a coding scheme before analysing the full collection.
+- Code passages consistently while keeping excerpts and rationales traceable.
+- Calculate or interpret inter-coder reliability when multiple coders are involved.
+- Identify patterns, frequencies, themes, and relationships across documents.
+- Produce structured outputs for further review, reporting, or academic writing.
+
+The plugin guides you through the methodological choices and documents important limitations. You remain in control of the research question, interpretations, and final conclusions.
+
 ---
 
 ## Installation
