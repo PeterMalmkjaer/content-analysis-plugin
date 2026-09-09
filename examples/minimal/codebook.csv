@@ -1,0 +1,7 @@
+Code ID,Code name,Definition,Inclusion criteria,Exclusion criteria,Example excerpt,Parent category,Status
+PRICE_01,Price as criterion,Cost or price is named as a basis for keeping or dropping a supplier,Explicit reference to price or cost in a retention decision,General cost talk not tied to a retention decision,"Mostly on price, to be honest",Criteria,active
+TRUST_01,Trust or relationship,Personal trust or relationship is named as a basis for retention,Explicit reference to trust or a personal relationship as a reason,Mentions of relationships that are explicitly rejected as a criterion — code as TRUST_REJ,"I also keep the ones I trust",Criteria,active
+TRUST_REJ,Relationship rejected as criterion,Speaker states that relationships should not or do not count,Explicit denial that relationships are a criterion,Neutral mentions,"I do not want it to be about relationships",Criteria,active
+COMPL_01,Compliance overrides,Audit or compliance outcome ends or overrides a relationship,Explicit statement that audit or compliance findings decide,Compliance mentioned without decision consequence,"A failed audit ends the relationship regardless of price",Criteria,active
+SCORE_01,Formal scorecard,A structured scoring instrument is named as the decision mechanism,Mention of a scorecard or formal scoring,Informal comparisons,"We run a scorecard",Mechanism,active
+OLD_01,Retired code,Was merged into SCORE_01 in v2,—,—,—,Mechanism,inactive

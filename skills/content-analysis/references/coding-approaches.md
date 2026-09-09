@@ -85,6 +85,10 @@ This framework distinguishes three approaches based on how categories are derive
 
 Note: Braun & Clarke distinguish thematic analysis (TA) from content analysis, arguing that TA is a method in its own right rather than a subset of content analysis. In practice, there is significant overlap, and many researchers combine elements of both. This framework is included here because it is widely used for thematic coding.
 
+**Which TA this skill supports.** Braun & Clarke (2019, p. 593; 2021, p. 333) separate three clusters. *Coding-reliability* TA: a codebook and multiple coders, with inter-rater reliability "as a key measure of coding quality" (2021, p. 333). *Codebook* TA — framework analysis, template analysis, matrix analysis — uses "some kind of structured coding framework", but "consensus between coders and inter-rater reliability are not usually measures of quality" (2021, p. 333). *Reflexive* TA: the analyst's subjectivity is the resource, no fixed codebook, "a research team is not required or even desirable for quality" (2021, p. 333), and demonstrating coding reliability is "illogical, incoherent and ultimately meaningless" (2021, p. 334). Braun & Clarke place their 2006 approach in the reflexive cluster (2019, pp. 591–594) and ask not to be cited for codebooks or coding-reliability measures (2021, p. 336). This skill fits coding-reliability TA fully and codebook TA for Steps 4–8 (Step 6 optional there). Reflexive TA it does not fit: applying Steps 5–6 to it misrepresents the method. If a user describes their design as reflexive TA, say so and do not report κ or α. The six phases below are Braun & Clarke's own description of their approach and are kept for orientation, not as the skill's procedure.
+
+Sources: Braun & Clarke (2019), *Qualitative Research in Sport, Exercise and Health*, 11(4), https://doi.org/10.1080/2159676X.2019.1628806; Braun & Clarke (2021), *Qualitative Research in Psychology*, 18(3), https://doi.org/10.1080/14780887.2020.1769238. Full references in `SKILL.md`.
+
 ### Six phases:
 
 1. **Familiarization:** Read and re-read the data; note initial ideas
@@ -134,15 +138,17 @@ START
 │   ├── YES → Is your goal to test/extend the framework?
 │   │         ├── YES → Hsieh & Shannon: Directed Content Analysis
 │   │         │         (or Mayring: Structuring)
-│   │         └── NO (just want to use it as a lens) → Braun & Clarke: Theoretical TA
+│   │         └── NO (just want to use it as a lens) → Codebook TA (template / framework
+│   │                                                     analysis, theory-led, fixed codebook)
 │   │
 │   └── NO → Are you counting occurrences of specific terms/concepts?
 │             ├── YES → Hsieh & Shannon: Summative Content Analysis
 │             └── NO → Do you want maximum procedural structure?
 │                       ├── YES → Mayring: Summarizing or Structuring
 │                       └── NO → Is your goal to identify themes/patterns?
-│                                 ├── YES → Braun & Clarke: Inductive TA
+│                                 ├── YES → Codebook TA (template / framework analysis, data-led)
 │                                 │         (or Hsieh & Shannon: Conventional)
+│                                 │         Reflexive TA (Braun & Clarke 2019+) → out of scope; say so
 │                                 └── NO → Clarify research question first
 ```
 

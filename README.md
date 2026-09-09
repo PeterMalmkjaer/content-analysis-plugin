@@ -5,15 +5,15 @@ Scientific content analysis for academic research, available for ChatGPT, Codex,
 **Author:** Peter Malmkjaer ([Peter.Malmkjaer@mail.dk](mailto:Peter.Malmkjaer@mail.dk))
 Independent project by Peter Malmkjaer.
 
-> **Preview release.** 5.0.0-beta.1 adds a source declaration and a procedure for large corpora, and is the first release in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end; that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
+> **Preview release.** The 5.0.0 betas add a source declaration, a procedure for large corpora, an output validator with a known-good fixture, and a clear statement of which methods the skill supports; they are also the first releases in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end, and that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
 
-**Version:** 5.0.0-beta.1
+**Version:** 5.0.0-beta.2
 
 ---
 
 ## What It Does
 
-This plugin enables an AI assistant to perform rigorous, methodologically grounded content analysis on textual material. It follows established social-science conventions from Krippendorff (2018), Hsieh & Shannon (2005), Mayring (2014), and Braun & Clarke (2006).
+This plugin enables an AI assistant to perform rigorous, methodologically grounded content analysis on textual material. It follows established content-analysis conventions from Krippendorff (2018), Hsieh & Shannon (2005) and Mayring (2014). For thematic coding it works as a *codebook* thematic analysis in Braun & Clarke's (2021) sense; it does not implement their reflexive TA.
 
 It supports the full workflow from research question to publication-ready output files.
 
@@ -46,6 +46,8 @@ codex plugin add content-analysis@content-analysis-plugin
 ```
 
 Restart Codex or start a new session after installation. The skill activates automatically when you describe a content-analysis task.
+
+> These two commands have not yet been verified against a Codex CLI install (as of 5.0.0-beta.2). OpenAI's documentation describes installing plugins through the **Plugins** tab in Codex, which lists marketplaces such as this repository's `.agents/plugins/marketplace.json`. If the commands fail, use the Plugins tab and please open an issue with what you saw.
 
 ### Claude
 
@@ -101,7 +103,7 @@ Run `/content-analysis` to start a content-analysis session directly. Optionally
 | File | Format | Description |
 |------|--------|-------------|
 | Codebook | `.xlsx` | Codes with definitions, inclusion/exclusion criteria, examples |
-| Coded data | `.xlsx` | Every coded unit with excerpts, codes, and notes |
+| Coded data | `.xlsx` | One row per code assignment, with excerpt, provenance, codebook version and notes |
 | Theme summary | `.md` / `.docx` | Narrative findings with method note |
 | Thematic map | `.mermaid` | Visual theme hierarchy |
 | Reliability report | `.xlsx` | ICR calculations (when applicable) |
@@ -175,8 +177,12 @@ Any commercial use — including integration into paid products, consulting serv
 
 ---
 
+## Validating an analysis
+
+`scripts/validate_coding.py` checks a finished coding for traceability: every excerpt is found verbatim in its source, every document in the manifest is coded, every code exists in the codebook, assignments are unique, and the frequency table can be regenerated from the rows. It needs only Python 3; `openpyxl` is optional for reading `.xlsx` directly. `examples/minimal/` is a known-good fixture on which it must pass.
+
 ## Citation
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.1) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.2) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
