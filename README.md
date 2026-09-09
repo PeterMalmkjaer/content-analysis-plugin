@@ -5,7 +5,9 @@ Scientific content analysis for academic research, available for ChatGPT, Codex,
 **Author:** Peter Malmkjaer ([Peter.Malmkjaer@mail.dk](mailto:Peter.Malmkjaer@mail.dk))
 Independent project by Peter Malmkjaer.
 
-**Version:** 4.3.0
+> **Preview release.** 5.0.0-beta.1 adds a source declaration and a procedure for large corpora, and is the first release in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end; that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
+
+**Version:** 5.0.0-beta.1
 
 ---
 
@@ -177,4 +179,4 @@ Any commercial use — including integration into paid products, consulting serv
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 4.3.0) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.1) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
