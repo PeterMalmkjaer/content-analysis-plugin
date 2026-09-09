@@ -36,18 +36,21 @@ The plugin guides you through the methodological choices and documents important
 
 ## Installation
 
-### Codex
+### ChatGPT and Codex
 
-Add the GitHub marketplace and install the plugin with Codex CLI:
+The plugin is distributed through this repository's own marketplace file (`.agents/plugins/marketplace.json`), which points at the `main` branch. Nothing is submitted to OpenAI.
+
+**Install** — in the ChatGPT desktop app (Work mode, or Codex in the app), open the **Plugins** directory, add `PeterMalmkjaer/content-analysis-plugin` as a marketplace source, and install **Content Analysis** from the source "Content Analysis Plugin". The IDE extension does not support plugins (per OpenAI's documentation).
+
+**Update** — restarting the app is not enough: uninstall Content Analysis in the Plugins directory and install it again. Confirmed on 5.0.0-beta.1 → beta.2 (macOS, September 2026); the installed version is visible with
 
 ```bash
-codex plugin marketplace add PeterMalmkjaer/content-analysis-plugin --ref main
-codex plugin add content-analysis@content-analysis-plugin
+ls ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/
 ```
 
-Restart Codex or start a new session after installation. The skill activates automatically when you describe a content-analysis task.
+**Codex CLI** — OpenAI documents `codex plugin marketplace add PeterMalmkjaer/content-analysis-plugin --ref main` and `codex plugin marketplace upgrade content-analysis-plugin` for adding and refreshing a marketplace; installing a plugin then goes through the CLI's plugin browser. These commands are taken from the documentation and have not been run by the author (no Codex CLI install); if they fail, use the Plugins directory and please open an issue with what you saw.
 
-> These two commands have not yet been verified against a Codex CLI install (as of 5.0.0-beta.2). OpenAI's documentation describes installing plugins through the **Plugins** tab in Codex, which lists marketplaces such as this repository's `.agents/plugins/marketplace.json`. If the commands fail, use the Plugins tab and please open an issue with what you saw.
+The skill activates automatically when you describe a content-analysis task.
 
 ### Claude
 
