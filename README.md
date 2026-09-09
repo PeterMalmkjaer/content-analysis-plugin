@@ -7,7 +7,7 @@ Independent project by Peter Malmkjaer.
 
 > **Preview release.** The 5.0.0 betas add a source declaration, a procedure for large corpora, an output validator with a known-good fixture, and a clear statement of which methods the skill supports; they are also the first releases in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end, and that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
 
-**Version:** 5.0.0-beta.2
+**Version:** 5.0.0-beta.3
 
 ---
 
@@ -42,7 +42,7 @@ The plugin is distributed through this repository's own marketplace file (`.agen
 
 **Install** — in the ChatGPT desktop app (Work mode, or Codex in the app), open the **Plugins** directory, add `PeterMalmkjaer/content-analysis-plugin` as a marketplace source, and install **Content Analysis** from the source "Content Analysis Plugin". The IDE extension does not support plugins (per OpenAI's documentation).
 
-**Update** — restarting the app is not enough: uninstall Content Analysis in the Plugins directory and install it again. Confirmed on 5.0.0-beta.1 → beta.2 (macOS, September 2026); the installed version is visible with
+**Update** — restarting the app is not enough: uninstall Content Analysis in the Plugins directory and install it again. Confirmed on 5.0.0-beta.1 → beta.2 (macOS, September 2026). Every release bumps the `version` field, because update mechanisms key on it; the installed version is visible with
 
 ```bash
 ls ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/
@@ -188,4 +188,4 @@ Any commercial use — including integration into paid products, consulting serv
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.2) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.3) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin

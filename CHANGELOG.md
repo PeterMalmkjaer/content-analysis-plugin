@@ -5,7 +5,9 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [5.0.0-beta.3] - 2026-09-09
+
+Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on the `version` field, pick up the two fixes below.
 
 ### Fixed
 - Validator: a run in which a required check could not execute (no manifest, no `--sources`, no `--summary`, a document without `Source file`, translated rows) ended with `RESULT: PASS` and exit 0. It now ends with `RESULT: INCOMPLETE` and exit 2, with `SKIP` lines naming the checks that did not run. Reported by an external review of beta.2 (ChatGPT, 9 September 2026).
