@@ -1,8 +1,8 @@
 # Source Types and Source Context
 
-Content analysis draws inferences from text to the context that produced it (Krippendorff, 2018). That only works if the context is stated rather than assumed. This reference covers what to record about a source before coding it, how the main source types differ, what those differences do to the unit, the coding logic and the reliability you can expect, and when a corpus is too heterogeneous to be treated as one.
+Content analysis draws inferences from text to the context of its use (Krippendorff, 2018) — which includes who produced it and for whom. That only works if the context is stated rather than assumed. This reference covers what to record about a source before coding it, how the main source types differ, what those differences do to the unit, the coding logic and the reliability you can expect, and when a corpus is too heterogeneous to be treated as one.
 
-Read this reference when the corpus contains more than one source type, when the source type is anything other than a single set of documents of one kind, or when the user cannot say who produced the text and for whom.
+Read this reference when the corpus is anything other than a single set of documents of one kind, or when the user cannot say who produced the text and for whom.
 
 ---
 
@@ -24,12 +24,12 @@ Read this reference when the corpus contains more than one source type, when the
 
 ## The Source Declaration
 
-Before coding, record the following for every source (or for every homogeneous group of sources). The declaration is made in Step 1, next to the research question and the unit of analysis, and it travels with every coded unit as provenance columns (section 10).
+Before coding, record the following for every source (or for every homogeneous group of sources). The declaration is made in Step 1, next to the research question and the unit of analysis. Part of it travels with every coded unit as provenance columns (section 10); the rest is recorded in the corpus manifest and the method note.
 
 | Field | What to record | Why it matters |
 |-------|----------------|----------------|
 | **Source type** | One of the types in section 2 | Sets the natural unit and the traps |
-| **Producer** | Who wrote or said it (role, not name, unless names are the point) | Whose voice is being analysed |
+| **Producer** | Who wrote or said it (role, not name, unless names are the point) | Whose voice is being analyzed |
 | **Purpose** | Why the text exists — to inform, persuade, comply, vent, answer a question | Purpose shapes what is said and what is left out |
 | **Audience** | Who the text was for | Self-presentation varies with audience |
 | **Elicitation** | `elicited` (produced in response to a researcher's prompt) or `naturally occurring` | Elicited text must be read against the prompt |
@@ -47,24 +47,24 @@ If the user cannot fill a field, record `unknown` explicitly. An unknown produce
 | Type | Producer and purpose | Natural unit | Coding logic that fits | Reliability outlook | Signature trap |
 |------|---------------------|--------------|------------------------|---------------------|----------------|
 | **Elicited talk** (interviews, focus groups) | Participant answering a researcher | Answer to a question; speaking turn | Inductive, abductive, directed | Moderate; meaning is latent | Reading answers as spontaneous when they are responses to a specific prompt |
-| **Institutional documents** (annual reports, policies, strategies) | Organisation presenting itself to a known audience | Section; paragraph | Deductive, directed; summative for keyword tracking | High; manifest content, structured | Boilerplate repeated year on year inflates frequencies |
+| **Institutional documents** (annual reports, policies, strategies) | Organization presenting itself to a known audience | Section; paragraph | Deductive, directed; summative for keyword tracking | High; manifest content, structured | Boilerplate repeated year on year inflates frequencies |
 | **Media texts** (news, features, editorials) | Journalist/outlet within genre conventions and an editorial line | Article; paragraph; headline separately | Deductive framing schemes; summative | Moderate–high | Headline and body can carry different frames; outlet is a variable, not noise |
 | **User-generated content** (comments, reviews, posts) | Anonymous individuals, unprompted, on a platform with its own affordances | Post/comment; thread as context | Inductive; summative with caution | Low–moderate; short, ironic, noisy | A comment without its parent is uninterpretable; bots and duplicates |
 | **Open survey responses** | Respondent answering one fixed prompt in a few words | Whole response | Deductive or inductive at low granularity | Moderate | Prompt wording is the context; responses are not comparable across differently worded items |
 | **Naturally occurring records** (minutes, emails, chat logs, transcripts of ordinary talk) | Participants acting, not reporting | Message; turn; agenda item | Inductive, abductive | Varies with genre | Records were made for the participants' purposes, not the researcher's; what is routine is unrecorded |
-| **Continuous prose** (books, speeches, essays) | An author with a rhetorical aim | Paragraph; section | Any | High for manifest, lower for latent | Length dominates frequency tables; normalise per 1,000 words |
+| **Continuous prose** (books, speeches, essays) | An author with a rhetorical aim | Paragraph; section | Any | High for manifest, lower for latent | Length dominates frequency tables; normalize per 1,000 words |
 
-The table is a starting point. The user's material may straddle types; when it does, declare which row governs the unit and say why.
+The table is a starting point. The user's material may straddle types; when it does, declare which row governs the unit and say why. Continuous prose has no section of its own below: the table row and the normalization rule in section 9 cover it.
 
 ---
 
 ## Elicited Talk: Interviews and Focus Groups
 
-This is the type where context errors are most invisible, because the text reads as if the participant chose the topic. They did not — the interviewer did.
+This is the type where context errors are hardest to see, because the text reads as if the participant chose the topic. They did not — the interviewer did.
 
-**The question is part of the unit.** Code an answer in light of the question that produced it. A participant who mentions "trust" because they were asked about trust is not evidence of a trust theme in the same way as one who raises it unprompted. Record, per unit, whether the topic was `prompted` or `volunteered`. When the interview guide is available, load it before coding and treat it as the map of what was elicited.
+**The question is the context unit.** The unit is the answer; the question that produced it is its context (Krippendorff's distinction between recording unit and context unit), and it must be recorded — carry it in the `Parent / section` column. Code an answer in light of the question that produced it. A participant who mentions "trust" because they were asked about trust is not evidence of a trust theme in the same way as one who raises it unprompted. Record, per unit, whether the topic was `prompted` or `volunteered`. When the interview guide is available, load it before coding and treat it as the map of what was elicited.
 
-**Unit choices and their consequences.** *Speaking turn* preserves the dialogue but produces many units and splits an answer that spans several turns. *Answer* (everything the participant says in response to one question, across turns) matches the elicitation structure and is usually the right unit for semi-structured interviews. *Paragraph* is a transcription artefact and should not be used unless the transcript was paragraphed by meaning. Whichever is chosen, say in the method note how interviewer turns were handled: excluded from coding but retained as context is the usual answer.
+**Unit choices and their consequences.** *Speaking turn* preserves the dialogue but produces many units and splits an answer that spans several turns. *Answer* (everything the participant says in response to one question, across turns) matches the elicitation structure and is usually the right unit for semi-structured interviews. *Paragraph* is a transcription artifact and should not be used unless the transcript was paragraphed by meaning. Whichever is chosen, say in the method note how interviewer turns were handled: excluded from coding but retained as context is the usual answer.
 
 **Participants are documents.** Use a stable participant identifier as the document ID. Keep participant-level metadata (role, group, time point) in the corpus manifest, not in the transcript. For longitudinal designs, the document is the participant × time point, and the manifest must carry both.
 
@@ -76,11 +76,11 @@ This is the type where context errors are most invisible, because the text reads
 
 ## Institutional Documents
 
-Annual reports, sustainability reports, policy documents, strategies, and press releases are produced by organisations for known audiences, often under disclosure rules, and often by reusing last year's text.
+Annual reports, sustainability reports, policy documents, strategies, and press releases are produced by organizations for known audiences, often under disclosure rules, and often by reusing last year's text.
 
 **Boilerplate.** Identify repeated passages across documents or years before coding. Either code them once and mark recurrence, or exclude them and say so. A frequency table that counts the same paragraph five times says something about disclosure practice, not about content.
 
-**Structure is context.** A section heading tells you what the organisation thinks the passage is for. Use section as the unit where the document is sectioned, and carry the section title as a provenance field.
+**Structure is context.** A section heading tells you what the organization thinks the passage is for. Use section as the unit where the document is sectioned, and carry the section title as a provenance field.
 
 **Audience shapes voice.** A letter to shareholders and a risk section in the same report are written for different readers. Treat them as different sub-sources if the research question turns on tone or emphasis.
 
@@ -98,7 +98,7 @@ Comments, reviews, and posts are short, unprompted, anonymous, and shaped by the
 
 1. **Keep the thread.** A reply is a unit only together with what it replies to. Carry the parent ID as provenance.
 2. **Expect noise.** Sarcasm, in-jokes, bots, duplicates, and spam are part of the material. Decide before coding what is excluded, and report the exclusion rate.
-3. **Do not pool with long-form sources.** A 12-word comment and a 40-page report are not comparable counting units. Analyse separately or normalise (section 9).
+3. **Do not pool with long-form sources.** A 12-word comment and a 40-page report are not comparable counting units. Analyze separately or normalize (section 9).
 
 Summative (keyword) analysis is tempting for this type and often misleading: the same word carries opposite meanings in a review and in a meme.
 
@@ -112,7 +112,7 @@ Each response is a short answer to one fixed prompt. The prompt is the context; 
 
 ## Naturally Occurring Records
 
-Meeting minutes, email threads, chat logs, and transcripts of ordinary talk were produced for the participants' own purposes. Their strength is that nobody was performing for the researcher; their weakness is that what participants took for granted was never written down. Genre conventions matter: minutes summarise and sanitise; chat logs are elliptical. Declare the genre and its known omissions.
+Meeting minutes, email threads, chat logs, and transcripts of ordinary talk were produced for the participants' own purposes. Their strength is that nobody was performing for the researcher; their weakness is that what participants took for granted was never written down. Genre conventions matter: minutes summarize and sanitize; chat logs are elliptical. Declare the genre and its known omissions.
 
 ---
 
@@ -124,9 +124,9 @@ A corpus that mixes source types is legitimate — triangulation across sources 
 
 **Genre-aware inclusion criteria.** A shared codebook is only genuinely shared if each code's inclusion criteria say what the code looks like in each source type. "Expresses distrust" manifests differently in a CEO letter and a Reddit thread. Where the manifestation differs, write it into the criteria; where it cannot be reconciled, the code is not shared.
 
-**Never pool frequencies across genres without normalising.** Report per-stratum frequencies. If a corpus-wide figure is wanted, normalise per unit count or per 1,000 words and say which.
+**Never pool frequencies across genres without normalizing.** Report per-stratum frequencies. If a corpus-wide figure is wanted, normalize per unit count or per 1,000 words and say which.
 
-**Declare the composition.** The method note states the number of documents and units per source type. A reader must be able to see that 90% of the units came from one source type before interpreting a corpus-wide theme.
+**Declare the composition.** The method note states the number of documents and units per source type. A reader must be able to see that, say, 90% of the units came from one source type before interpreting a corpus-wide theme.
 
 **When to refuse the pooling.** If the research question requires a single answer across sources whose units cannot be aligned, the honest output is a comparative analysis, not a merged one. Say so to the user before coding, not after.
 
@@ -139,10 +139,11 @@ The coded data table (Step 7) carries the source declaration as columns, so that
 | Column | Content |
 |--------|---------|
 | **Source type** | From section 2 |
-| **Producer** | Role or organisation |
-| **Elicitation** | `elicited` / `naturally occurring`; for interviews, `prompted` / `volunteered` per unit |
+| **Producer** | Role or organization |
+| **Elicitation** | `elicited` / `naturally occurring` (source level) |
+| **Prompting** | For elicited text: `prompted` / `volunteered` per unit; otherwise `n/a` |
 | **Date** | Of production |
-| **Parent / section** | Thread parent ID, or document section title |
+| **Parent / section** | Thread parent ID, document section title, or the interview question that produced the answer |
 | **Language** | Original; `translated` if coded in translation |
 
 These are in addition to Document ID, Unit ID, and the coding columns. When a corpus has a single homogeneous source, the columns are constant — keep them anyway; the method note is derived from them.
@@ -151,7 +152,7 @@ These are in addition to Document ID, Unit ID, and the coding columns. When a co
 
 ## Reporting
 
-The method note (Step 8) states, for each source type in the corpus: what it is, who produced it and for what audience, whether it was elicited, how it was sampled, how many documents and units it contributed, what was excluded (boilerplate, interviewer turns, spam) and at what rate, and how heterogeneity was handled — stratified, normalised, or refused. If the coded units are translations, say so. If the elicitation instrument (interview guide, survey prompt) is available, append it.
+The method note (see Methodological Transparency in `SKILL.md`) states, for each source type in the corpus: what it is, who produced it and for what audience, whether it was elicited, how it was sampled, how many documents and units it contributed, what was excluded (boilerplate, interviewer turns, spam) and at what rate, and how heterogeneity was handled — stratified, normalized, or refused. If the coded units are translations, say so. If the elicitation instrument (interview guide, survey prompt) is available, append it.
 
 ---
 
