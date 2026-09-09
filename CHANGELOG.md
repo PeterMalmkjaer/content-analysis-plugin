@@ -5,6 +5,21 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.3.0] - 2026-09-04
+
+### Added
+- Native Codex plugin manifest at `.codex-plugin/plugin.json`.
+- Codex marketplace metadata at `.agents/plugins/marketplace.json` for installation from GitHub.
+- Public privacy policy and terms pages for plugin listing metadata.
+
+### Changed
+- Made the shared skill instructions platform-neutral so the same workflow works in ChatGPT, Codex, and Claude.
+- Added Codex installation instructions while retaining the Claude marketplace and slash command.
+- Updated the citation and package metadata to version 4.3.0.
+
+### Notes
+- The analysis workflow, methodological references, and dual-licence terms are unchanged.
+
 ## [4.2.2] - 2026-08-28
 
 ### Changed

@@ -1,0 +1,42 @@
+{
+  "name": "content-analysis",
+  "version": "4.3.0",
+  "description": "Scientific content analysis for academic research. Systematic coding, codebook development, frequency analysis, and thematic reporting following established social-science methods.",
+  "author": {
+    "name": "Peter Malmkjaer",
+    "email": "Peter.Malmkjaer@mail.dk",
+    "url": "https://github.com/PeterMalmkjaer"
+  },
+  "homepage": "https://github.com/PeterMalmkjaer/content-analysis-plugin",
+  "repository": "https://github.com/PeterMalmkjaer/content-analysis-plugin",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "content-analysis",
+    "qualitative-research",
+    "coding",
+    "codebook",
+    "thematic-analysis",
+    "academic",
+    "social-science"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Content Analysis",
+    "shortDescription": "Scientific coding and thematic analysis.",
+    "longDescription": "Develop codebooks, code textual material, assess inter-coder reliability, identify themes, and produce structured research outputs.",
+    "developerName": "Peter Malmkjaer",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/PeterMalmkjaer/content-analysis-plugin",
+    "privacyPolicyURL": "https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Develop a codebook for these interview transcripts.",
+      "Perform an inductive thematic analysis of these documents.",
+      "Assess inter-coder reliability for this coded dataset."
+    ]
+  }
+}
