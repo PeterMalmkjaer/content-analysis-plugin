@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- Validator: a run in which a required check could not execute (no manifest, no `--sources`, no `--summary`, a document without `Source file`, translated rows) ended with `RESULT: PASS` and exit 0. It now ends with `RESULT: INCOMPLETE` and exit 2, with `SKIP` lines naming the checks that did not run. Reported by an external review of beta.2 (ChatGPT, 9 September 2026).
+- Validator: the excerpt check lowercased both sides, so it was not verbatim. It is now case- and punctuation-exact; only whitespace (including non-breaking spaces and line breaks) is normalized. Documented in the script, SKILL.md and the fixture README.
+- Removed a compiled `scripts/__pycache__/*.pyc` that had been committed with beta.2; added `.gitignore`.
 - README: ChatGPT/Codex installation rewritten from OpenAI's current documentation and a tested update. `codex plugin add` removed (not a documented command); updating an installed plugin requires uninstall + reinstall in the Plugins directory — a restart does not fetch the new version.
 
 ## [5.0.0-beta.2] - 2026-09-09

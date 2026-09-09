@@ -14,8 +14,11 @@ to CSV first. Paths below are relative to the plugin root.
         [--codebook-version v2]     (optional; every row must carry it)
 
 Checks
-  1. every Text excerpt occurs verbatim (whitespace-normalized) in its source
-     file — rows with Language = translated are skipped and counted
+  1. every Text excerpt occurs verbatim in its source file. "Verbatim" means:
+     runs of whitespace (including non-breaking spaces and line breaks) are
+     collapsed to one space; everything else — case, punctuation, quotation
+     marks — must match exactly. Rows with Language = translated cannot be
+     checked and make the result INCOMPLETE
   2. every document (or document part) the manifest marks as coded has rows,
      and vice versa; manifest Units matches the number of distinct Unit IDs
   3. every Code ID exists in the codebook; inactive codes are flagged
@@ -28,8 +31,14 @@ Document parts collapse to their parent for document counts: the manifest's
 Sheet names in .xlsx are matched case-insensitively; a single-sheet workbook
 is accepted for any table.
 
-Exit status 0 = all checks passed, 1 = at least one failure. Warnings do not
-fail the run. The script never modifies any file.
+Result and exit status
+  PASS        (0) every check ran and none failed
+  FAIL        (1) at least one check failed
+  INCOMPLETE  (2) no check failed, but a required check could not run — no
+                  manifest, no --sources, no --summary, a document without a
+                  Source file, or translated rows. Lines marked SKIP say which.
+                  INCOMPLETE is not a pass: do not report it as one.
+Warnings (WARN) do not change the result. The script never modifies any file.
 """
 import argparse, csv, os, re, sys
 from collections import defaultdict
@@ -89,7 +98,9 @@ def missing_columns(rows, required):
     return [c for c in required if key(c) not in have]
 
 def squash(s):
-    return re.sub(r"\s+", " ", s.replace(" ", " ")).strip().lower()
+    """Whitespace-normalize only: runs of whitespace (incl. NBSP, line breaks)
+    become one space. Case and punctuation are left as they are."""
+    return re.sub(r"\s+", " ", s.replace("\u00a0", " ")).strip()
 
 def parent_doc(did, parents=None):
     if parents and parents.get(did):
@@ -97,10 +108,11 @@ def parent_doc(did, parents=None):
     return re.split(r"\.?§", did, maxsplit=1)[0]
 
 class Report:
-    def __init__(self): self.fail, self.warn, self.ok = [], [], []
+    def __init__(self): self.fail, self.warn, self.ok, self.skip = [], [], [], []
     def f(self, m): self.fail.append(m)
     def w(self, m): self.warn.append(m)
     def o(self, m): self.ok.append(m)
+    def s(self, m): self.skip.append(m)   # a required check that could not run
 
 # ---------------------------------------------------------------- main
 def main():
@@ -130,7 +142,7 @@ def main():
     elif a.coded.lower().endswith(".xlsx"):
         manifest = read_table(a.coded, "manifest")
         if manifest is None:
-            R.w("coded workbook has no 'manifest' sheet — coverage and excerpts not checked"); manifest = []
+            R.s("coded workbook has no 'manifest' sheet — coverage and excerpts not checked"); manifest = []
     else:
         manifest = []
     summary = []
@@ -240,11 +252,11 @@ def main():
     elif a.manifest:
         R.f("manifest is empty (header only, or no rows)")
     else:
-        R.w("no manifest — coverage not checked")
+        R.s("no manifest — coverage not checked")
 
     # ---- 1. excerpts in sources
     if a.sources and not manifest:
-        R.w("--sources given but there is no manifest to map documents to files — excerpts not checked")
+        R.s("--sources given but there is no manifest to map documents to files — excerpts not checked")
     elif a.sources:
         cache, checked, missing, skipped, filefail, nofile = {}, 0, 0, 0, 0, {}
         for r in coded:
@@ -268,15 +280,15 @@ def main():
             checked += 1
             if squash(ex) not in cache[p]:
                 missing += 1
-                R.f(f"{aid}: excerpt not found verbatim in {fn}: {ex[:60]!r}…")
+                R.f(f"{aid}: excerpt not found verbatim (case- and punctuation-exact, whitespace collapsed) in {fn}: {ex[:60]!r}…")
         for did, n in sorted(nofile.items()):
-            R.w(f"{did}: {n} rows skipped — manifest has no Source file for it")
+            R.s(f"{did}: {n} rows not checked against a source — manifest has no Source file for it")
         if skipped:
-            R.w(f"{skipped} rows with Language = translated skipped — translated excerpts cannot be checked against the source")
+            R.s(f"{skipped} rows with Language = translated not checked — translated excerpts cannot be matched against the source")
         if checked and not missing and not filefail and not nofile:
             R.o(f"excerpts: all {checked} excerpts found verbatim in their source files")
     else:
-        R.w("no --sources given — excerpts not checked against source files")
+        R.s("no --sources given — excerpts not checked against source files")
 
     # ---- 6. frequencies (pooled, or per source type if the summary has that column)
     stratified = bool(summary) and key("Source type") in summary[0]
@@ -303,7 +315,7 @@ def main():
                                     ("Documents", ("Documents",), len(got["documents"]))):
                 want = col(s, *alts)
                 if want == "":
-                    R.w(f"{label}: summary has no {name} value — not compared"); uncompared += 1
+                    R.s(f"{label}: summary has no {name} value — not compared"); uncompared += 1
                 elif not want.isdigit():
                     R.f(f"{label}: summary {name}={want!r} is not an integer"); mism += 1
                 elif int(want) != val:
@@ -312,13 +324,13 @@ def main():
             if k not in listed:
                 R.f(f"{k[0]}{' ['+k[1]+']' if stratified else ''} has assignments but is missing from summary"); mism += 1
         if not mism and uncompared:
-            R.w(f"frequencies: no mismatch found, but {uncompared} count(s) were absent from the summary and not compared")
+            R.s(f"frequencies: no mismatch found, but {uncompared} count(s) were absent from the summary and not compared")
         elif not mism:
             R.o(f"frequencies: summary matches regenerated counts for {len(per)} code{' × source-type' if stratified else ''} rows")
     else:
-        R.w("no --summary given — frequencies regenerated but not compared:")
+        R.s("no --summary given — frequencies regenerated but not compared:")
         for k in sorted(per):
-            d = per[k]; R.w(f"    {k[0]}: {d['assignments']} assignments, {len(d['units'])} units, {len(d['documents'])} documents")
+            d = per[k]; R.s(f"    {k[0]}: {d['assignments']} assignments, {len(d['units'])} units, {len(d['documents'])} documents")
 
     finish(R, coded, docs_in_coded, per)
 
@@ -327,9 +339,14 @@ def finish(R, coded, docs, per):
     print(f"rows: {len(coded)}   documents/parts: {len(docs)}   code rows: {len(per)}   UNCODED rows: {n_unc}")
     for m in R.ok:   print("PASS  " + m)
     for m in R.warn: print("WARN  " + m)
+    for m in R.skip: print("SKIP  " + m)
     for m in R.fail: print("FAIL  " + m)
-    print("RESULT: " + ("PASS" if not R.fail else f"FAIL ({len(R.fail)} problem{'s' if len(R.fail) != 1 else ''})"))
-    sys.exit(0 if not R.fail else 1)
+    if R.fail:
+        print(f"RESULT: FAIL ({len(R.fail)} problem{'s' if len(R.fail) != 1 else ''})"); sys.exit(1)
+    if R.skip:
+        n = sum(1 for m in R.skip if not m.startswith("    "))
+        print(f"RESULT: INCOMPLETE ({n} required check{'s' if n != 1 else ''} did not run — see SKIP lines; not a pass)"); sys.exit(2)
+    print("RESULT: PASS"); sys.exit(0)
 
 if __name__ == "__main__":
     main()

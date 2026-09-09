@@ -23,7 +23,7 @@ python3 scripts/validate_coding.py \
   --codebook-version v2
 ```
 
-must end with `RESULT: PASS` with seven `PASS` lines (six without `--codebook-version`). Any `FAIL` means either the fixture or the validator has changed.
+must end with `RESULT: PASS` with seven `PASS` lines (six without `--codebook-version`). Any `FAIL` means either the fixture or the validator has changed. `RESULT: INCOMPLETE` means a required check did not run — it is not a pass.
 
 ## What the fixture exercises
 
@@ -33,4 +33,4 @@ must end with `RESULT: PASS` with seven `PASS` lines (six without `--codebook-ve
 
 ## Breaking it on purpose
 
-Edit a copy of `coded_data.csv` and re-run: change one excerpt so it no longer matches the source, point a row at `SCORE_99`, duplicate a row, or set `Prompting` to `maybe`. Each produces a `FAIL` line naming the assignment. Change a number in `frequencies.csv` and the regenerated count is reported next to it.
+Edit a copy of `coded_data.csv` and re-run: change one excerpt so it no longer matches the source (changing its case is enough — the match is case-exact, only whitespace is normalized), point a row at `SCORE_99`, duplicate a row, or set `Prompting` to `maybe`. Each produces a `FAIL` line naming the assignment. Change a number in `frequencies.csv` and the regenerated count is reported next to it. Blank the `Source file` column in a copy of `manifest.csv`, or drop `--summary` or `--sources`, and the result is `RESULT: INCOMPLETE` with exit status 2 — the checks that could not run are listed as `SKIP` lines.
