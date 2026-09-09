@@ -5,6 +5,25 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0-beta.1] - 2026-09-09
+
+### Added
+- **Source declaration** in Step 1: source type, producer, purpose, audience, elicitation, date, language, sampling, completeness — recorded per source and carried on every coded unit as provenance columns.
+- `references/source-types.md`: how elicited talk, institutional documents, media texts, user-generated content, open survey responses, naturally occurring records and continuous prose differ in natural unit, fitting coding logic, reliability outlook and signature traps; interviews get the sharpest treatment (the question is part of the unit; `prompted`/`volunteered` per unit). Includes the **heterogeneity gate**: a corpus whose unit cannot be defined the same way across sources is stratified and compared, never pooled.
+- Step 7 rewritten for corpora that do not fit one session: codebook frozen **per pass** with a version log; batching with a corpus manifest; a candidate-code log that is a deliverable (in directed content analysis it is the theory-extension finding); passes per coding logic (1 for fixed-instrument deductive, 2 for directed/Mayring, 2+ for inductive); saturation tracking for inductive designs; a drift check on the first batch.
+- `Answer` added as a unit of analysis for semi-structured interviews.
+- Provenance and versioning columns in the coded data table: Source type, Producer, Elicitation, Date, Parent/section, Codebook version, Pass. Manifest, candidate log and summary become sheets in the same workbook.
+
+### Changed
+- `/content-analysis` now asks for the source declaration alongside the four existing clarifications, and points to `source-types.md` and the batching procedure conditionally, not up front.
+- Version bumped to a pre-release: this is a new contract (Step 1 inputs, Step 7 procedure, output columns) and the first release with Codex/ChatGPT support, which needs feedback before 5.0.0.
+
+### Credits
+- The problem statement in issue #1 and several mechanics in PR #2 — the codebook version log with a "triggered by" column, never deleting a code but marking it inactive, retroactive coding, the saturation table, cross-corpus outputs, and a progress file that here becomes the corpus manifest — are due to **@serbestonline**. The PR itself was not merged: it treated the codebook as always cumulative (inductive logic applied to every design), changed default naming to participant IDs for all corpora, and loaded all references unconditionally. See the discussion on #1 and #2.
+
+### Notes
+- Licence terms unchanged.
+
 ## [4.3.0] - 2026-09-04
 
 ### Added

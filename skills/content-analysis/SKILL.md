@@ -53,8 +53,17 @@ Before touching any text, establish two things with the user:
 | Document section | Structured texts (e.g., annual report sections) |
 | Whole document | When each document gets one or few codes |
 | Speaking turn | Interview / focus group transcripts |
+| Answer (all turns replying to one question) | Semi-structured interviews; matches the elicitation structure |
 
 Ask the user to specify the unit. If they are unsure, recommend the unit that best matches their RQ and material.
+
+The unit determines the size of the job more than the number of documents does. Thirty interviews coded at speaking-turn level may yield 4,000 units; at answer level, perhaps 900. Choose the unit with the research question, but choose it knowing what it implies for volume — this is the decision that makes a large corpus manageable or not, and it is taken here, long before the size is felt in Step 7.
+
+**Source declaration.** Content analysis infers from text to the context that produced it, so the context must be stated, not assumed. For every source — or every homogeneous group of sources — record: source type, producer, purpose, audience, whether the text was *elicited* by a researcher or *naturally occurring*, date, language, sampling, and completeness. Unknowns are recorded as `unknown`; they are limitations, not blanks. The declaration travels with every coded unit as provenance columns (Step 7).
+
+Source type moves four things: the natural unit, the coding logic that fits, the reliability you can expect, and the traps to watch for. An interview answer is a response to a specific question and must be read against it; an annual-report paragraph may be boilerplate repeated year on year; a user comment is meaningless without its parent in the thread. **Read `references/source-types.md`** when the corpus contains more than one source type, when the type is anything other than a single set of documents of one kind, or when the user cannot say who produced the text and for whom.
+
+**Heterogeneity gate.** If the corpus mixes source types, ask before Step 4: *can the unit of analysis be defined in the same way across all sources?* If not, the corpus is not one corpus. Stratify by source type, code each stratum under the same codebook with genre-aware inclusion criteria, and compare across strata rather than pooling. Never pool frequencies across genres without normalising. Say this to the user before coding, not after.
 
 ---
 
@@ -187,13 +196,70 @@ If the user intends to use the codebook with human coders, the assistant should:
 
 ## Step 7: Code the Full Corpus
 
-Apply the finalized coding scheme to all material. For each unit of analysis:
+Apply the coding scheme to all material. For each unit of analysis:
 
 1. Identify the unit boundary
-2. Read the unit in context (surrounding text matters for interpretation)
+2. Read the unit in context (surrounding text matters for interpretation — for elicited text, the question that produced the answer is part of the context)
 3. Assign one or more codes from the codebook
 4. Record the verbatim excerpt that justifies the code assignment
-5. If a unit fits no existing code, flag it as "uncoded" and note why
+5. If a unit fits no existing code, assign `UNCODED` and write a candidate-code entry (7.3) — do not invent a code on the spot
+
+Small corpora (a handful of documents that fit comfortably in one session) can be coded in a single pass. Anything larger — a dozen interviews, thirty reports, a year of press coverage — needs 7.1–7.5. The procedure exists for one reason: with many documents, coding decisions drift. A code applied to document 1 is not the code applied to document 28 unless something holds it in place.
+
+### 7.1 Freeze the codebook per pass
+
+Before the first full-corpus pass, write the codebook to file and stamp it with a version (`v1`). During a pass, the codebook does not change. New codes, merges, splits and redefinitions are recorded in the candidate log (7.3) and adopted only *between* passes, producing `v2`, `v3`, and so on. Codes are never deleted: a code that turns out to be unusable is marked `inactive` in the codebook so the audit trail survives.
+
+Every coded unit carries the version it was coded under. That one column is what makes a partial re-code both permissible and auditable.
+
+Keep a version log at the top of the codebook file:
+
+| Version | Date | Change | Triggered by |
+|---------|------|--------|--------------|
+| v1 | YYYY-MM-DD | Codebook frozen after pilot (Step 5) | — |
+| v2 | YYYY-MM-DD | Added `NETWORK_01`; broadened `BARR_03` to include institutional gatekeeping | Candidates C-04, C-07 (documents 12, 19) |
+
+### 7.2 Batch the corpus
+
+Never read the whole corpus into one working context; never split a document across batches.
+
+1. Build a **corpus manifest** before coding starts: one row per document, in a fixed order, with `Document ID`, `Source file`, `Source type`, `Units`, `Status`, `Coded under`. This is the coverage record — how you, and a reviewer, can see that all thirty documents were coded, and under which version.
+2. Choose a batch size (typically 3–5 interview transcripts, or whatever keeps a batch well within working context) and state it in the method note.
+3. For each batch, carry forward exactly three things: the frozen codebook, the coded-data file (append the batch's rows), and the candidate log. Do **not** carry forward the raw text of earlier batches.
+4. After each batch, update the manifest. A run that stops can be resumed from the manifest without re-coding anything.
+
+### 7.3 Keep a candidate-code log
+
+The candidate log is a deliverable, not a wastebasket. One row per proposed change:
+
+| Column | Description |
+|--------|-------------|
+| **Candidate ID** | Sequential (`C-01`, …) |
+| **Type** | `new code` / `merge` / `split` / `redefine` |
+| **Trigger units** | Document and unit IDs where the need arose |
+| **Proposed definition** | As it would appear in the codebook |
+| **Decision** | Filled in between passes: `adopt` / `reject` / `defer`, with reason |
+
+In directed content analysis (Hsieh & Shannon) the candidate log *is* the theory-extension result — the material the prior framework could not accommodate. Report it as a finding, not as housekeeping.
+
+### 7.4 Decide, then re-code — how much depends on the coding logic
+
+At the end of a pass, review the candidate log with the user and decide each entry. If anything is adopted, issue a new codebook version and run a second pass over the documents coded under the old version.
+
+| Coding logic | Passes to expect | What the second pass does |
+|---|---|---|
+| Deductive, quantitative (fixed instrument; reliability reported) | 1 | None. The codebook was fixed before coding; candidates are reported as limitations, not adopted mid-study. |
+| Deductive, directed (Hsieh & Shannon) / Mayring structuring | 2 | Adopt the candidates that extend the framework; re-code all documents against `v2`. |
+| Abductive | 2–3 | As above, iterated until a pass ends with an empty candidate log or only `defer`. |
+| Inductive (conventional; open → axial → selective) | 2+ | Constant comparison: every document coded before the last revision is re-coded against it. Budget for this before starting. |
+
+For inductive and abductive designs, track saturation as new codes adopted per document (or per batch). When two or three consecutive documents add nothing, saturation is reached; report it. For a closed corpus, saturation is assessed after the fact, not used as a stopping rule.
+
+The cost of the second pass is the method's cost, not the batching's. What batching adds is the ability to prove which documents were coded under which version.
+
+### 7.5 Check for drift
+
+Once the final pass is complete, re-code one document from the *first* batch without looking at its earlier coding, and compare. This is the intra-coder check from Step 6, reused as a scale check. Report agreement (percent agreement at minimum; α where the design supports it). If it falls below the Step 6 thresholds, treat the first batches as suspect and re-code them.
 
 ### Output: Coded Data Table
 
@@ -203,15 +269,29 @@ Produce an Excel file (.xlsx) with these columns:
 |--------|-------------|
 | **Document ID** | Identifier for the source document |
 | **Unit ID** | Sequential number within document |
+| **Source type** | From the source declaration (Step 1) |
+| **Producer** | Role or organisation, from the source declaration |
+| **Elicitation** | `elicited` / `naturally occurring`; for interviews, `prompted` / `volunteered` per unit |
+| **Date** | Of production |
+| **Parent / section** | Thread parent ID, or document section title, where applicable |
 | **Text excerpt** | The verbatim unit of analysis |
-| **Code ID(s)** | Assigned code(s) from the codebook |
+| **Code ID(s)** | Assigned code(s) from the codebook, or `UNCODED` |
 | **Code name(s)** | Human-readable label(s) |
+| **Codebook version** | The version the unit was coded under (7.1) |
+| **Pass** | 1, 2, … |
 | **Coder notes** | Any ambiguity, context, or reasoning |
 
-If the corpus is large, also produce a **summary sheet** with:
-- Code frequencies (absolute count and percentage of total coded units)
-- Code co-occurrence matrix (which codes appear together)
-- Distribution across documents
+When the corpus has a single homogeneous source, the provenance columns are constant — keep them; the method note is derived from them.
+
+For any corpus coded in batches, also produce, as sheets in the same workbook:
+
+- the **corpus manifest** (7.2)
+- the **candidate log** (7.3)
+- a **summary sheet** with code frequencies (absolute and percentage), a code co-occurrence matrix, and distribution across documents — reported *per source type* when the corpus mixes types, never pooled across genres without normalising
+
+### Report the procedure
+
+The method note (Step 8) states: batch size; number of passes; codebook versions and what changed between them; the number of `UNCODED` units at the end and how they were handled; the drift-check result; and, for a heterogeneous corpus, how strata were compared. If a document was coded under an earlier version and not re-coded, say so and say why.
 
 ---
 
@@ -250,6 +330,8 @@ All structured outputs should be saved to the workspace output directory.
 | Theme summary | .md or .docx | `theme_summary_[project-name].md` |
 | Thematic map | .mermaid or .svg | `thematic_map_[project-name].mermaid` |
 | Reliability report | .xlsx | `reliability_[project-name].xlsx` |
+
+For corpora coded in batches, the coded-data workbook also contains the sheets `manifest`, `candidate_log` and `summary` (Step 7). For corpora with more than one source type, produce the frequency report and theme summary per stratum, plus a comparative summary `theme_summary_[project-name]_CROSS.md` that states which themes are shared across source types and which are specific to one.
 
 When producing Excel files, apply professional formatting: bold headers, appropriate column widths, frozen header row, and zebra-striping for readability where helpful.
 When producing Word documents, use clear heading hierarchy (Heading 1 for main sections, Heading 2 for sub-sections), consistent paragraph spacing, and a final references section.
@@ -302,6 +384,7 @@ For detailed guidance on specific topics, consult:
 
 - `references/reliability-guide.md` — Formulas and worked examples for Cohen's κ, Fleiss' κ, Krippendorff's α, and percentage agreement
 - `references/coding-approaches.md` — Detailed comparison of Mayring's, Hsieh & Shannon's, and Braun & Clarke's frameworks with decision criteria
+- `references/source-types.md` — The source declaration; how interviews, institutional documents, media, user-generated content, survey responses and naturally occurring records differ in unit, coding logic, reliability and traps; the heterogeneity gate; provenance columns
 - `references/protocol-driven-runs.md` — Rules for analyses commissioned in writing or run unattended: deriving the research question, the full report skeleton, format precedence, and not blocking on unanswerable questions
 
 ### Key Methodological Sources
