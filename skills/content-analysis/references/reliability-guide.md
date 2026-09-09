@@ -8,8 +8,9 @@ This reference provides formulas, worked examples, and implementation guidance f
 2. [Cohen's Kappa (κ)](#cohens-kappa)
 3. [Fleiss' Kappa](#fleiss-kappa)
 4. [Krippendorff's Alpha (α)](#krippendorffs-alpha)
-5. [Choosing the Right Metric](#choosing-the-right-metric)
-6. [Python Implementation](#python-implementation)
+5. [Multiple Codes per Unit](#multiple-codes-per-unit)
+6. [Choosing the Right Metric](#choosing-the-right-metric)
+7. [Python Implementation](#python-implementation)
 
 ---
 
@@ -140,6 +141,22 @@ where δ²(c, k) = 0 if c = k, 1 if c ≠ k (the difference function for nominal
 - Works with nominal, ordinal, interval, and ratio data
 - Handles missing data gracefully (not all coders need to code all units)
 - More conservative than κ (less likely to overestimate agreement)
+
+---
+
+## Multiple Codes per Unit
+
+The worked examples above assume one category per unit. When a unit may carry several codes — the default in the long-format coded-data table — agreement is computed **per code, as presence/absence**:
+
+1. For each code *k*, build a binary vector per coder over all units: 1 if the coder assigned *k* to the unit, 0 otherwise.
+2. Compute α (or κ for two coders) on that binary vector. This is the reliability of code *k*.
+3. Report per-code values in a table; a low per-code α points to the definition that needs work.
+4. If a single headline figure is wanted, report the mean of the per-code values *and* the range — never the mean alone. Do not stack all unit × code decisions into one pooled α; it hides the codes that fail.
+5. Rare codes have few positives: raw agreement is high and α is unstable. Report the number of positives beside each per-code value.
+
+Denominators: percentages in frequency tables are shares of **assignments**, **units**, or **documents**, and the table says which. The three are different numbers as soon as one unit carries two codes.
+
+The Python below is run once per code: give it one row per coder, with a 0/1 entry per unit for that code.
 
 ---
 

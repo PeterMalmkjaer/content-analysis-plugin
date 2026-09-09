@@ -1,0 +1,4 @@
+Interviewer: How do you decide which suppliers to keep?
+Participant: We run a scorecard. Price is one line, delivery reliability is another, and there is a line for audit findings. The scorecard decides; I do not want it to be about relationships. Although I admit that when two are close, I go with the one whose account manager I know.
+Interviewer: Does anything override the scorecard?
+Participant: Compliance. A failed audit ends the relationship regardless of price.

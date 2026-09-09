@@ -4,14 +4,14 @@
     "name": "Peter Malmkjaer"
   },
   "metadata": {
-    "description": "Scientific content analysis for academic research — systematic coding, codebook development, inter-coder reliability and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, and Braun & Clarke."
+    "description": "Scientific content analysis for academic research — systematic coding, codebook development, inter-coder reliability and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, with codebook thematic analysis."
   },
   "plugins": [
     {
       "name": "content-analysis",
       "displayName": "Content Analysis",
       "source": ".",
-      "description": "Scientific content analysis for academic research: systematic coding, codebook development, frequency analysis, inter-coder reliability and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, and Braun & Clarke. Includes a /content-analysis command.",
+      "description": "Scientific content analysis for academic research: systematic coding, codebook development, frequency analysis, inter-coder reliability and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, with codebook thematic analysis. Includes a /content-analysis command.",
       "category": "productivity"
     }
   ]

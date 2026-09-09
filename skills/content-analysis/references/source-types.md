@@ -62,7 +62,7 @@ The table is a starting point. The user's material may straddle types; when it d
 
 This is the type where context errors are hardest to see, because the text reads as if the participant chose the topic. They did not — the interviewer did.
 
-**The question is the context unit.** The unit is the answer; the question that produced it is its context (Krippendorff's distinction between recording unit and context unit), and it must be recorded — carry it in the `Parent / section` column. Code an answer in light of the question that produced it. A participant who mentions "trust" because they were asked about trust is not evidence of a trust theme in the same way as one who raises it unprompted. Record, per unit, whether the topic was `prompted` or `volunteered`. When the interview guide is available, load it before coding and treat it as the map of what was elicited.
+**The question is the context unit.** The unit is the answer; the question that produced it is its context (Krippendorff's distinction between recording unit and context unit), and it must be recorded — carry it in the `Parent / section` column. Code an answer in light of the question that produced it. A participant who mentions "trust" because they were asked about trust is not evidence of a trust theme in the same way as one who raises it unprompted. Record, per code assignment, whether the topic was `prompted`, `volunteered`, `mixed` or `unclear` — one answer can carry a prompted topic and a volunteered one, and they are separate assignments. When the interview guide is available, load it before coding and treat it as the map of what was elicited.
 
 **Unit choices and their consequences.** *Speaking turn* preserves the dialogue but produces many units and splits an answer that spans several turns. *Answer* (everything the participant says in response to one question, across turns) matches the elicitation structure and is usually the right unit for semi-structured interviews. *Paragraph* is a transcription artifact and should not be used unless the transcript was paragraphed by meaning. Whichever is chosen, say in the method note how interviewer turns were handled: excluded from coding but retained as context is the usual answer.
 
@@ -141,7 +141,7 @@ The coded data table (Step 7) carries the source declaration as columns, so that
 | **Source type** | From section 2 |
 | **Producer** | Role or organization |
 | **Elicitation** | `elicited` / `naturally occurring` (source level) |
-| **Prompting** | For elicited text: `prompted` / `volunteered` per unit; otherwise `n/a` |
+| **Prompting** | For elicited text, per code assignment: `prompted` / `volunteered` / `mixed` / `unclear`; otherwise `n/a` |
 | **Date** | Of production |
 | **Parent / section** | Thread parent ID, document section title, or the interview question that produced the answer |
 | **Language** | Original; `translated` if coded in translation |

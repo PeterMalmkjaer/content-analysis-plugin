@@ -5,6 +5,32 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0-beta.2] - 2026-09-09
+
+### Added
+- `scripts/validate_coding.py`: an output validator (standard library; `openpyxl` optional) that checks excerpts against source files, coverage against the manifest, code IDs against the codebook, uniqueness of assignments, allowed Prompting values, and regenerated frequencies. Step 7 gains a "Validate the outputs" section; `/content-analysis` runs it where a shell exists.
+- `examples/minimal/`: a known-good fixture — two interviews, one report, codebook with an inactive code, manifest, long-format coded data, frequencies — on which the validator must pass. Changes to the skill are checked against it.
+- Step 2 scope note: coding-reliability TA and codebook TA are supported; **reflexive** TA (Braun & Clarke, 2019, 2021) is not, and κ/α must not be reported for it. Deductive, inductive and abductive logics are all supported throughout; Step 3 now says so and points to the places where they differ.
+- `references/reliability-guide.md`: "Multiple Codes per Unit" — agreement per code as presence/absence, per-code α/κ, mean plus range, and explicit denominators.
+
+### Changed
+- **Coded-data table is long format**: one row per code assignment, with an `Assignment ID`. `Prompting` moves to assignment level and gains `mixed` and `unclear`; one answer may hold a prompted and a volunteered topic in separate rows. Every percentage states its denominator (assignments, units, or documents).
+- **Blind re-coding**: the intra-coder check (Step 6) and the drift check (7.5) must run in a separate context that receives the same inputs as the first coding but not the coding itself; "not looking" at a coding already in context is not a control. Repeated AI coding is reported as consistency; comparison with a human coder is reported separately.
+- **Large documents**: 7.2 no longer forbids splitting a document; when one exceeds the available context it is split at section or turn boundaries with stable part IDs, carried context, and one manifest row per part. The coded-data workbook is appended on disk, not re-read in full.
+- **Pilot selection** (Step 5): at least 3 documents and 10% of units (minimum 50), stratified over source types and compared groups; corpora under 50 units are piloted in full.
+- README: the Codex CLI install commands are marked unverified pending a test against a real install; OpenAI's documented route is the Plugins tab.
+- Step 4 gains a "For Abductive Coding" block, so all three logics have a codebook-origin procedure. The Decision Guide in `coding-approaches.md` no longer recommends reflexive TA; its Braun & Clarke leaves are labelled codebook TA.
+- Manifest rows may be document parts (`Parent document` column); document counts collapse parts to the parent.
+
+### Fixed
+- Braun & Clarke (2019, 2021) read in full and cited by page. The skill no longer claims to *follow* Braun & Clarke (2006): they place that approach in reflexive TA and ask not to be cited for codebook or coding-reliability practice (2021, p. 336). Codebook TA is now described as fitting Steps 4–8 with Step 6 optional, per their own account (2021, p. 333). README, SKILL.md, the Decision Guide and the plugin descriptions in `plugin.json` / `marketplace.json` updated accordingly.
+
+### Credits
+- The seven points behind this release come from an external review of 5.0.0-beta.1 (ChatGPT, 9 September 2026), commissioned by the author. Points taken in full: method scoping, blind re-coding, multi-code reliability, output validation, document splitting, pilot selection, assignment-level prompting.
+
+### Notes
+- Licence terms unchanged.
+
 ## [5.0.0-beta.1] - 2026-09-09
 
 ### Added

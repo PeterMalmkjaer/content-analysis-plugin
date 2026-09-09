@@ -1,6 +1,6 @@
 {
   "name": "content-analysis",
-  "version": "5.0.0-beta.1",
+  "version": "5.0.0-beta.2",
   "description": "Scientific content analysis for academic research. Systematic coding, codebook development, frequency analysis, and thematic reporting following established social-science methods.",
   "author": {
     "name": "Peter Malmkjaer",
@@ -35,7 +35,7 @@
     "termsOfServiceURL": "https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/TERMS.md",
     "defaultPrompt": [
       "Develop a codebook for these interview transcripts.",
-      "Perform an inductive thematic analysis of these documents.",
+      "Perform an inductive content analysis of these documents.",
       "Assess inter-coder reliability for this coded dataset."
     ]
   }
