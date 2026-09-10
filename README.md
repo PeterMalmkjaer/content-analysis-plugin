@@ -7,7 +7,7 @@ Independent project by Peter Malmkjaer.
 
 > **Preview release.** The 5.0.0 betas add a source declaration, a procedure for large corpora, an output validator with a known-good fixture, and a clear statement of which methods the skill supports; they are also the first releases in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end, and that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
 
-**Version:** 5.0.0-beta.3
+**Version:** 5.0.0-beta.4
 
 ---
 
@@ -201,4 +201,4 @@ Any commercial use — including integration into paid products, consulting serv
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.3) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.4) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
