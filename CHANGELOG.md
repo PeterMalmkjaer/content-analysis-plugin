@@ -5,6 +5,25 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+Responds to an external evaluation of 5.0.0-beta.3 on three test corpora (9–10 September 2026). The evaluation, its figures and its caveats are summarised in `docs/evaluations/2026-09-beta3-external-review.md`; the open points it raised are tracked as GitHub issues, not here.
+
+### Added
+- **Step 5b — Calibrate against human coding before freezing.** A calibration set separate from any test set; blind coding; per-code precision, recall, F1 and α with the human–human ceiling where two human coders exist; codes with fewer than ten positive instances reported by name as *insufficiently calibrated* and kept out of the averages; disagreement review by code pair; revisions made to the decision-rule columns and kept only if they hold on fresh calibration items; freeze to `v1` only afterwards. Without human coding, every reliability figure is labelled *not calibrated against human coding*. A protocol-agreement check (unit, co-coding rules, multi-label treatment, excerpt-matching rule) precedes any measurement.
+- **Decision-rule columns in the codebook (Step 4):** Required textual basis · Nearest alternative codes · Decisive difference · Boundary example · Co-coding rule · Gate. The first and the co-coding rule are filled for every code; the three confusion columns are mandatory where the pilot or the calibration shows confusion and may otherwise stay blank. Examples come from development material or are marked constructed; never from a held-out test set.
+- **Stepwise decision procedure (Step 7):** locate the passage → check criteria and required textual basis → compare with nearest alternatives (settled / settled narrowly → `Review = competing_codes` / not settled → neither) → assign and record → sweep the remaining codes one by one under the same criterion → mark `UNCODED` or `Review`. **Gated codes** are decided first, with their own excerpt, and get their own precision/recall.
+- **`Review` column** in the coded-data table (`context_missing` / `possible_irony` / `competing_codes` / `insufficient_basis` / `other`), keeping the provisional assignment; `other` requires a reason in Coder notes, and its share among the flags is reported separately — above about a fifth, the reason list is extended in the next codebook version. Uncertainty is never expressed by choosing a neutral code or `UNCODED`, and no numeric confidence is output. The **review share** is reported in the summary sheet and next to every quality figure.
+- Validator: optional `Review` column checked against the allowed set (check 5b); `other` with empty Coder notes is a FAIL; `other` above a fifth of the flags is a WARN; a missing column is a WARN.
+- Fixture: `examples/minimal/coded_data.csv` gains the `Review` column with one `competing_codes` flag (A-007, where `TRUST_01` and `TRUST_REJ` meet in one answer); expected output is now eight PASS lines and no WARN.
+- Method note gains: batch mechanism, calibration result, AI-consistency and AI–human agreement as separate quantities, review share, model identifier and version, decoding settings and run date.
+
+### Changed
+- **7.2 batch isolation is a mechanism, not an instruction:** each batch is coded in a separate context (subagent, fresh session or scripted call) that receives only the frozen codebook, source declaration, manifest, candidate log and the batch's own text. Coding successive batches in one conversation does not satisfy the rule. Where the platform offers no such mechanism, the method note says so, states the batch order, and the 7.5 drift check becomes mandatory.
+- LLM-considerations: repeated-coding agreement is stability, not validity; reproducibility requires model, version, decoding settings and date; an "improvement" claim requires the same model on both sides and fresh test items.
+- `/content-analysis` asks at the outset whether human-coded material exists for calibration.
+- README: "Verify the install" block for ChatGPT/Codex — check the cached clone's commit against GitHub `main`, check for a second copy, and confirm in-app use with a question only the current version can answer.
+
 ## [5.0.0-beta.3] - 2026-09-09
 
 Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on the `version` field, pick up the two fixes below.

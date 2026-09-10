@@ -24,6 +24,7 @@ Checks
   3. every Code ID exists in the codebook; inactive codes are flagged
   4. Assignment IDs are unique; no (Document, Unit, Code) is assigned twice
   5. Prompting values are in the allowed set (blank is a warning)
+  5b. Review values, when the column is present, are in the allowed set; 'other' needs Coder notes
   6. frequencies regenerated from the rows match the summary table, if given;
      a summary with a "Source type" column is compared per stratum
 Document parts collapse to their parent for document counts: the manifest's
@@ -44,6 +45,7 @@ import argparse, csv, os, re, sys
 from collections import defaultdict
 
 PROMPTING_VALUES = {"prompted", "volunteered", "mixed", "unclear", "n/a"}
+REVIEW_VALUES = {"context_missing", "possible_irony", "competing_codes", "insufficient_basis", "other"}
 UNCODED = "UNCODED"
 REQ_CODED = ["Document ID", "Unit ID", "Assignment ID", "Text excerpt", "Code ID", "Prompting", "Codebook version", "Language"]
 REQ_CODEBOOK = ["Code ID"]
@@ -221,6 +223,29 @@ def main():
         R.w(f"{pblank} rows have a blank Prompting value (use n/a for non-elicited text)")
     if not pfail:
         R.o("prompting: all values allowed")
+
+    # ---- 5b. review values (column optional; when present, values must be from the allowed set)
+    if coded and any(key("Review") == key(k) for k in coded[0].keys()):
+        rfail, rset, rother = 0, 0, 0
+        for r in coded:
+            v = col(r, "Review")
+            if v == "":
+                continue
+            rset += 1
+            if v not in REVIEW_VALUES:
+                rfail += 1
+                R.f(f"{col(r,'Assignment ID')}: Review {v!r} not in {sorted(REVIEW_VALUES)}")
+            elif v == "other":
+                rother += 1
+                if col(r, "Coder notes") == "":
+                    rfail += 1
+                    R.f(f"{col(r,'Assignment ID')}: Review 'other' requires a reason in Coder notes")
+        if not rfail:
+            R.o(f"review: {rset} of {len(coded)} assignments flagged for human review ({rother} as 'other'); all values allowed")
+        if rset and rother * 5 > rset:
+            R.w(f"'other' carries {rother} of {rset} review flags (more than a fifth): extend the reason list in the next codebook version")
+    else:
+        R.w("no Review column in coded table (allowed; the review share cannot be reported)")
 
     # ---- 2. coverage against manifest
     docs_in_coded = defaultdict(set)

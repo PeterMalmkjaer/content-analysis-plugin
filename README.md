@@ -48,6 +48,19 @@ The plugin is distributed through this repository's own marketplace file (`.agen
 ls ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/
 ```
 
+**Verify the install** — the cache is a git clone of this repository, so the installed copy can be checked against GitHub without trusting the version label. Replace `<version>` with the directory `ls` printed:
+
+```bash
+# 1. the clone is on the commit that is main on GitHub
+cat ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/<version>/.git/refs/heads/main
+git ls-remote https://github.com/PeterMalmkjaer/content-analysis-plugin.git refs/heads/main
+
+# 2. no second copy of the plugin under another marketplace
+ls -d ~/.codex/plugins/cache/*/*content-analysis* 2>/dev/null
+```
+
+The two hashes in step 1 must match; step 2 must print exactly one path. Then ask ChatGPT, with the plugin active, to quote the sentence in the skill that defines `RESULT: INCOMPLETE` and to give the plugin version — a cached copy proves the files are there, only the answer proves the app is using them.
+
 **Codex CLI** — OpenAI documents `codex plugin marketplace add PeterMalmkjaer/content-analysis-plugin --ref main` and `codex plugin marketplace upgrade content-analysis-plugin` for adding and refreshing a marketplace; installing a plugin then goes through the CLI's plugin browser. These commands are taken from the documentation and have not been run by the author (no Codex CLI install); if they fail, use the Plugins directory and please open an issue with what you saw.
 
 The skill activates automatically when you describe a content-analysis task.
