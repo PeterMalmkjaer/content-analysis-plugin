@@ -28,6 +28,7 @@ Every content analysis follows this sequence. Steps can be revisited iteratively
 3. Select coding logic (deductive / inductive / abductive)
 4. Develop or apply coding scheme
 5. Pilot-code a sample
+   5b. Calibrate against human coding (where it exists) and freeze the codebook
 6. Assess reliability (if applicable)
 7. Code the full corpus
 8. Analyze and report
@@ -141,9 +142,19 @@ Every codebook produced by this skill should contain these columns:
 | **Inclusion criteria** | What counts — with concrete examples from the data |
 | **Exclusion criteria** | What does NOT count — boundary cases |
 | **Example excerpt** | A verbatim quote from the material that exemplifies the code |
+| **Required textual basis** | What the unit must actually *express* for the code to apply — the minimum evidence, stated so that a coder can check it against the excerpt (e.g. "the speaker names a concrete resource or person that helped", not "the speaker had a positive experience") |
+| **Nearest alternative codes** | The one to three codes this one is most often confused with |
+| **Decisive difference** | The single criterion that settles the choice between this code and each nearest alternative |
+| **Boundary example** | A verbatim excerpt that *almost* qualifies but must be rejected, with one line saying why |
+| **Co-coding rule** | When this code may be assigned together with others on the same unit, and which combinations are excluded (for instance, a neutral code excludes every valenced code; a dependent code requires its gate) |
+| **Gate** | If the code may only be assigned when another code applies first, name that code (Step 7, "Gated codes"); otherwise blank |
 | **Parent category** | Higher-level grouping, if hierarchical |
 | **Origin** | Abductive designs only: `theory` / `data` / `both` — what the framework did and did not anticipate |
 | **Status** | `active` / `inactive` — codes are never deleted (Step 7.1) |
+
+The first three columns define the code; the next five are its **decision rules** (Krippendorff, 2018: a category is defined as much by what it excludes as by what it includes). They are what the coder consults at the moment of choice (Step 7), and they are what the calibration in Step 5b revises. *Required textual basis* and *Co-coding rule* are filled for every code. *Nearest alternative codes*, *Decisive difference* and *Boundary example* are mandatory wherever the pilot or the calibration shows confusion, and may otherwise stay blank — a blank there is itself a claim that the code is not confused with any other, and the calibration will test it. Confusion typically appears between a broad code and a specific one (for instance an experience code against a concrete support or infrastructure code), between a superordinate and a subordinate category, and between adjacent categories on the same scale (in an emotion codebook, for instance, *disapproval* / *annoyance* / *anger*, and any of them against a neutral or residual code).
+
+**Where the examples come from.** Example excerpts and boundary examples are taken from the development material (the Step 4 read, the pilot, and the calibration set after it has been analysed) or written by the analyst and marked as constructed. They are **never** taken from a held-out test set, and a test set that has supplied an example is no longer a test set.
 
 ### For Deductive Coding
 1. Ask the user for the theoretical framework or provide candidate frameworks from literature
@@ -183,6 +194,23 @@ This step is critical for quality. Skipping it produces unreliable results.
 
 ---
 
+## Step 5b: Calibrate Against Human Coding Before Freezing the Codebook
+
+Agreement between repeated AI codings (Step 6, "Intra-coder consistency") shows that the codebook is applied *stably*. It does not show that it is applied *as a human researcher would apply it*: an AI coder can agree closely with itself and still diverge substantially from human coders on the same material. Stability is necessary; it is not validity. Where human-coded material exists or can be produced, the codebook is calibrated against it **before** it is frozen as `v1` (7.1).
+
+1. **Calibration set.** Ask the user for, or have them produce, a set of units coded by at least one human coder — preferably two, coded independently, so that human–human agreement on the same units can be reported as the *ceiling* against which AI–human agreement is read. The set is drawn from the corpus (or from material of the same source type), aims at ten positive instances for every code that matters, and is **separate from any held-out test set** the study will later report on. Codes with fewer than ten positive instances in the calibration set are reported by name as *insufficiently calibrated*: their figures are given, but they are not averaged into the micro- and macro-F1. Record the set's size and origin in the method note.
+2. **Code it blind.** Code the calibration set in a separate context (Step 6, "blind") that receives the codebook, the source declaration and the elicitation context but not the human codes.
+3. **Measure per code.** For every code, as presence/absence per unit: precision, recall and F1 of the AI coding against the human coding, and per-code α (or κ) treating AI and human as two coders (`references/reliability-guide.md`, "Multiple Codes per Unit"). Report the human–human values alongside where two human coders exist. Report micro- and macro-averages together with the per-code range (min–max); never the mean alone. Where the codebook has gated codes (Step 7), report the gate decision separately from the dependent codes.
+4. **Review the disagreements.** List every unit where AI and human differ, grouped by code pair (which code was given, which was expected). For each frequent pair, decide whether the human coding is the standard to move towards or whether the codebook is ambiguous; then revise the **decision-rule columns** of Step 4 (required textual basis, nearest alternatives, decisive difference, boundary example, co-coding rule) — not the definition alone. Every revision is a `redefine` row in the candidate log (7.3) with the trigger units.
+5. **Re-test on fresh items.** Apply the revised codebook, blind, to calibration units that were *not* used to motivate the revision (hold part of the set back for this). A revision is kept only if the per-code figures improve on the fresh items; a revision that improves the motivating items alone is over-fitting and is reverted.
+6. **Freeze.** Only then is the codebook frozen as `v1`. Record in the version log which calibration round produced it.
+
+**If no human coding exists** and none can be produced, say so before coding, proceed with Steps 5–6, and mark every reliability statement in the report as *not calibrated against human coding*: "AI intra-coder consistency: α = … (not calibrated against human coding)". Do not let a consistency figure stand where a validity figure is expected.
+
+**Protocol agreement.** Before measuring, check that the rules the coder is given match the rules under which the reference was coded: the same unit, the same co-coding rules (a reference that allows *neutral* together with an emotion cannot be scored against a protocol that forbids it), the same treatment of multi-label units, and a stated rule for matching excerpts of different length or boundary. A mismatch here is a measurement error, not a coding error, and it is found by comparing the two protocols on paper before a single unit is scored.
+
+---
+
 ## Step 6: Assess Reliability
 
 Reliability matters most for quantitative and mixed approaches, and for any study where the user plans to report inter-coder agreement.
@@ -192,7 +220,7 @@ Reliability matters most for quantitative and mixed approaches, and for any stud
 ### When the assistant is the sole coder
 Since the assistant is a single "coder," traditional inter-coder reliability (ICR) cannot be computed in the usual sense. Instead:
 - **Intra-coder consistency**: Code the same sample twice and compare. The second coding must be **blind**: run it in a separate context that receives the same inputs as the first coding — the text, the frozen codebook, the source declaration and the elicitation context (interview guide, section titles) — but **not** the earlier coding: a fresh session, a subagent, or a scripted call, never the conversation where the first coding is visible. "Not looking" at an earlier coding that is already in the working context is not a control. Report the result as *consistency of AI coding*, not as reliability.
-- **Human comparison**: Agreement between the assistant's coding and a human coder's is a different quantity from the above; if both are reported, keep them separate and label them.
+- **Human comparison**: Agreement between the assistant's coding and a human coder's is a different quantity from the above; if both are reported, keep them separate and label them. Where it can be measured, it is measured *before* the codebook is frozen (Step 5b); intra-coder consistency never substitutes for it.
 - **Transparency**: Document every coding decision with the exact text excerpt and the reasoning
 - **Codebook precision**: The more precise the codebook, the more replicable the coding
 
@@ -215,13 +243,18 @@ If the user intends to use the codebook with human coders, the assistant should:
 
 ## Step 7: Code the Full Corpus
 
-Apply the coding scheme to all material. For each unit of analysis:
+Apply the coding scheme to all material. For each unit of analysis, follow the **decision procedure** below. It is deliberately stepwise: "read the unit and assign codes" leaves the choice to impression, and impression is where coders — human or AI — drift towards the broad code and away from the specific one.
 
-1. Identify the unit boundary
-2. Read the unit in context (surrounding text matters for interpretation — for elicited text, the question that produced the answer is part of the context)
-3. Assign one or more codes from the codebook
-4. Record the verbatim excerpt that justifies the code assignment
-5. If a unit fits no existing code, assign `UNCODED` and write a candidate entry (7.3; for a small corpus coded in one pass, a note in Coder notes suffices) — do not invent a code on the spot
+1. **Bound the unit.** Identify the unit boundary.
+2. **Read in context.** Surrounding text matters for interpretation — for elicited text, the question that produced the answer is part of the context.
+3. **Locate the passage.** For each code you are considering, find the exact passage that would carry it. No passage, no code.
+4. **Check the criteria.** Test the passage against the code's inclusion and exclusion criteria and its *required textual basis* (Step 4). Does the text express what the code requires, or does it merely make it plausible?
+5. **Compare with the nearest alternatives.** Consult the code's *nearest alternative codes* and *decisive difference*. Three outcomes: if the decisive criterion settles the choice, assign the code it points to; if it settles the choice only narrowly, assign that code and set `Review = competing_codes`; if it settles nothing, assign neither and go to step 8.
+6. **Assign and record.** Assign the code only if steps 4–5 are satisfied; record the verbatim excerpt and apply the *co-coding rule* to anything already assigned to the unit.
+7. **Sweep for omissions.** Before leaving the unit, go through the codebook's *remaining* active codes one by one — not "is there anything else here?", but "does this unit meet *this* code's required textual basis?" Each additional code found this way passes steps 3–6 in full. This step raises recall; the criterion discipline in steps 3–5 keeps it from lowering precision.
+8. **Mark what remains.** If a passage seems to carry meaning that no code captures, assign `UNCODED` and write a candidate entry (7.3; for a small corpus coded in one pass, a note in Coder notes suffices) — do not invent a code on the spot. If a code *does* apply but the decision was hard, assign it and set `Review` (see the coded-data table) with the reason; use `other` only when none of the named reasons fits, and say why in Coder notes.
+
+**Gated codes.** When one code may be assigned only if another applies first — for instance *relevant to the topic* before any code describing *how* it is treated, or *disclosure present* before *disclosure type* — the codebook names the gate (Step 4, "Gate"), and the coder decides the gate **first, with its own excerpt**, before considering the dependent codes. A unit that fails the gate receives no dependent code, whatever the dependent passages seem to say. Calibration (Step 5b) and any later reliability report give the gate its own precision and recall: a gate that lets through a third of the non-cases corrupts every dependent field, and the fault must be visible where it arises.
 
 Small corpora (a handful of documents that fit comfortably in one session) can be coded in a single pass. Anything larger — a dozen interviews, thirty reports, a year of press coverage — needs 7.1–7.5. The procedure exists for one reason: with many documents, coding decisions drift. A code applied to document 1 is not the code applied to document 28 unless something holds it in place.
 
@@ -244,7 +277,7 @@ Never read the whole corpus into one working context. Keep each document whole w
 
 1. Build a **corpus manifest** before coding starts: one row per document or document part, in a fixed order, with at least `Document ID`, `Parent document` (required when any row is a part; blank otherwise), `Source file`, `Source type`, `Units`, `Status`, `Coded under`, plus any document-level metadata that `references/source-types.md` calls for (participant role, time point, interviewer, outlet, respondent variables). This is the coverage record — how you, and a reviewer, can see that every document was coded, and under which version.
 2. Choose a batch size (typically 3–5 interview transcripts, or whatever keeps a batch well within working context) and state it in the method note.
-3. For each batch, carry forward only the frozen codebook, the manifest and the candidate log; coded rows are appended to the workbook on disk and are not re-read. Do **not** carry forward the raw text of earlier batches.
+3. For each batch, carry forward only the frozen codebook, the manifest and the candidate log; coded rows are appended to the workbook on disk and are not re-read. Do **not** carry forward the raw text of earlier batches. This is enforced by **where the batch is coded, not by intention**: each batch is coded in a *separate context* — a subagent, a fresh session, or a scripted call — that receives the frozen codebook, the source declaration, the manifest, the candidate log and the batch's own text, and nothing else. Coding successive batches in one long conversation, with earlier batches still in the history, does not satisfy this rule, whatever the coder is told to ignore (the same principle as the blind checks in Step 6 and 7.5). The method note states the mechanism used. Where the platform offers no such mechanism, the corpus is coded in one context, the method note says so and states the batch order, and the drift check in 7.5 is mandatory rather than optional.
 4. After each batch, update the manifest. A run that stops can be resumed from the manifest without re-coding anything.
 
 ### 7.3 Keep a candidate log
@@ -303,9 +336,12 @@ Produce an Excel file (.xlsx) with these columns:
 | **Prompting** | For elicited text, per assignment: `prompted` / `volunteered` / `mixed` / `unclear`; otherwise `n/a`. One answer can contain a prompted topic and a volunteered one — they get separate rows and separate values. |
 | **Codebook version** | The version this assignment was coded under (7.1) |
 | **Pass** | 1, 2, … |
-| **Coder notes** | Any ambiguity, context, or reasoning |
+| **Review** | Blank when the decision was clear. Otherwise one of `context_missing` / `possible_irony` / `competing_codes` / `insufficient_basis` / `other` — the assignment stands as the coder's best decision, and the flag says a human should look at it. `other` requires a reason in Coder notes |
+| **Coder notes** | Any ambiguity, context, or reasoning; for a `Review` row, which codes competed or what context is missing; for `other`, the reason — a row with `Review = other` and empty notes fails validation |
 
 When the corpus has a single homogeneous source, the provenance columns are constant — keep them; the method note is derived from them. For a small corpus coded in one pass, `Codebook version` is `v1` and `Pass` is `1`.
+
+**Uncertainty is not a code.** "I am not sure" is recorded in `Review`, never by choosing a neutral or residual code (where the codebook has one), `UNCODED`, or the broadest available code as a hedge: a neutral code is a claim about the text, and `UNCODED` is a claim that no code fits. The coder does not output a numeric confidence — a verbalised probability from a language model is not calibrated and must not be read as one. The **review share** (rows with `Review` set, over all assignments and per code) is reported in the summary sheet and the method note next to every quality figure: a coding whose agreement rises because the hard cases were flagged out has not become more accurate, and the reader must be able to see the two numbers together. The share of `other` among the flagged rows is reported separately: when `other` carries a substantial part of the flags — as a rule of thumb, more than a fifth — the reason list is too short for this material, and the recurring reasons in Coder notes become named values in the next codebook version (a `redefine` row in the candidate log). `other` is a signal that the list needs extending, not a permanent home.
 
 **Denominators.** Every percentage in a frequency table states what it is a share of: *assignments* (rows), *units* (distinct Document × Unit), or *documents*. The summary sheet reports all three counts per code so that the reader can choose. Document counts collapse parts (`DOC-07.§3`) to their parent document.
 
@@ -313,7 +349,7 @@ The workbook's sheets are named `coded_data`, `manifest`, `candidate_log` and `s
 
 - the **corpus manifest** (7.2)
 - the **candidate log** (7.3)
-- a **summary sheet** with, per code, the number of assignments, distinct units and distinct documents, a code co-occurrence matrix, and distribution across documents — reported *per source type* when the corpus mixes types, never pooled across genres without normalizing
+- a **summary sheet** with, per code, the number of assignments, distinct units and distinct documents, the number and share of assignments with `Review` set (and, of those, the share with `other`), a code co-occurrence matrix, and distribution across documents — reported *per source type* when the corpus mixes types, never pooled across genres without normalizing
 
 ### Validate the outputs
 
@@ -325,7 +361,7 @@ python3 scripts/validate_coding.py --coded <coded_data> --codebook <codebook> \
     --codebook-version <vN>
 ```
 
-It checks that every excerpt occurs verbatim in its source file, that every document the manifest marks as coded has rows and the unit counts agree, that every Code ID exists in the codebook (inactive codes are flagged), that assignment IDs and (document, unit, code) triples are unique, that Prompting values are allowed, and that the frequency table can be regenerated from the rows. A summary with a `Source type` column is compared per stratum; without one, the pooled per-code sheet is compared. "Verbatim" is exact except for whitespace: runs of spaces, line breaks and non-breaking spaces count as one space, but case, punctuation and quotation marks must match the source. It reads CSV with the standard library and .xlsx if `openpyxl` is installed; it never modifies a file.
+It checks that every excerpt occurs verbatim in its source file, that every document the manifest marks as coded has rows and the unit counts agree, that every Code ID exists in the codebook (inactive codes are flagged), that assignment IDs and (document, unit, code) triples are unique, that Prompting values are allowed, that `Review` values — where the column is present — are from the allowed set, and that the frequency table can be regenerated from the rows. A summary with a `Source type` column is compared per stratum; without one, the pooled per-code sheet is compared. "Verbatim" is exact except for whitespace: runs of spaces, line breaks and non-breaking spaces count as one space, but case, punctuation and quotation marks must match the source. It reads CSV with the standard library and .xlsx if `openpyxl` is installed; it never modifies a file.
 
 The result has three values. `RESULT: PASS` — every check ran and none failed. `RESULT: FAIL` — a `FAIL` line names the assignment, the document, or the code it concerns. `RESULT: INCOMPLETE` — nothing failed, but a required check could not run: no manifest, no `--sources`, no `--summary`, a document with no `Source file` in the manifest, or rows with `Language = translated` (which cannot be matched against the source); `SKIP` lines say which. INCOMPLETE is not a pass. Report the result verbatim in the method note; for FAIL, say what was done about each failure; for INCOMPLETE, either supply what was missing and re-run, or state which check did not run and why. Where no shell is available (some Codex/ChatGPT surfaces), say so in the method note and perform the excerpt and coverage checks by hand on a sample.
 
@@ -333,7 +369,7 @@ The result has three values. `RESULT: PASS` — every check ran and none failed.
 
 ### Report the procedure
 
-The method note (see Methodological Transparency) states: batch size; number of passes; codebook versions and what changed between them; the number of `UNCODED` units at the end and how they were handled; the drift-check result; and, for a heterogeneous corpus, how strata were compared. If a document was coded under an earlier version and not re-coded, say so and say why.
+The method note (see Methodological Transparency) states: the batch mechanism (subagent / fresh session / scripted call) and batch size; number of passes; codebook versions and what changed between them; the calibration result (Step 5b) or the statement that the coding is not calibrated against human coding; the number of `UNCODED` units at the end and how they were handled; the review share; the drift-check result; and, for a heterogeneous corpus, how strata were compared. If a document was coded under an earlier version and not re-coded, say so and say why.
 
 ---
 
@@ -390,8 +426,11 @@ Every content analysis produced with this skill should include a brief **method 
 4. Approach (quantitative / qualitative / mixed)
 5. Coding logic (deductive / inductive / abductive) and theoretical framework if deductive
 6. Codebook development process, and — for corpora coded in batches — batch size, number of passes, codebook versions and what changed between them, `UNCODED` handling, and the drift-check result (Step 7)
-7. Reliability assessment (if applicable) or explanation of why not
-8. Limitations (single coder, LLM-assisted coding, corpus size)
+7. Calibration against human coding (Step 5b): calibration-set size and origin, per-code precision/recall and α, human–human ceiling where available, revisions made — or the explicit statement *not calibrated against human coding*
+8. Reliability assessment (if applicable) or explanation of why not, with AI intra-coder consistency and AI–human agreement reported as separate quantities
+9. Review share (assignments flagged for human review, overall and per code), reported next to every quality figure
+10. Model identifier and version, decoding settings where known (e.g. temperature), and the date of the run
+11. Limitations (single coder, LLM-assisted coding, corpus size)
 
 This note can be appended to the theme summary or produced as a standalone section. It is essential for academic credibility — reviewers and readers need to evaluate the rigor of the analysis.
 
@@ -409,8 +448,8 @@ The assistant should be transparent about what LLM-assisted content analysis can
 **Limitations to acknowledge:**
 - Latent content: subtle irony, sarcasm, cultural subtext, and implicit meaning may be missed
 - Context dependence: The assistant's interpretation depends on the text provided; it does not have the ethnographic or field knowledge a human researcher brings
-- Validation: LLM-coded results should ideally be validated against a human-coded subsample
-- Reproducibility: different LLM versions or prompting strategies may produce different results; document the model and approach used
+- Validation: agreement between repeated LLM codings is *stability*, not *validity*. LLM-coded results are validated against a human-coded subsample before the codebook is frozen (Step 5b) wherever such a sample exists; where it does not, every reliability figure carries the label *not calibrated against human coding*
+- Reproducibility: different LLM versions, decoding settings or prompting strategies may produce different results; document the model identifier and version, the decoding settings where known, the date of the run, and the approach used. A claim that a codebook revision "improved" the coding requires the same model and settings on both sides and fresh test items (Step 5b, point 5)
 
 When reporting LLM-assisted content analysis in an academic paper, recommend that the user:
 - Describe the LLM and version used

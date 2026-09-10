@@ -7,7 +7,7 @@ Independent project by Peter Malmkjaer.
 
 > **Preview release.** The 5.0.0 betas add a source declaration, a procedure for large corpora, an output validator with a known-good fixture, and a clear statement of which methods the skill supports; they are also the first releases in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end, and that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
 
-**Version:** 5.0.0-beta.3
+**Version:** 5.0.0-beta.4
 
 ---
 
@@ -47,6 +47,19 @@ The plugin is distributed through this repository's own marketplace file (`.agen
 ```bash
 ls ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/
 ```
+
+**Verify the install** — the cache is a git clone of this repository, so the installed copy can be checked against GitHub without trusting the version label. Replace `<version>` with the directory `ls` printed:
+
+```bash
+# 1. the clone is on the commit that is main on GitHub
+cat ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/<version>/.git/refs/heads/main
+git ls-remote https://github.com/PeterMalmkjaer/content-analysis-plugin.git refs/heads/main
+
+# 2. no second copy of the plugin under another marketplace
+ls -d ~/.codex/plugins/cache/*/*content-analysis* 2>/dev/null
+```
+
+The two hashes in step 1 must match; step 2 must print exactly one path. Then ask ChatGPT, with the plugin active, to quote the sentence in the skill that defines `RESULT: INCOMPLETE` and to give the plugin version — a cached copy proves the files are there, only the answer proves the app is using them.
 
 **Codex CLI** — OpenAI documents `codex plugin marketplace add PeterMalmkjaer/content-analysis-plugin --ref main` and `codex plugin marketplace upgrade content-analysis-plugin` for adding and refreshing a marketplace; installing a plugin then goes through the CLI's plugin browser. These commands are taken from the documentation and have not been run by the author (no Codex CLI install); if they fail, use the Plugins directory and please open an issue with what you saw.
 
@@ -188,4 +201,4 @@ Any commercial use — including integration into paid products, consulting serv
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.3) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.4) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin

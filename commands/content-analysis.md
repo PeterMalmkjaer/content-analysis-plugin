@@ -14,12 +14,13 @@ Always start by clarifying:
 3. The approach (quantitative, qualitative, or mixed)
 4. The coding logic (deductive, inductive, or abductive)
 5. The source declaration: source type, producer, purpose, audience, elicited or naturally occurring, date, language, sampling, completeness
+6. Whether human-coded material exists, or can be produced, for calibrating the codebook before it is frozen (Step 5b); if not, every reliability figure will be labelled *not calibrated against human coding*
 
 If the task arrived as a written brief or protocol rather than as a conversation, or if the run is unattended, read `${CLAUDE_PLUGIN_ROOT}/skills/content-analysis/references/protocol-driven-runs.md` first: it supplies rules for deriving the research question from the brief (for the source declaration, fill what the brief and the files support and record the rest as `unknown`), and it governs the report structure and output formats.
 
 If the corpus contains more than one source type, or the type is unclear, read `${CLAUDE_PLUGIN_ROOT}/skills/content-analysis/references/source-types.md` before Step 4 and apply its heterogeneity gate. If the corpus is too large to fit in one session, follow Step 7's batching procedure (freeze the codebook per pass, keep a manifest and a candidate log).
 
-Then proceed through the full workflow: codebook development, pilot coding, reliability assessment, full coding, and reporting. After full coding, run `${CLAUDE_PLUGIN_ROOT}/scripts/validate_coding.py` on the outputs where a shell is available, and put its result in the method note.
+Then proceed through the full workflow: codebook development with decision rules per code, pilot coding, calibration against human coding where possible, reliability assessment, full coding under the stepwise decision procedure (each batch in a separate context), and reporting. After full coding, run `${CLAUDE_PLUGIN_ROOT}/scripts/validate_coding.py` on the outputs where a shell is available, and put its result in the method note.
 
 Produce all outputs as structured files: codebook (.xlsx), coded data (.xlsx), theme summary (.md or .docx), and thematic map (.mermaid) — unless a brief names its own deliverables and formats, in which case those take precedence.
 
