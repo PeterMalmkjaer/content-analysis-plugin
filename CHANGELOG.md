@@ -5,6 +5,29 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0-beta.5] - 2026-11-12
+
+Responds to a pre-registered benchmark of 5.0.0-beta.3 against 5.0.0-beta.4 on GoEmotions, and was itself tested once on fresh comments before release. Reports, protocols, codebooks and all assignments are in `docs/benchmarks/`; start with `docs/benchmarks/README.md`.
+
+**What the benchmark found.** With Step 5b calibration against human coding, beta.4 agreed better with the human reference than beta.3 (micro-F1 51.4 / 51.0 against 46.2 / 47.4). Without calibration it agreed worse (44.2 / 43.7): decision rules drafted from the definitions alone widened a code, and the code-by-code sweep then added assignments without adding agreement.
+
+**What the test of this version found** (500 comments not used before; skill text frozen beforehand). Calibrated: 50.8 / 51.2 against 44.0 / 44.0 for beta.3; the interval excludes zero in both runs. Uncalibrated: 42.5 / 42.2; not distinguishable from beta.3, point estimate slightly below it. Comments carrying a `Review` flag agree markedly less with the reference than unflagged ones in every run.
+
+### Changed
+- **Step 7 has two coding procedures, chosen by the codebook's calibration status.** *Calibrated* (decision rules tested against human coding in Step 5b): the eight-step decision procedure of beta.4, unchanged. *Uncalibrated*: a simpler procedure — assign codes on the definitions and inclusion/exclusion criteria, with the passage that carries each; apply the co-coding rule, the gate and any rule the researcher wrote; do not sweep the remaining codes one by one and do not write decision rules while coding; mark what remains with `UNCODED` or `Review`.
+- **Step 4: interpretive decision-rule columns are written from evidence, not from the definition.** *Required textual basis*, *Nearest alternative codes*, *Decisive difference* and *Boundary example* come from Step 5b calibration or from the researcher. The assistant may draft them only as the starting point of a calibration and does not code with drafted rules that have not been calibrated. *Co-coding rule* and *Gate* are structural and are filled for every code.
+- **Step 5b: the keep/revert rule is fixed before scoring and applied per code.** Fresh items are coded under both the revised and the unrevised rules; a code's revision is kept only if that code's F1 is higher; codes with fewer than five positives follow the overall result. The method note records which revisions were kept and which reverted, and that the resulting mix is itself untested. New paragraph "Read the result per code": an overall gain can hide codes that got worse.
+- **Calibration status is recorded and reported**: `calibrated` or `uncalibrated` in the codebook, the procedure used in the method note, and — where a human reference exists — agreement separately for flagged and unflagged units.
+- `/content-analysis` describes the two procedures.
+
+### Added
+- `docs/benchmarks/`: a plain summary of what users get with and without calibration and what has not been shown; the two reports; the pre-registered protocol and addendum with hashes and deviation logs; the codebooks as used; every assignment of every arm and run, with a script that recomputes the headline figures from them (`scripts/recompute.py`).
+- README: "What the Tests Show".
+
+### Known limitations
+- One corpus (short comments), one model (`claude-opus-5-5`), one calibration round, calibration and test material from the same source. Interviews, documents, ChatGPT and Codex are untested under this version.
+- Without calibration, on a codebook whose residual category is defined as "nothing clear enough", the skill tends to assign a substantive code and flag it where human raters chose the residual category. Not changed in this release, because the text was frozen before its test.
+
 ## [5.0.0-beta.4] - 2026-09-10
 
 Responds to an external evaluation of 5.0.0-beta.3 on three test corpora (9–10 September 2026). The evaluation, its figures and its caveats are summarised in `docs/evaluations/2026-09-beta3-external-review.md`; the open points it raised are tracked as GitHub issues, not here.

@@ -7,7 +7,7 @@ Independent project by Peter Malmkjaer.
 
 > **Preview release.** The 5.0.0 betas add a source declaration, a procedure for large corpora, an output validator with a known-good fixture, and a clear statement of which methods the skill supports; they are also the first releases in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end, and that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
 
-**Version:** 5.0.0-beta.4
+**Version:** 5.0.0-beta.5
 
 ---
 
@@ -31,6 +31,22 @@ Use the plugin when you need to turn a collection of texts into systematic, tran
 - Produce structured outputs for further review, reporting, or academic writing.
 
 The plugin guides you through the methodological choices and documents important limitations. You remain in control of the research question, interpretations, and final conclusions.
+
+---
+
+## What the Tests Show
+
+The skill's coding has been compared with human coding on one public corpus (GoEmotions: short Reddit comments, 27 emotions plus neutral), with one AI model, in two pre-registered tests. Table 1 gives the result; the full account, with protocols, codebooks and every assignment, is in [`docs/benchmarks/`](docs/benchmarks/README.md).
+
+**Table 1 · What you get** (agreement score = micro-F1, 0–100; 100 would be coding identical to the human raters')
+
+| Your situation | What the skill does | Measured |
+|---|---|---|
+| You have some human-coded material of the same kind (Step 5b) | Calibrates the codebook's decision rules against it, then codes with the full decision procedure | **51**, against 44–47 for 5.0.0-beta.3, on two separate samples of 500 comments; the difference exceeds sampling error in all four runs |
+| You have none | Codes from the definitions with a simpler procedure and labels the result *not calibrated against human coding* | **42**, against 44 for 5.0.0-beta.3: not distinguishable, and not better |
+| Either way | Flags the assignments it found hard (`Review` column) | Flagged comments 27–39, unflagged 46–58 |
+
+What this does not show: other kinds of text (interviews, reports), other models (ChatGPT and Codex were not part of these tests), or calibration material from a different source than the texts being coded. The level itself is specific to a hard task and says little about your material; the comparison is what the tests support. If the quality of the coding matters for your conclusions, set aside human-coded material and let the skill calibrate.
 
 ---
 
@@ -97,9 +113,9 @@ Provides an eight-step workflow:
 2. Select approach (quantitative / qualitative / mixed)
 3. Select coding logic (deductive / inductive / abductive)
 4. Develop coding scheme (codebook)
-5. Pilot-code a sample
+5. Pilot-code a sample — and, where human-coded material exists, calibrate the codebook against it (Step 5b)
 6. Assess inter-coder reliability
-7. Code the full corpus
+7. Code the full corpus, with the procedure that fits the codebook's calibration status
 8. Analyse and report
 
 ### Reference Files
@@ -169,7 +185,7 @@ Nothing changes for conversational use — the rules apply only when the run is 
 
 Every analysis produced with this skill includes a method note documenting the research question, corpus description, unit of analysis, approach, coding logic, codebook development process, reliability assessment (when applicable), and limitations. This is essential for academic credibility and reviewers in any peer-reviewed venue.
 
-The skill is explicit about the limitations of LLM-assisted coding: latent content (irony, sarcasm, cultural subtext) may be missed, and results should ideally be validated against a human-coded subsample before publication.
+The skill is explicit about the limitations of LLM-assisted coding: latent content (irony, sarcasm, cultural subtext) may be missed, and results should ideally be validated against a human-coded subsample before publication. What has been measured so far, and what has not, is set out in [`docs/benchmarks/`](docs/benchmarks/README.md).
 
 ---
 
@@ -201,4 +217,4 @@ Any commercial use — including integration into paid products, consulting serv
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.4) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.5) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
