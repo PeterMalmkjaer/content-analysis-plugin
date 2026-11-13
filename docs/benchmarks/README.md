@@ -1,5 +1,7 @@
 # What the benchmarks show
 
+> **Claude directory build.** The scripts (`scripts/`), the two data files (`results/units.csv`, `results/assignments.csv`), the hash files (`protocol/*.sha256`) and the variant diff are not included in this copy, under the directory's file policy. They are in the repository: <https://github.com/PeterMalmkjaer/content-analysis-plugin/tree/main/docs/benchmarks>.
+
 This folder documents how well the skill's coding agrees with human coding, where that has been measured, and where it has not. It is written for someone deciding whether, and how, to use the skill.
 
 **The short version.** If you can give the skill some material that humans have already coded, it calibrates the codebook against it, and its coding then agrees clearly better with human coding than without. If you cannot, the skill codes at about the level of the earlier version 5.0.0-beta.3 and marks the decisions it found hard, and those marks are worth reading. All of this has been measured on one corpus with one AI model.

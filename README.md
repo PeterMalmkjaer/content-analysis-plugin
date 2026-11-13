@@ -9,6 +9,8 @@ Independent project by Peter Malmkjaer.
 
 **Version:** 5.0.0-beta.6
 
+> **Claude directory build.** This copy is the one published through the Claude plugin directory. Under the directory's file policy it leaves out the Python scripts (the output validator `scripts/validate_coding.py` and the benchmark scripts), the validator's fixture in `examples/minimal/`, and the benchmark data and hash files (`.csv`, `.sha256`, `.diff`); the `/content-analysis` command pre-approves no tools, so Claude asks before writing files or running code. The skill text is identical to the full release. Everything left out is in the repository: <https://github.com/PeterMalmkjaer/content-analysis-plugin>.
+
 ---
 
 ## What It Does
