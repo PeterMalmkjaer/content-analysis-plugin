@@ -6,7 +6,7 @@ import csv, json, os, sys, glob, re, subprocess, collections
 SET, ARM, RUN = sys.argv[1], sys.argv[2], int(sys.argv[3])
 SPLIT = sys.argv[sys.argv.index("--split")+1] if "--split" in sys.argv else "test"
 BENCH = "/home/claude/bench"
-SKILL = {"A": f"{BENCH}/skill-beta3", "B": f"{BENCH}/skill-beta4", "C": f"{BENCH}/skill-beta4", "E": f"{BENCH}/skill-beta5", "F": f"{BENCH}/skill-beta5"}[ARM]
+SKILL = {"A": f"{BENCH}/skill-beta3", "B": f"{BENCH}/skill-beta4", "C": f"{BENCH}/skill-beta4", "E": f"{BENCH}/skill-beta5", "F": f"{BENCH}/skill-beta5", "H": f"{BENCH}/skill-beta6", "J": f"{BENCH}/skill-beta6", "G": f"{BENCH}/skill-beta6g"}[ARM]
 d = f"{BENCH}/runs/{SET}/{ARM}/run{RUN}/{SPLIT}"
 index = json.load(open(f"{d}/index.json"))
 expected = [u for b in index for u in b["units"]]

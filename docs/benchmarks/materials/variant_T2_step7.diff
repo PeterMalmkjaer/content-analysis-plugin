@@ -1,0 +1,38 @@
+diff --git a/skills/content-analysis/SKILL.md b/skills/content-analysis/SKILL.md
+index 536272d..5755c33 100644
+--- a/skills/content-analysis/SKILL.md
++++ b/skills/content-analysis/SKILL.md
+@@ -248,25 +248,21 @@ If the user intends to use the codebook with human coders, the assistant should:
+ Apply the coding scheme to all material. Which procedure applies depends on the codebook's status (Step 5b):
+ 
+ - **Calibrated** — the decision rules have been through Step 5b against human coding. Follow the **decision procedure** below in full.
+-- **Uncalibrated** — no human-coded material was available, and the interpretive decision-rule columns are blank or hold only an untested draft, which is not used (Step 4). Follow the **uncalibrated procedure** further down. Do not apply the full decision procedure to an uncalibrated codebook: its steps 4, 5 and 7 presuppose decision rules that have been tested against human coding, and without them the code-by-code sweep adds assignments without adding agreement (`docs/benchmarks/`).
++- **Uncalibrated** — no human-coded material was available, and the interpretive decision-rule columns are blank or hold only an untested draft, which is not used (Step 4). Follow the **uncalibrated procedure** further down. Do not apply the decision procedure to an uncalibrated codebook: its step 2 presupposes decision rules that have been tested against human coding (`docs/benchmarks/`).
+ 
+-**Decision procedure (calibrated codebook).** It is deliberately stepwise: "read the unit and assign codes" leaves the choice to impression, and impression is where coders — human or AI — drift towards the broad code and away from the specific one. The decision rules are what hold that drift in place.
++**Decision procedure (calibrated codebook).** The decision rules are what hold the coder's drift towards the broad code in place. For each unit of analysis:
+ 
+-1. **Bound the unit.** Identify the unit boundary.
+-2. **Read in context.** Surrounding text matters for interpretation — for elicited text, the question that produced the answer is part of the context.
+-3. **Locate the passage.** For each code you are considering, find the exact passage that would carry it. No passage, no code.
+-4. **Check the criteria.** Test the passage against the code's inclusion and exclusion criteria and its *required textual basis* (Step 4). Does the text express what the code requires, or does it merely make it plausible?
+-5. **Compare with the nearest alternatives.** Consult the code's *nearest alternative codes* and *decisive difference*. Three outcomes: if the decisive criterion settles the choice, assign the code it points to; if it settles the choice only narrowly, assign that code and set `Review = competing_codes`; if it settles nothing, assign neither and go to step 8.
+-6. **Assign and record.** Assign the code only if steps 4–5 are satisfied; record the verbatim excerpt and apply the *co-coding rule* to anything already assigned to the unit.
+-7. **Sweep for omissions.** Before leaving the unit, go through the codebook's *remaining* active codes one by one — not "is there anything else here?", but "does this unit meet *this* code's required textual basis?" Each additional code found this way passes steps 3–6 in full. This step raises recall; the criterion discipline in steps 3–5 keeps it from lowering precision.
+-8. **Mark what remains.** If a passage seems to carry meaning that no code captures, assign `UNCODED` and write a candidate entry (7.3; for a small corpus coded in one pass, a note in Coder notes suffices) — do not invent a code on the spot. If a code *does* apply but the decision was hard, assign it and set `Review` (see the coded-data table) with the reason; use `other` only when none of the named reasons fits, and say why in Coder notes.
++1. **Bound the unit** and **read it in context** — for elicited text, the question that produced the answer is part of the context.
++2. **Assign** one or more codes from the codebook, on their definitions, their inclusion and exclusion criteria and their decision rules: the *required textual basis*, the *nearest alternative codes* with their *decisive difference*, and the *boundary example* (Step 4). For each code assigned, find the passage that carries it — no passage, no code — and record it as the verbatim excerpt. Apply the *co-coding rule* and the *gate*.
++3. **Do not sweep** the remaining codes one by one.
++4. **Mark what remains.** If a passage seems to carry meaning that no code captures, assign `UNCODED` and write a candidate entry (7.3; for a small corpus coded in one pass, a note in Coder notes suffices) — do not invent a code on the spot. If a code *does* apply but the decision was hard, assign it and set `Review` (see the coded-data table) with the reason; use `other` only when none of the named reasons fits, and say why in Coder notes.
+ 
+ **Uncalibrated procedure.** For each unit of analysis:
+ 
+-1. **Bound the unit** and **read it in context**, as in steps 1–2 above.
++1. **Bound the unit** and **read it in context**, as in step 1 above.
+ 2. **Assign** one or more codes from the codebook, on their definitions and their inclusion and exclusion criteria. For each code assigned, find the passage that carries it — no passage, no code — and record it as the verbatim excerpt. Apply the *co-coding rule*, the *gate*, and any decision rule the researcher has written into the codebook. Where the codebook sets a threshold for its substantive codes and names a residual category for what falls below it, apply that threshold as written: a unit that does not clearly meet a substantive code's definition receives the residual category (see "Uncertainty is not a code").
+ 3. **Do not sweep** the remaining codes one by one, and do not write decision rules of your own while coding.
+-4. **Mark what remains** as in step 8 above: `UNCODED` with a candidate entry where a passage carries meaning that no code captures; `Review` where a code applies but the decision was hard.
++4. **Mark what remains** as in step 4 above: `UNCODED` with a candidate entry where a passage carries meaning that no code captures; `Review` where a code applies but the decision was hard.
+ 
+ Every quality figure from a coding done this way carries the label *not calibrated against human coding* (Step 5b).
+ 

@@ -5,6 +5,27 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0-beta.6] - 2026-11-13
+
+Responds to the fresh-sample test of 5.0.0-beta.5 and was itself tested once, on 500 further comments, before release (`docs/benchmarks/2026-11-goemotions-beta6-second-fresh-test.md`; text and release rule frozen beforehand in `docs/benchmarks/protocol/protocol_addendum2.md`).
+
+### Changed
+- **The codebook's own residual threshold comes first.** Where a codebook defines a residual category by a threshold — *neutral: no sufficiently clear emotion expressed*, or an instruction to assign a substantive code only when reasonably confident — a unit that does not clearly meet a substantive code's definition meets the residual category's definition and is coded there. Assigning a substantive code and flagging it, in order to avoid the residual category, is named as an error. `Review` remains for a code that applies but was hard to decide, and for a close choice between the residual category and a substantive code. Stated in "Uncertainty is not a code" and applied in step 2 of the uncalibrated procedure. Nothing else in the skill text changes.
+
+### What the test found
+- **Without calibration:** micro-F1 43.5 / 44.7, against 42.0 / 43.2 for beta.5 on the same comments (+1.5 in both runs; both intervals include zero, so *direction only*) and 44.3 / 45.3 for beta.3 (not distinguishable). `neutral` was assigned 113 and 114 times against 87 and 85 under beta.5; the human reference has 158.
+- **With calibration:** 49.4 / 49.5 against 44.3 / 45.3 for beta.3; interval excludes zero in both runs — the third sample to show it.
+- **beta.5 without calibration was below beta.3** on this sample by 2.2 and 2.1 points, intervals excluding zero. The beta.5 documentation called the two "not distinguishable"; that has been corrected.
+- **The eight-step decision procedure against a four-step one, same calibrated codebook:** +2.0 and +0.4 for the eight steps, interval excluding zero in one run of two — no demonstrated difference on short comments. The procedure is left as it is; it was designed for long interview answers, where it is untested.
+
+### Documentation
+- `docs/benchmarks/`: third report, second protocol addendum with hashes and deviation log, all assignments of the new runs, the variant text used in the test; `README.md` there rewritten for three tests, with a table of what each version changed and what its test said.
+- README: figures in "What the Tests Show" updated.
+
+### Known limitations
+- Unchanged: one corpus (short comments), one model (`claude-opus-5-5`), one calibration round, calibration and test material from the same source. Interviews, documents, ChatGPT and Codex are untested under this version.
+- The residual-threshold rule has been tested on one codebook with one residual category.
+
 ## [5.0.0-beta.5] - 2026-11-12
 
 Responds to a pre-registered benchmark of 5.0.0-beta.3 against 5.0.0-beta.4 on GoEmotions, and was itself tested once on fresh comments before release. Reports, protocols, codebooks and all assignments are in `docs/benchmarks/`; start with `docs/benchmarks/README.md`.
