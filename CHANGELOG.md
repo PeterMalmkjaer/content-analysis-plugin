@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Documentation
+- `docs/README.md`: one way in to the documentation, showing how the test report, the benchmarks and the external evaluation fit together, with the conditions that apply to use on research material.
+- `docs/test-report-5.0.0-beta.6.md`: test report for 5.0.0-beta.6 with conclusion (pre-coder or supplementary coder; not stand-alone), method, results, assumptions, limitations, limits of use, conditions of use and recommended use. Written with an AI assistant and marked as such. Three figures in `docs/figures/`.
+- README: a notice below the preview-release note stating the verdict of the tests and pointing to `docs/`; links to the test report and to the external evaluation. `docs/benchmarks/README.md`: the reference to the external evaluation is now a link.
 - `docs/evaluations/2026-09-beta3-external/`: the four reports and the protocol of the external evaluation of 5.0.0-beta.3 (9 September 2026), previously only summarised. The reports were written by an AI and each carries a notice saying so. The folder's README states which of their figures were recomputed on 13 November 2026 (all recomputed figures match) and which were not. The coded data are not included. No change to the skill.
 
 ## [5.0.0-beta.6] - 2026-11-13
