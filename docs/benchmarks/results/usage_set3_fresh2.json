@@ -1,0 +1,44 @@
+{
+ "models": {
+  "claude-opus-5-5": 101
+ },
+ "total_tokens": {
+  "input_tokens": 822,
+  "output_tokens": 393877,
+  "cache_creation_input_tokens": 5690316,
+  "cache_read_input_tokens": 25768204
+ },
+ "per_arm": {
+  "A": {
+   "calls": 21,
+   "list_price_usd": 7.97,
+   "median_seconds_per_batch": 25.4405,
+   "output_tokens": 53730
+  },
+  "E": {
+   "calls": 20,
+   "list_price_usd": 8.48,
+   "median_seconds_per_batch": 30.737000000000002,
+   "output_tokens": 66366
+  },
+  "H": {
+   "calls": 20,
+   "list_price_usd": 8.62,
+   "median_seconds_per_batch": 33.637,
+   "output_tokens": 70706
+  },
+  "J": {
+   "calls": 20,
+   "list_price_usd": 10.82,
+   "median_seconds_per_batch": 48.088499999999996,
+   "output_tokens": 102334
+  },
+  "G": {
+   "calls": 20,
+   "list_price_usd": 10.74,
+   "median_seconds_per_batch": 44.883,
+   "output_tokens": 100741
+  }
+ },
+ "list_price_usd_total": 46.64
+}

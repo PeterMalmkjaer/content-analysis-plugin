@@ -2,6 +2,8 @@
 
 **Run date:** 12 November 2026 · **Protocol:** `protocol/protocol_addendum.md`, pre-registered and frozen by SHA-256 (`85bb1574…`) before any of these comments was coded; deviations in `protocol/addendum_deviations.md` · **Tested text:** `skills/content-analysis/SKILL.md` at commit `08c38e5` (sha256 `de3eaf58…`), which is the text released as 5.0.0-beta.5.
 
+> **Follow-up.** A second fresh sample (`2026-11-goemotions-beta6-second-fresh-test.md`) repeated the comparison of beta.5 without calibration against beta.3 and found the shortfall outside sampling error; it also tested the change made in 5.0.0-beta.6 in response to observation 1 below.
+
 ## Why this test exists
 
 The first benchmark (`2026-11-goemotions-beta3-vs-beta4.md`) showed that beta.4 agreed better with human coding than beta.3 when its codebook had been calibrated against human coding, and worse when it had not. beta.5 answers with two coding procedures: the full decision procedure for a calibrated codebook, a simple one for an uncalibrated codebook. That text was written after the first results were known, so the first 500 comments could not test it. This test uses 500 comments that no part of the study had touched.

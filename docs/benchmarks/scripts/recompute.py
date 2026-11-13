@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recompute the headline figures of both GoEmotions reports from the two files in ../results/:
+"""Recompute the headline figures of the three GoEmotions reports from the two files in ../results/:
 units.csv (unit, GoEmotions comment id, split, human reference labels) and assignments.csv
 (every code each arm assigned in each run). Standard library only; run from anywhere:
 
@@ -20,7 +20,7 @@ def f1(units, p):
     return tp, fp, fn, (2*tp/(2*tp+fp+fn) if tp else 0.0)
 print(f"{'sample':10s} {'arm':3s} {'run':3s} {'assign':>6s} {'P':>5s} {'R':>5s} {'microF1':>7s} {'review%':>7s} {'F1 flagged':>10s} {'F1 unflagged':>12s}")
 for k in sorted(pred):
-    units = sorted(u for u in ref if split[u] == ("test" if k[0] == "benchmark" else "fresh")); p = pred[k]
+    units = sorted(u for u in ref if split[u] == {"benchmark": "test"}.get(k[0], k[0])); p = pred[k]
     assert set(p) == set(units), f"coverage {k}"
     tp, fp, fn, f = f1(units, p); n = tp + fp; nf = sum(flag[k].values())
     fl = [u for u in units if flag[k][u]]; un = [u for u in units if not flag[k][u]]

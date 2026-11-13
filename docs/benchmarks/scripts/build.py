@@ -7,9 +7,12 @@ SET, ARM, RUN = sys.argv[1], sys.argv[2], int(sys.argv[3])
 SPLIT = sys.argv[sys.argv.index("--split")+1] if "--split" in sys.argv else "test"
 SEED = 20260910 + RUN
 BENCH = "/home/claude/bench"
-SKILL = {"A": f"{BENCH}/skill-beta3", "B": f"{BENCH}/skill-beta4", "C": f"{BENCH}/skill-beta4", "E": f"{BENCH}/skill-beta5", "F": f"{BENCH}/skill-beta5"}[ARM]
-VER = {"A": "5.0.0-beta.3", "B": "5.0.0-beta.4", "C": "5.0.0-beta.4", "E": "5.0.0-beta.5 candidate", "F": "5.0.0-beta.5 candidate"}[ARM]
-STATUS = {"E": "**uncalibrated** — no Step 5b calibration against human coding has been carried out for this codebook", "F": "**calibrated** — one Step 5b round against human coding has been carried out; the decision rules in the codebook are the calibrated ones"}.get(ARM)
+SKILL = {"A": f"{BENCH}/skill-beta3", "B": f"{BENCH}/skill-beta4", "C": f"{BENCH}/skill-beta4", "E": f"{BENCH}/skill-beta5", "F": f"{BENCH}/skill-beta5", "H": f"{BENCH}/skill-beta6", "J": f"{BENCH}/skill-beta6", "G": f"{BENCH}/skill-beta6g"}[ARM]
+VER = {"A": "5.0.0-beta.3", "B": "5.0.0-beta.4", "C": "5.0.0-beta.4", "E": "5.0.0-beta.5 candidate", "F": "5.0.0-beta.5 candidate", "H": "5.0.0-beta.6 candidate", "J": "5.0.0-beta.6 candidate", "G": "5.0.0-beta.6 candidate"}[ARM]
+_UNC = "**uncalibrated** — no Step 5b calibration against human coding has been carried out for this codebook"
+_CAL = "**calibrated** — one Step 5b round against human coding has been carried out; the decision rules in the codebook are the calibrated ones"
+STATUS = {"E": _UNC, "F": _CAL, "H": _UNC, "J": _CAL, "G": _CAL}.get(ARM)
+NEW = ("E", "F", "H", "J", "G")
 out = f"{BENCH}/runs/{SET}/{ARM}/run{RUN}/{SPLIT}"
 os.makedirs(out, exist_ok=True)
 splits = json.load(open(f"{BENCH}/splits.json"))
@@ -60,8 +63,8 @@ def units():
         return batches
     if SET == "set3":
         d = json.load(open(f"{BENCH}/set3_units_reference.json"))
-        if SPLIT == "fresh":   # protocol addendum: 500 comments outside all earlier splits
-            fresh = set(json.load(open(f"{BENCH}/splits_addendum.json"))["set3_fresh"])
+        if SPLIT in ("fresh", "fresh2"):   # protocol addenda: 500 comments outside all earlier samples
+            fresh = set(json.load(open(f"{BENCH}/splits_addendum.json"))["set3_fresh"]) if SPLIT == "fresh" else set(json.load(open(f"{BENCH}/splits_addendum2.json"))["set3_fresh2"])
             us = [{"doc": u["id"], "unit": 1, "text": u["text"]} for u in d if u["id"] in fresh]
             us.sort(key=lambda u: u["doc"])
             if RUN == 2: rng.shuffle(us)   # addendum: different batch composition in run 2
@@ -71,7 +74,7 @@ def units():
         return [us[k:k+50] for k in range(0, len(us), 50)]
 
 batches = units()
-if RUN == 2 and SPLIT != "fresh":
+if RUN == 2 and SPLIT not in ("fresh", "fresh2"):
     rng.shuffle(batches)
 index = []
 for n, b in enumerate(batches, 1):
@@ -110,9 +113,9 @@ for n, b in enumerate(batches, 1):
                    "`Text excerpt` = a verbatim passage from the respondent's answer in that unit (not the question); `Prompting` = prompted / volunteered / mixed / unclear.")
     review_rule = "" if ARM == "A" else ("\n- `Review` is blank when the decision was clear; otherwise exactly one of context_missing / possible_irony / competing_codes / insufficient_basis / other, "
                                          "as defined in SKILL.md (Step 7, step 8, and the coded-data table). `other` requires the reason in Coder notes. Uncertainty is recorded in Review, never by choosing neutral/UNCODED/the broadest code.")
-    if ARM in ("E", "F"):
+    if ARM in NEW:
         review_rule = ("\n- `Review` is blank when the decision was clear; otherwise exactly one of context_missing / possible_irony / competing_codes / insufficient_basis / other, "
-                       "as defined in SKILL.md (Step 7 and the coded-data table). `other` requires the reason in Coder notes. Uncertainty is recorded in Review, never by choosing neutral/UNCODED/the broadest code.")
+                       "as defined in SKILL.md (Step 7 and the coded-data table). `other` requires the reason in Coder notes." + ("" if SPLIT == "fresh2" else " Uncertainty is recorded in Review, never by choosing neutral/UNCODED/the broadest code."))
     cb = codebook_path()
     cb_lines = (f"3. The codebook: `{cb}`" if cb else
                 f"3. The codebook: `{BENCH}/materials/set2_codebook_v21.md`, the governance-relevance rules `{BENCH}/materials/set2_governance_rules.md`, and the exact code list `{BENCH}/materials/set2_codebook_codes.csv`")
@@ -121,7 +124,7 @@ for n, b in enumerate(batches, 1):
     step7 = ("Step 7 (for each unit: identify boundary, read in context, assign codes, record verbatim excerpt, UNCODED when nothing fits) and the Output: Coded Data Table conventions"
              if ARM == "A" else
              "Step 7's eight-step decision procedure (locate the passage → check criteria and required textual basis → compare with nearest alternatives → assign and record → sweep the remaining codes one by one → mark what remains with UNCODED or Review), the Gated codes rule, and the Output: Coded Data Table conventions including the Review column")
-    if ARM in ("E", "F"):
+    if ARM in NEW:
         step7 = ("Step 7, which gives two coding procedures and says which one applies from the codebook's calibration status, and the Output: Coded Data Table conventions including the Review column. "
                  f"Calibration status of this codebook: {STATUS}")
     prompt = f"""You are the coder for one batch in a blind content-analysis run. Work only from the files named here. Use only the Read and Write tools. Do not search the web, do not open any other file or directory, and do not modify any file except the output file.
