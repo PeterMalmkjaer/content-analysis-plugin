@@ -5,6 +5,11 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Documentation
+- `docs/evaluations/2026-09-beta3-external/`: the four reports and the protocol of the external evaluation of 5.0.0-beta.3 (9 September 2026), previously only summarised. The reports were written by an AI and each carries a notice saying so. The folder's README states which of their figures were recomputed on 13 November 2026 (all recomputed figures match) and which were not. The coded data are not included. No change to the skill.
+
 ## [5.0.0-beta.6] - 2026-11-13
 
 Responds to the fresh-sample test of 5.0.0-beta.5 and was itself tested once, on 500 further comments, before release (`docs/benchmarks/2026-11-goemotions-beta6-second-fresh-test.md`; text and release rule frozen beforehand in `docs/benchmarks/protocol/protocol_addendum2.md`).
