@@ -7,6 +7,8 @@ Independent project by Peter Malmkjaer.
 
 > **Preview release.** The 5.0.0 betas add a source declaration, a procedure for large corpora, an output validator with a known-good fixture, and a clear statement of which methods the skill supports; they are also the first releases in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end, and that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
 
+> **Before you rely on it.** The tests so far support using the skill as a pre-coder or a supplementary coder. Its coding cannot stand alone. [`docs/`](docs/README.md) is the way in to the test report, the benchmarks and an earlier external evaluation, and to the conditions that apply to use on research material.
+
 **Version:** 5.0.0-beta.6
 
 ---
@@ -36,7 +38,7 @@ The plugin guides you through the methodological choices and documents important
 
 ## What the Tests Show
 
-The skill's coding has been compared with human coding on one public corpus (GoEmotions: short Reddit comments, 27 emotions plus neutral), with one AI model, in three pre-registered tests. Table 1 gives the result; the full account, with protocols, codebooks and every assignment, is in [`docs/benchmarks/`](docs/benchmarks/README.md).
+The skill's coding has been compared with human coding on one public corpus (GoEmotions: short Reddit comments, 27 emotions plus neutral), with one AI model, in three pre-registered tests. Table 1 gives the result; the full account, with protocols, codebooks and every assignment, is in [`docs/benchmarks/`](docs/benchmarks/README.md). A test report with conclusion, assumptions, limitations and recommended use is in [`docs/test-report-5.0.0-beta.6.md`](docs/test-report-5.0.0-beta.6.md).
 
 **Table 1 · What you get** (agreement score = micro-F1, 0–100; 100 would be coding identical to the human raters')
 
@@ -47,6 +49,8 @@ The skill's coding has been compared with human coding on one public corpus (GoE
 | Either way | Flags the assignments it found hard (`Review` column) | Flagged comments 27–39, unflagged 46–58 |
 
 What this does not show: other kinds of text (interviews, reports), other models (ChatGPT and Codex were not part of these tests), or calibration material from a different source than the texts being coded. The level itself is specific to a hard task and says little about your material; the comparison is what the tests support. If the quality of the coding matters for your conclusions, set aside human-coded material and let the skill calibrate.
+
+Interviews and policy reports have been tried once, with 5.0.0-beta.3, in an external evaluation in September 2026. Its reports were written by an AI and are published with a notice saying so in [`docs/evaluations/2026-09-beta3-external/`](docs/evaluations/2026-09-beta3-external/README.md). No later version has been run on that material.
 
 ---
 

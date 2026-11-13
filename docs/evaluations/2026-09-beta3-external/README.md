@@ -1,6 +1,6 @@
 # External evaluation of 5.0.0-beta.3 (9 September 2026): the reports
 
-This folder holds the four reports from the external evaluation that is summarised in [`../2026-09-beta3-external-review.md`](../2026-09-beta3-external-review.md). They are published so that the figures quoted elsewhere in this repository can be read in their original context.
+This folder holds the four reports from the external evaluation that is summarised in [`../2026-09-beta3-external-review.md`](../2026-09-beta3-external-review.md). They are published so that the figures quoted elsewhere in this repository can be read in their original context. How they fit with the rest of the documentation is shown in [`../../README.md`](../../README.md).
 
 The reports are in Danish. They concern **5.0.0-beta.3 only**. No later version has been run on the interview transcripts or the policy reports.
 

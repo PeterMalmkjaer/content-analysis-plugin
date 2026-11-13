@@ -1,6 +1,6 @@
 # What the benchmarks show
 
-This folder documents how well the skill's coding agrees with human coding, where that has been measured, and where it has not. It is written for someone deciding whether, and how, to use the skill.
+This folder documents how well the skill's coding agrees with human coding, where that has been measured, and where it has not. It is written for someone deciding whether, and how, to use the skill. How it fits with the test report and the external evaluation is shown in [`../README.md`](../README.md).
 
 **The short version.** If you can give the skill some material that humans have already coded, it calibrates the codebook against it, and its coding then agrees clearly better with human coding than without. If you cannot, the skill codes at about the level of the earlier version 5.0.0-beta.3 and marks the decisions it found hard, and those marks are worth reading. All of this has been measured on one corpus with one AI model.
 
@@ -31,7 +31,7 @@ This folder documents how well the skill's coding agrees with human coding, wher
 
 ## What has not been shown
 
-1. **Other kinds of text.** Nothing here covers interviews, reports or policy documents. An external evaluation of 5.0.0-beta.3 on interviews and reports is summarised in `../evaluations/2026-09-beta3-external-review.md`; the versions after it have not been re-run on that material.
+1. **Other kinds of text.** Nothing here covers interviews, reports or policy documents. An external evaluation of 5.0.0-beta.3 on interviews and reports is summarised in [`../evaluations/2026-09-beta3-external-review.md`](../evaluations/2026-09-beta3-external-review.md), and its AI-written reports are in [`../evaluations/2026-09-beta3-external/`](../evaluations/2026-09-beta3-external/README.md); the versions after it have not been re-run on that material.
 2. **Other models.** All coding in these tests ran on one Claude model (`claude-opus-5-5`). The skill also runs in ChatGPT and Codex; that has not been benchmarked here.
 3. **Calibration material from a different source than the texts to be coded.** In every test the calibration comments came from the same corpus as the test comments.
 4. **That the skill without calibration is better than beta.3 on agreement.** It is not, as far as these tests can tell. What it adds is the flag.
