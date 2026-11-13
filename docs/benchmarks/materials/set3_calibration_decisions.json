@@ -1,0 +1,156 @@
+{
+ "retest_micro_f1_unrevised": 0.4268774703557312,
+ "retest_micro_f1_candidate": 0.49159663865546216,
+ "decisions": [
+  {
+   "code": "admiration",
+   "ref_pos_retest": 21,
+   "pred_pre": 20,
+   "pred_post": 22,
+   "f1_pre": 0.6829268292682926,
+   "f1_post": 0.6046511627906977,
+   "rule": "D6.2",
+   "kept": false
+  },
+  {
+   "code": "amusement",
+   "ref_pos_retest": 8,
+   "pred_pre": 24,
+   "pred_post": 12,
+   "f1_pre": 0.5,
+   "f1_post": 0.8,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "anger",
+   "ref_pos_retest": 12,
+   "pred_pre": 6,
+   "pred_post": 11,
+   "f1_pre": 0.3333333333333333,
+   "f1_post": 0.43478260869565216,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "annoyance",
+   "ref_pos_retest": 11,
+   "pred_pre": 16,
+   "pred_post": 18,
+   "f1_pre": 0.2222222222222222,
+   "f1_post": 0.13793103448275862,
+   "rule": "D6.2",
+   "kept": false
+  },
+  {
+   "code": "approval",
+   "ref_pos_retest": 13,
+   "pred_pre": 20,
+   "pred_post": 18,
+   "f1_pre": 0.3636363636363637,
+   "f1_post": 0.3870967741935484,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "caring",
+   "ref_pos_retest": 9,
+   "pred_pre": 11,
+   "pred_post": 6,
+   "f1_pre": 0.6,
+   "f1_post": 0.6666666666666667,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "curiosity",
+   "ref_pos_retest": 14,
+   "pred_pre": 17,
+   "pred_post": 20,
+   "f1_pre": 0.5161290322580646,
+   "f1_post": 0.588235294117647,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "desire",
+   "ref_pos_retest": 7,
+   "pred_pre": 8,
+   "pred_post": 5,
+   "f1_pre": 0.6666666666666666,
+   "f1_post": 0.6666666666666666,
+   "rule": "D6.2",
+   "kept": false
+  },
+  {
+   "code": "disapproval",
+   "ref_pos_retest": 14,
+   "pred_pre": 47,
+   "pred_post": 11,
+   "f1_pre": 0.3934426229508196,
+   "f1_post": 0.4,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "disgust",
+   "ref_pos_retest": 6,
+   "pred_pre": 1,
+   "pred_post": 4,
+   "f1_pre": 0.0,
+   "f1_post": 0.2,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "joy",
+   "ref_pos_retest": 5,
+   "pred_pre": 8,
+   "pred_post": 3,
+   "f1_pre": 0.6153846153846154,
+   "f1_post": 0.7499999999999999,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "love",
+   "ref_pos_retest": 3,
+   "pred_pre": 6,
+   "pred_post": 8,
+   "f1_pre": 0.4444444444444444,
+   "f1_post": 0.36363636363636365,
+   "rule": "D6.3",
+   "kept": true
+  },
+  {
+   "code": "optimism",
+   "ref_pos_retest": 6,
+   "pred_pre": 8,
+   "pred_post": 9,
+   "f1_pre": 0.42857142857142855,
+   "f1_post": 0.6666666666666667,
+   "rule": "D6.2",
+   "kept": true
+  },
+  {
+   "code": "surprise",
+   "ref_pos_retest": 3,
+   "pred_pre": 11,
+   "pred_post": 4,
+   "f1_pre": 0.14285714285714288,
+   "f1_post": 0.28571428571428575,
+   "rule": "D6.3",
+   "kept": true
+  },
+  {
+   "code": "neutral",
+   "ref_pos_retest": 60,
+   "pred_pre": 22,
+   "pred_post": 50,
+   "f1_pre": 0.3902439024390244,
+   "f1_post": 0.5454545454545454,
+   "rule": "D6.2",
+   "kept": true
+  }
+ ]
+}

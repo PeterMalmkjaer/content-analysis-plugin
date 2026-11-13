@@ -1,0 +1,44 @@
+{
+ "human_human_kappa_appendixC_summary": {
+  "disapproval": 0.234,
+  "annoyance": 0.192,
+  "anger": 0.307,
+  "approval": 0.187,
+  "admiration": 0.468,
+  "gratitude": 0.749,
+  "realization": 0.155,
+  "disappointment": 0.184
+ },
+ "ai_vs_reference_kappa": {
+  "A": {
+   "disapproval": 0.2075582939609307,
+   "annoyance": 0.25752989402529597,
+   "anger": 0.3858499836226657,
+   "approval": 0.26137792305758156,
+   "admiration": 0.4288881464253994,
+   "gratitude": 0.8051399795597514,
+   "realization": 0.1371203835060621,
+   "disappointment": -0.010361232538249191
+  },
+  "B": {
+   "disapproval": 0.15336978810663032,
+   "annoyance": 0.24455227439852117,
+   "anger": 0.34870518188188715,
+   "approval": 0.2975268239216712,
+   "admiration": 0.5022200674921579,
+   "gratitude": 0.8125271389575784,
+   "realization": 0.11548363419476,
+   "disappointment": -0.012467197191740147
+  },
+  "C": {
+   "disapproval": 0.10169498132713795,
+   "annoyance": 0.23339826830043672,
+   "anger": 0.448653844946558,
+   "approval": 0.30437938543430965,
+   "admiration": 0.5257985013456776,
+   "gratitude": 0.8051399795597514,
+   "realization": 0.22211584490186645,
+   "disappointment": -0.004738292138151248
+  }
+ }
+}

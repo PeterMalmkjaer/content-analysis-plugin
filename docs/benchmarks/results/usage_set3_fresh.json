@@ -1,0 +1,9 @@
+{
+ "claude-opus-5-5": {
+  "input_tokens": 480,
+  "output_tokens": 228026,
+  "cache_creation_input_tokens": 3288329,
+  "cache_read_input_tokens": 14801068,
+  "calls": 60
+ }
+}
