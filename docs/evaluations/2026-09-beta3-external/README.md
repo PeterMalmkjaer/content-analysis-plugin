@@ -2,7 +2,7 @@
 
 This folder holds the four reports from the external evaluation that is summarised in [`../2026-09-beta3-external-review.md`](../2026-09-beta3-external-review.md). They are published so that the figures quoted elsewhere in this repository can be read in their original context. How they fit with the rest of the documentation is shown in [`../../README.md`](../../README.md).
 
-The reports are in Danish. They concern **5.0.0-beta.3 only**. No later version has been run on the interview transcripts or the policy reports.
+The reports are in Danish; start with the summary, [`kvalitetsrapport.md`](kvalitetsrapport.md). They concern **5.0.0-beta.3 only**. No later version has been run on the interview transcripts or the policy reports.
 
 ## Read this first: the reports were written by an AI
 
@@ -45,14 +45,14 @@ The reports refer to files "in the same folder" (`audit_workbook.xlsx`, `validat
 
 | File | Content | Change |
 |---|---|---|
-| `kvalitetsrapport.md` | Summary of the three tests | Notice added below the title. Seven links to paths on the author's computer replaced: three by relative links to the reports here, four by plain text |
-| `01_delft_interviews/rapport.md` | Report 1: interview transcripts | Notice added below the title |
-| `01_delft_interviews/SOURCE.md` | Source, licence, changes to the data | None |
-| `02_delft_reports/rapport.md` | Report 2: AC-ICT policy reports | Notice added below the title |
-| `02_delft_reports/SOURCE.md` | Source, licence, changes to the data | None |
-| `03_goemotions/rapport.md` | Report 3: GoEmotions, full test split | Notice added below the title |
-| `03_goemotions/SOURCE.md` | Source and changes to the data | None |
-| `03_goemotions/protocol.md` | The evaluation's protocol with its addenda for data sets 2 and 3 | None |
+| [`kvalitetsrapport.md`](kvalitetsrapport.md) | Summary of the three tests | Notice added below the title. Seven links to paths on the author's computer replaced: three by relative links to the reports here, four by plain text |
+| [`01_delft_interviews/rapport.md`](01_delft_interviews/rapport.md) | Report 1: interview transcripts | Notice added below the title |
+| [`01_delft_interviews/SOURCE.md`](01_delft_interviews/SOURCE.md) | Source, licence, changes to the data | None |
+| [`02_delft_reports/rapport.md`](02_delft_reports/rapport.md) | Report 2: AC-ICT policy reports | Notice added below the title |
+| [`02_delft_reports/SOURCE.md`](02_delft_reports/SOURCE.md) | Source, licence, changes to the data | None |
+| [`03_goemotions/rapport.md`](03_goemotions/rapport.md) | Report 3: GoEmotions, full test split | Notice added below the title |
+| [`03_goemotions/SOURCE.md`](03_goemotions/SOURCE.md) | Source and changes to the data | None |
+| [`03_goemotions/protocol.md`](03_goemotions/protocol.md) | The evaluation's protocol with its addenda for data sets 2 and 3 | None |
 
 SHA-256 of the original files, as they were on the author's computer:
 
