@@ -9,7 +9,7 @@ Independent project by Peter Malmkjaer.
 
 > **Before you rely on it.** The tests so far support using the skill as a pre-coder or a supplementary coder. Its coding cannot stand alone. [`docs/`](docs/README.md) is the way in to the test report, the benchmarks and an earlier external evaluation, and to the conditions that apply to use on research material.
 
-**Version:** 5.0.0-beta.7 · **Overview and documentation:** <https://petermalmkjaer.github.io/content-analysis-plugin/>
+**Version:** 5.0.0-beta.8 · **Overview and documentation:** <https://petermalmkjaer.github.io/content-analysis-plugin/>
 
 ---
 
@@ -38,7 +38,7 @@ The plugin guides you through the methodological choices and documents important
 
 ## What the Tests Show
 
-The skill's coding has been compared with human coding on one public corpus (GoEmotions: short Reddit comments, 27 emotions plus neutral), with one AI model, in three pre-registered tests. The tests were run on 5.0.0-beta.6; 5.0.0-beta.7 adds a security rule and packaging changes, leaves the coding procedure as it was, and has not been tested again. Table 1 gives the result; the full account, with protocols, codebooks and every assignment, is in [`docs/benchmarks/`](docs/benchmarks/README.md). A test report with conclusion, assumptions, limitations and recommended use is in [`docs/test-report-5.0.0-beta.6.md`](docs/test-report-5.0.0-beta.6.md).
+The skill's coding has been compared with human coding on one public corpus (GoEmotions: short Reddit comments, 27 emotions plus neutral), with one AI model, in three pre-registered tests. The tests were run on 5.0.0-beta.6. 5.0.0-beta.7 and 5.0.0-beta.8 are a security update and an improvement; they leave the coding procedure as it was and have not been tested again. Table 1 gives the result; the full account, with protocols, codebooks and every assignment, is in [`docs/benchmarks/`](docs/benchmarks/README.md). A test report with conclusion, assumptions, limitations and recommended use is in [`docs/test-report-5.0.0-beta.6.md`](docs/test-report-5.0.0-beta.6.md).
 
 **Table 1 · What you get** (agreement score = micro-F1, 0–100; 100 would be coding identical to the human raters')
 
@@ -218,7 +218,7 @@ Any commercial use — including integration into paid products, consulting serv
 
 ## Security
 
-The plugin is plain-text instructions and one validator script; it has no hooks, no MCP servers and no network calls of its own. What could still go wrong — a changed copy of the plugin, instructions hidden in the material you analyse, and what the assistant is allowed to do on your computer — and what has been done about each is set out in [SECURITY.md](SECURITY.md), together with how to report a problem.
+The plugin is plain-text instructions and one validator script; it has no hooks, no MCP servers and no network calls of its own. [SECURITY.md](SECURITY.md) says what it contains and how to report a problem.
 
 ## Validating an analysis
 
@@ -228,4 +228,4 @@ The plugin is plain-text instructions and one validator script; it has no hooks,
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.7) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.8) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
