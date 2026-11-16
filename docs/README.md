@@ -41,8 +41,8 @@ The researcher stays in charge of the research question, the interpretations and
 | Policy reports in Dutch | 63.1 agreement with another AI workflow, not with people | Tried once, 5.0.0-beta.3, another model; AI-written report |
 | Installing and running in Claude, ChatGPT and Codex | It installs and runs | Confirmed technically; coding quality measured on one Claude model only |
 | Inductive development of codebooks and themes | Not known | Not tested |
-| Long texts with versions after 5.0.0-beta.3 | Not known | Not tested |
-| Languages other than English | Not known for the current version | Not tested |
+| Long texts (interviews, reports) | Not known for the current version | Last tested in 5.0.0-beta.3 |
+| Languages other than English | Not known for the current version | Last tested in 5.0.0-beta.3 (Dutch) |
 | Calibrating on one kind of material and coding another | Not known | Not tested |
 | Reliability statistics, frequency reports and thematic reporting | Not known | Not tested |
 | A person reviewing the flagged coding, as a whole workflow | Not known | Not tested |
