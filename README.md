@@ -9,6 +9,8 @@ Independent project by Peter Malmkjaer.
 
 > **Before you rely on it.** The tests so far support using the skill as a pre-coder or a supplementary coder. Its coding cannot stand alone. [`docs/`](docs/README.md) is the way in to the test report, the benchmarks and an earlier external evaluation, and to the conditions that apply to use on research material.
 
+> **Withdrawn versions.** All versions before 5.0.0-beta.3 (1.0.0, 1.1.0, 4.2.0, 4.2.1, 4.2.2, 4.3.0, 5.0.0-beta.1 and 5.0.0-beta.2) are withdrawn and should no longer be used. No test of them against human coding has been documented. They remain in the repository's history so that earlier work can be traced. If you have coded material with a withdrawn version, treat that coding as untested: state which version you used, and consider coding the material again with the current version.
+
 **Version:** 5.0.0-beta.8 · **Overview and documentation:** <https://petermalmkjaer.github.io/content-analysis-plugin/>
 
 ---

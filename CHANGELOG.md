@@ -5,6 +5,10 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Withdrawn versions
+
+Withdrawn on 16 November 2026. All versions before 5.0.0-beta.3 (1.0.0, 1.1.0, 4.2.0, 4.2.1, 4.2.2, 4.3.0, 5.0.0-beta.1 and 5.0.0-beta.2) are withdrawn and should no longer be used. No test of them against human coding has been documented. They remain in the repository's history so that earlier work can be traced. If you have coded material with a withdrawn version, treat that coding as untested: state which version you used, and consider coding the material again with the current version. Their entries below are marked `[WITHDRAWN]`.
+
 ## [5.0.0-beta.8] - 2026-11-16
 
 A security update and an improvement. `skills/content-analysis/SKILL.md` is unchanged from 5.0.0-beta.7 (SHA-256 `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`). The coding procedure is the one tested as 5.0.0-beta.6 and has not been benchmarked again.
@@ -110,7 +114,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 - Removed a compiled `scripts/__pycache__/*.pyc` that had been committed with beta.2; added `.gitignore`.
 - README: ChatGPT/Codex installation rewritten from OpenAI's current documentation and a tested update. `codex plugin add` removed (not a documented command); updating an installed plugin requires uninstall + reinstall in the Plugins directory — a restart does not fetch the new version.
 
-## [5.0.0-beta.2] - 2026-09-09
+## [5.0.0-beta.2] - 2026-09-09 [WITHDRAWN]
 
 ### Added
 - `scripts/validate_coding.py`: an output validator (standard library; `openpyxl` optional) that checks excerpts against source files, coverage against the manifest, code IDs against the codebook, uniqueness of assignments, allowed Prompting values, and regenerated frequencies. Step 7 gains a "Validate the outputs" section; `/content-analysis` runs it where a shell exists.
@@ -136,7 +140,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 ### Notes
 - Licence terms unchanged.
 
-## [5.0.0-beta.1] - 2026-09-09
+## [5.0.0-beta.1] - 2026-09-09 [WITHDRAWN]
 
 ### Added
 - **Source declaration** in Step 1: source type, producer, purpose, audience, elicitation, date, language, sampling, completeness — recorded per source; part of it is carried on every coded unit as provenance columns.
@@ -156,7 +160,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 ### Notes
 - Licence terms unchanged.
 
-## [4.3.0] - 2026-09-04
+## [4.3.0] - 2026-09-04 [WITHDRAWN]
 
 ### Added
 - Native Codex plugin manifest at `.codex-plugin/plugin.json`.
@@ -171,7 +175,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 ### Notes
 - The analysis workflow, methodological references, and dual-licence terms are unchanged.
 
-## [4.2.2] - 2026-08-28
+## [4.2.2] - 2026-08-28 [WITHDRAWN]
 
 ### Changed
 - Al institutionsomtale fjernet fra LICENSE og README, og kontaktadressen ændret til Peter.Malmkjaer@mail.dk i LICENSE, README og `plugin.json`. Begge filer erklærer projektet uafhængigt; taksigelsen til Copenhagen Business School og Department of Operations Management kunne læses som en modsigelse af netop det.
@@ -181,7 +185,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 ### Notes
 - Ingen ændring af licensvilkårene. Ophavsretsangivelsen og begge licensspor står urørt.
 
-## [4.2.1] - 2026-08-18
+## [4.2.1] - 2026-08-18 [WITHDRAWN]
 
 ### Fixed
 - Licensangivelsen i `plugin.json` rettet fra `SEE LICENSE` til `SEE LICENSE IN LICENSE`. Den korte form er ikke en gyldig SPDX-streng; konventionen for en licens, der ikke findes i SPDX-registret, er `SEE LICENSE IN <filnavn>`. Peger nu utvetydigt på repoets LICENSE-fil, som er en dual-licens: fri til akademisk og ikke-kommerciel brug med kildeangivelse, kommerciel brug kræver særskilt aftale.
@@ -189,7 +193,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 ### Notes
 - Rent skrivemåde. Hverken licensvilkårene eller LICENSE-filen er ændret.
 
-## [4.2.0] - 2026-08-18
+## [4.2.0] - 2026-08-18 [WITHDRAWN]
 
 ### Changed
 - Versionsnummeret rettet fra 1.1.0 til 4.2.0. Nummereringen blev nulstillet til 1.0.0 forud for marketplace-indsendelsen (commit a589d30), efter at projektet allerede havde nået 4.1.0 (commit e3acb11). Dette genopretter den oprindelige rækkefølge.
@@ -197,7 +201,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 ### Notes
 - Rent metadata. Ingen ændring af skill-indhold, workflow, referencer eller output-konventioner.
 
-## [1.1.0] - 2026-08-06
+## [1.1.0] - 2026-08-06 [WITHDRAWN]
 
 ### Added
 - `references/protocol-driven-runs.md` — guidance for content analyses commissioned as a written brief or protocol, or run unattended, rather than negotiated in conversation. Four rules: derive the research question from the brief when none is stated (and never proceed without one), use a full report skeleton that opens with the task and the question, let the brief's named deliverables and formats take precedence over the plugin's `.xlsx` conventions, and make and record defensible choices instead of blocking on questions nobody is present to answer.
@@ -210,7 +214,7 @@ Version bump so that Claude and ChatGPT/Codex update mechanisms, which key on th
 - Backwards compatible. Conversational runs are unaffected: the skill's eight-step workflow, its trigger description, and its default output conventions are unchanged.
 - Motivation: in a protocol-driven run, the skill produced the four deliverables the protocol named but omitted the research question entirely, because Step 1 instructs the analyst to establish it *with the user* and no user was available. The omission was invisible until a reader asked what the analysis was for.
 
-## [1.0.0] - 2026-04-28
+## [1.0.0] - 2026-04-28 [WITHDRAWN]
 
 ### Added
 - Initial public release.

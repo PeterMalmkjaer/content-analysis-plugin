@@ -3,6 +3,7 @@
 Content Analysis is a plugin for Claude, ChatGPT and Codex that guides an AI assistant through a systematic content analysis of texts: from research question and codebook to coded data, frequencies and a method note. This page gathers what the plugin is, where to get it, what is known about how well it works, and the documents behind that knowledge.
 
 - **Version:** 5.0.0-beta.8, a preview release. The skill is experimental software. The tests reported here were run on 5.0.0-beta.6; beta.7 and beta.8 are a security update and an improvement, leave the coding procedure as it was, and have not been tested again.
+- **Withdrawn versions:** all versions before 5.0.0-beta.3 are withdrawn and should no longer be used. No test of them against human coding has been documented. The list, and what to do if you have used one of them, is in the [changelog](https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/CHANGELOG.md#withdrawn-versions).
 - **For whom:** researchers and students doing qualitative or quantitative content analysis. Academic and non-commercial use is free; see the [licence](https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/LICENSE).
 - **Get it:** installation for Claude, ChatGPT and Codex is described in the [repository README](https://github.com/PeterMalmkjaer/content-analysis-plugin#installation).
 
