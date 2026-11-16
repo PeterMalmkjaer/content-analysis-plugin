@@ -5,6 +5,11 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Documentation
+- Confirmed after 5.0.0-beta.7 was tagged (16 November 2026): Claude Code CLI 2.1.325 and Codex CLI 0.169.0 each installed the tagged commit from GitHub through the tag-pinned marketplace files, and the installed `SKILL.md` had the checksum given below. This replaces the statement under *Known limitations* for 5.0.0-beta.7 that installing from GitHub was unconfirmed; that text is part of the tagged release and is left as it was. The ChatGPT app has not yet been tried. The README is updated accordingly.
+
 ## [5.0.0-beta.7] - 2026-11-16
 
 A security release. The coding procedure is the one tested as 5.0.0-beta.6; nothing in Steps 1–8 was changed, and this version has not been benchmarked again. SHA-256 of `skills/content-analysis/SKILL.md`: `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`.
