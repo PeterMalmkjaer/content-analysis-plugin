@@ -13,7 +13,7 @@
       "source": {
         "source": "github",
         "repo": "PeterMalmkjaer/content-analysis-plugin",
-        "ref": "v5.0.0-beta.7"
+        "ref": "v5.0.0-beta.8"
       },
       "description": "Scientific content analysis for academic research: systematic coding, codebook development, frequency analysis, inter-coder reliability and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, with codebook thematic analysis. Includes a /content-analysis command.",
       "category": "productivity"

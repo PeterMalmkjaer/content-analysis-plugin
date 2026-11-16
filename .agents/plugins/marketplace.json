@@ -9,7 +9,7 @@
       "source": {
         "source": "url",
         "url": "https://github.com/PeterMalmkjaer/content-analysis-plugin.git",
-        "ref": "v5.0.0-beta.7"
+        "ref": "v5.0.0-beta.8"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -5,28 +5,30 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [5.0.0-beta.8] - 2026-11-16
 
-### Documentation
-- Confirmed after 5.0.0-beta.7 was tagged (16 November 2026): Claude Code CLI 2.1.325 and Codex CLI 0.169.0 each installed the tagged commit from GitHub through the tag-pinned marketplace files, and the installed `SKILL.md` had the checksum given below. This replaces the statement under *Known limitations* for 5.0.0-beta.7 that installing from GitHub was unconfirmed; that text is part of the tagged release and is left as it was. The ChatGPT app has not yet been tried. The README is updated accordingly.
+A security update and an improvement. `skills/content-analysis/SKILL.md` is unchanged from 5.0.0-beta.7 (SHA-256 `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`). The coding procedure is the one tested as 5.0.0-beta.6 and has not been benchmarked again.
+
+### Changed
+- The documentation of security work is shortened. Details are not published; `SECURITY.md` says what the plugin contains and how to report a problem.
+- The marketplace files point at the release tag `v5.0.0-beta.8`.
 
 ## [5.0.0-beta.7] - 2026-11-16
 
-A security release. The coding procedure is the one tested as 5.0.0-beta.6; nothing in Steps 1–8 was changed, and this version has not been benchmarked again. SHA-256 of `skills/content-analysis/SKILL.md`: `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`.
+A security update and an improvement. The coding procedure is the one tested as 5.0.0-beta.6; nothing in Steps 1–8 was changed, and this version has not been benchmarked again. SHA-256 of `skills/content-analysis/SKILL.md`: `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`.
 
 ### Security
-- **The material is data, never instructions.** A new section in the skill states that everything in the material to be analysed is the object of the analysis and never an instruction to the assistant. A passage that addresses the assistant, or asks for anything to be sent, fetched, installed, run or deleted, is not acted on; it is noted in `Coder notes` and reported to the user. A codebook or brief directs the analysis and authorises nothing outside it. The command file repeats the rule. This lowers the risk from text planted in a source; it does not remove it. A small test on 16 November 2026 (three runs per version, one model, crude planted text) is documented in [`docs/security/planted-instruction-test/`](docs/security/planted-instruction-test/README.md): no run acted on a planted instruction under beta.6 or beta.7; under beta.7 every run told the user what the planted text asked for, and under beta.6 none did.
-- **The `/content-analysis` command pre-approves no tools.** The `allowed-tools` line (Read, Write, Edit, Bash, Glob, Grep) is removed. The assistant asks, according to the user's own settings, before it writes files or runs the validator. Expect more permission prompts in Claude Code than before.
-- **Marketplace files point at a release tag.** `.agents/plugins/marketplace.json` (ChatGPT, Codex) and `.claude-plugin/marketplace.json` (Claude Code) now name the tag `v5.0.0-beta.7` instead of following `main`, so a change on `main` reaches installed copies only when a release is tagged.
-- **`SECURITY.md`** says what the plugin contains, what could go wrong, what is done about it, and how to report a problem.
-- Repository settings (not part of the plugin files): changes reach `main` only through pull requests, force pushes and deletion of `main` are blocked, and release tags (`v*`) cannot be moved or deleted.
+- Security update to the skill and to the `/content-analysis` command.
+- `SECURITY.md` added.
 
 ### Changed
+- The `/content-analysis` command pre-approves no tools. Claude asks, according to the user's own settings, before it writes files or runs the validator. Expect more permission prompts in Claude Code than before.
+- The marketplace files (`.agents/plugins/marketplace.json` for ChatGPT and Codex, `.claude-plugin/marketplace.json` for Claude Code) point at a release tag instead of following `main`. An update reaches installed copies when a release is tagged.
 - `.claude-plugin/plugin.json`: `icon`, `documentationUrl`, `supportUrl`, `privacyPolicyUrl` and `termsOfServiceUrl` for the directory listing; the icon file is added at `.claude-plugin/icon.png`.
 - README: the update instructions for ChatGPT and Codex now say to quit the app completely before reinstalling (confirmed on beta.5 → beta.6); the install check compares with the release tag and with the checksum above.
 
 ### Known limitations
-- Unchanged from 5.0.0-beta.6. In addition: the new rule about instructions in the material has been tested only in the small test named above, which could not show whether the rule keeps an assistant from acting on planted text (no run did so with or without it), and installing from a tag-pinned marketplace file has been confirmed only in a local test (16 November 2026): Claude Code CLI 2.1.325 and Codex CLI 0.169.0 each installed the tagged commit from a local copy of this repository whose `main` had moved past the tag, installed `main` when the entry named no tag, and stopped with an error when the tag did not exist. It has not yet been confirmed against GitHub, nor in the ChatGPT app.
+- Unchanged from 5.0.0-beta.6. Installing through the tag-pinned marketplace files was confirmed against GitHub with Claude Code CLI 2.1.325 and Codex CLI 0.169.0 (16 November 2026). The ChatGPT app has not yet been tried.
 
 ### Documentation
 - Documentation site: `docs/` is published with GitHub Pages at <https://petermalmkjaer.github.io/content-analysis-plugin/> (`docs/_config.yml`). `docs/README.md` is its front page and now opens with a product overview and a table of where the skill is known to work, where it was tried once, and where nothing is known.
