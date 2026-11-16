@@ -42,13 +42,13 @@ This folder documents how well the skill's coding agrees with human coding, wher
 
 | | Benchmark | First fresh sample | Second fresh sample |
 |---|---|---|---|
-| Report | `2026-11-goemotions-beta3-vs-beta4.md` | `2026-11-goemotions-beta5-fresh-test.md` | `2026-11-goemotions-beta6-second-fresh-test.md` |
+| Report | [`2026-11-goemotions-beta3-vs-beta4.md`](2026-11-goemotions-beta3-vs-beta4.md) | [`2026-11-goemotions-beta5-fresh-test.md`](2026-11-goemotions-beta5-fresh-test.md) | [`2026-11-goemotions-beta6-second-fresh-test.md`](2026-11-goemotions-beta6-second-fresh-test.md) |
 | Question | Does beta.4 agree better with human coding than beta.3? | Do beta.5's two procedures behave as intended on new comments? | Does beta.6's residual-threshold rule help, and does the eight-step procedure contribute? |
 | Sample | 500 comments (plus 400 for calibration, 200 for re-testing revisions) | 500 other comments | 500 other comments |
 | Baseline (beta.3) | 46.2 / 47.4 | 44.0 / 44.0 | 44.3 / 45.3 |
 | Without calibration | beta.4: 44.2 / 43.7 | beta.5: 42.5 / 42.2 | beta.5: 42.0 / 43.2 · beta.6: 43.5 / 44.7 |
 | With calibration | beta.4: 51.4 / 51.0 | beta.5: 50.8 / 51.2 | beta.6: 49.4 / 49.5 |
-| Rules fixed in advance | `protocol/protocol.md` | `protocol/protocol_addendum.md` | `protocol/protocol_addendum2.md` |
+| Rules fixed in advance | [`protocol/protocol.md`](protocol/protocol.md) | [`protocol/protocol_addendum.md`](protocol/protocol_addendum.md) | [`protocol/protocol_addendum2.md`](protocol/protocol_addendum2.md) |
 
 Each cell gives the two independent runs. The samples are not comparable with each other in level: the baseline alone differs by about three points between them. Compare within a column.
 
@@ -67,15 +67,15 @@ Each cell gives the two independent runs. The samples are not comparable with ea
 python3 docs/benchmarks/scripts/recompute.py
 ```
 
-reproduces the headline figures of all three reports from `results/units.csv` (each comment's GoEmotions id and human labels) and `results/assignments.csv` (every code each arm assigned in each run). It needs only Python 3. The comment texts are not redistributed here; they are in the public GoEmotions release, which `units.csv` indexes by id.
+reproduces the headline figures of all three reports from [`results/units.csv`](results/units.csv) (each comment's GoEmotions id and human labels) and [`results/assignments.csv`](results/assignments.csv) (every code each arm assigned in each run). It needs only Python 3. The comment texts are not redistributed here; they are in the public GoEmotions release, which `units.csv` indexes by id.
 
 ## Contents
 
-- `2026-11-goemotions-beta3-vs-beta4.md`, `2026-11-goemotions-beta5-fresh-test.md`, `2026-11-goemotions-beta6-second-fresh-test.md` — the three reports.
-- `protocol/` — pre-registered protocol and two addenda, the seeded samples, hashes, deviation logs.
-- `materials/` — the codebooks as used (original, with drafted rules, calibrated), the calibration reviewer's revision log, example prompts, and the variant text tested in the second fresh sample.
-- `results/` — all figures as JSON; `units.csv` and `assignments.csv`.
-- `scripts/` — the scripts as run (documentation), and `recompute.py` (runnable).
+- [`2026-11-goemotions-beta3-vs-beta4.md`](2026-11-goemotions-beta3-vs-beta4.md), [`2026-11-goemotions-beta5-fresh-test.md`](2026-11-goemotions-beta5-fresh-test.md), [`2026-11-goemotions-beta6-second-fresh-test.md`](2026-11-goemotions-beta6-second-fresh-test.md) — the three reports.
+- [`protocol/`](https://github.com/PeterMalmkjaer/content-analysis-plugin/tree/main/docs/benchmarks/protocol) — pre-registered protocol and two addenda, the seeded samples, hashes, deviation logs.
+- [`materials/`](https://github.com/PeterMalmkjaer/content-analysis-plugin/tree/main/docs/benchmarks/materials) — the codebooks as used (original, with drafted rules, calibrated), the calibration reviewer's revision log, example prompts, and the variant text tested in the second fresh sample.
+- [`results/`](https://github.com/PeterMalmkjaer/content-analysis-plugin/tree/main/docs/benchmarks/results) — all figures as JSON; `units.csv` and `assignments.csv`.
+- [`scripts/`](https://github.com/PeterMalmkjaer/content-analysis-plugin/tree/main/docs/benchmarks/scripts) — the scripts as run (documentation), and `recompute.py` (runnable).
 
 ## Reference
 
