@@ -40,7 +40,7 @@ The researcher stays in charge of the research question, the interpretations and
 | Interview transcripts, deductive coding | F1 60.1 against one researcher's coding | Tried once, 5.0.0-beta.3, another model; AI-written report |
 | Policy reports in Dutch | 63.1 agreement with another AI workflow, not with people | Tried once, 5.0.0-beta.3, another model; AI-written report |
 | Installing and running in Claude, ChatGPT and Codex | It installs and runs | Confirmed technically; coding quality measured on one Claude model only |
-| Inductive development of codebooks and themes | Not known | Not tested |
+| Inductive development of codebooks and themes | Used as inspiration for further work, with great success in the author's experience. Quality not measured | The author's own use on material that is not public. Not documented here, and not checked against a publicly available data set |
 | Long texts (interviews, reports) | Not known for the current version | Last tested in 5.0.0-beta.3 |
 | Languages other than English | Not known for the current version | Last tested in 5.0.0-beta.3 (Dutch) |
 | Calibrating on one kind of material and coding another | Not known | Not tested |
