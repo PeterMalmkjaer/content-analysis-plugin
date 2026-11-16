@@ -2,7 +2,7 @@
 
 Content Analysis is a plugin for Claude, ChatGPT and Codex that guides an AI assistant through a systematic content analysis of texts: from research question and codebook to coded data, frequencies and a method note. This page gathers what the plugin is, where to get it, what is known about how well it works, and the documents behind that knowledge.
 
-- **Version:** 5.0.0-beta.6, a preview release. The skill is experimental software.
+- **Version:** 5.0.0-beta.7, a preview release. The skill is experimental software. The tests reported here were run on 5.0.0-beta.6; beta.7 adds a security rule and packaging changes, leaves the coding procedure as it was, and has not been tested again. See [SECURITY.md](https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/SECURITY.md) for what the plugin contains and what could go wrong.
 - **For whom:** researchers and students doing qualitative or quantitative content analysis. Academic and non-commercial use is free; see the [licence](https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/LICENSE).
 - **Get it:** installation for Claude, ChatGPT and Codex is described in the [repository README](https://github.com/PeterMalmkjaer/content-analysis-plugin#installation).
 
@@ -59,6 +59,7 @@ The agreement score is micro-F1 on a scale from 0 to 100. The human yardstick in
 | [Benchmarks](benchmarks/README.md) | What exactly was measured? The three pre-registered tests on GoEmotions (beta.3 to beta.6), with protocols, codebooks, every code assigned and a script that recomputes the headline figures | AI assistant at the author's direction |
 | [External evaluation of 5.0.0-beta.3](evaluations/2026-09-beta3-external/README.md) | How did an earlier version do on interview transcripts and policy reports? Four reports in Danish from September 2026, with a note on which of their figures were recomputed | An AI in a separate evaluation; each report carries a notice |
 | [Note on that evaluation](evaluations/2026-09-beta3-external-review.md) | What the evaluation triggered in the skill | Author with AI assistance |
+| [Test with planted instructions](security/planted-instruction-test/README.md) | Does the rule added in 5.0.0-beta.7 change what the assistant does with instructions hidden in the material? A small test from November 2026: six runs, one model | AI assistant at the author's direction; carries a notice |
 
 ## How the parts fit together
 
