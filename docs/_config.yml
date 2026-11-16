@@ -1,0 +1,6 @@
+# Settings for the documentation site published with GitHub Pages
+# from the docs/ folder of the main branch.
+title: Content Analysis Plugin
+description: Systematic content analysis with Claude, ChatGPT and Codex. Experimental preview. Overview, documentation and test evidence.
+theme: jekyll-theme-cayman
+show_downloads: false
