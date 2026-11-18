@@ -7,9 +7,11 @@ Independent project by Peter Malmkjaer.
 
 > **Preview release.** The 5.0.0 betas add a source declaration, a procedure for large corpora, an output validator with a known-good fixture, and a clear statement of which methods the skill supports; they are also the first releases in which the Codex/ChatGPT support introduced in 4.3.0 is exercised end to end, and that support has had limited testing. Please report what you find via [issues](https://github.com/PeterMalmkjaer/content-analysis-plugin/issues) — the 5.0.0 release depends on it.
 
-**Version:** 5.0.0-beta.6
+> **Before you rely on it.** The tests so far support using the skill as a pre-coder or a supplementary coder. Its coding cannot stand alone. [`docs/`](docs/README.md) is the way in to the test report, the benchmarks and an earlier external evaluation, and to the conditions that apply to use on research material.
 
-> **Claude directory build.** This copy is the one published through the Claude plugin directory. Under the directory's file policy it leaves out the Python scripts (the output validator `scripts/validate_coding.py` and the benchmark scripts), the validator's fixture in `examples/minimal/`, and the benchmark data and hash files (`.csv`, `.sha256`, `.diff`); the `/content-analysis` command pre-approves no tools, so Claude asks before writing files or running code. The skill text is identical to the full release. Everything left out is in the repository: <https://github.com/PeterMalmkjaer/content-analysis-plugin>.
+**Version:** 5.0.0-beta.8 · **Overview and documentation:** <https://petermalmkjaer.github.io/content-analysis-plugin/>
+
+> **Claude directory build.** This copy is the one published through the Claude plugin directory. Under the directory's file policy it leaves out the Python scripts (the output validator `scripts/validate_coding.py` and the benchmark scripts), the validator's fixture in `examples/minimal/`, and the benchmark data and hash files (`.csv`, `.sha256`, `.diff`); the `/content-analysis` command pre-approves no tools, so Claude asks before writing files or running code. The skill text differs from the full release only where it refers to the validator and its fixture. Everything left out is in the repository: <https://github.com/PeterMalmkjaer/content-analysis-plugin>.
 
 ---
 
@@ -38,7 +40,7 @@ The plugin guides you through the methodological choices and documents important
 
 ## What the Tests Show
 
-The skill's coding has been compared with human coding on one public corpus (GoEmotions: short Reddit comments, 27 emotions plus neutral), with one AI model, in three pre-registered tests. Table 1 gives the result; the full account, with protocols, codebooks and every assignment, is in [`docs/benchmarks/`](docs/benchmarks/README.md).
+The skill's coding has been compared with human coding on one public corpus (GoEmotions: short Reddit comments, 27 emotions plus neutral), with one AI model, in three pre-registered tests. The tests were run on 5.0.0-beta.6. 5.0.0-beta.7 and 5.0.0-beta.8 are a security update and an improvement; they leave the coding procedure as it was and have not been tested again. Table 1 gives the result; the full account, with protocols, codebooks and every assignment, is in [`docs/benchmarks/`](docs/benchmarks/README.md). A test report with conclusion, assumptions, limitations and recommended use is in [`docs/test-report-5.0.0-beta.6.md`](docs/test-report-5.0.0-beta.6.md).
 
 **Table 1 · What you get** (agreement score = micro-F1, 0–100; 100 would be coding identical to the human raters')
 
@@ -50,17 +52,19 @@ The skill's coding has been compared with human coding on one public corpus (GoE
 
 What this does not show: other kinds of text (interviews, reports), other models (ChatGPT and Codex were not part of these tests), or calibration material from a different source than the texts being coded. The level itself is specific to a hard task and says little about your material; the comparison is what the tests support. If the quality of the coding matters for your conclusions, set aside human-coded material and let the skill calibrate.
 
+Interviews and policy reports have been tried once, with 5.0.0-beta.3, in an external evaluation in September 2026. Its reports were written by an AI and are published with a notice saying so in [`docs/evaluations/2026-09-beta3-external/`](docs/evaluations/2026-09-beta3-external/README.md). No later version has been run on that material.
+
 ---
 
 ## Installation
 
 ### ChatGPT and Codex
 
-The plugin is distributed through this repository's own marketplace file (`.agents/plugins/marketplace.json`), which points at the `main` branch. Nothing is submitted to OpenAI.
+The plugin is distributed through this repository's own marketplace file (`.agents/plugins/marketplace.json`). From 5.0.0-beta.7 that file points at a release tag, not at the `main` branch, so a change on `main` reaches installed copies only when a release is tagged. Nothing is submitted to OpenAI.
 
 **Install** — in the ChatGPT desktop app (Work mode, or Codex in the app), open the **Plugins** directory, add `PeterMalmkjaer/content-analysis-plugin` as a marketplace source, and install **Content Analysis** from the source "Content Analysis Plugin". The IDE extension does not support plugins (per OpenAI's documentation).
 
-**Update** — restarting the app is not enough: uninstall Content Analysis in the Plugins directory and install it again. Confirmed on 5.0.0-beta.1 → beta.2 (macOS, September 2026). Every release bumps the `version` field, because update mechanisms key on it; the installed version is visible with
+**Update** — quit the app completely (on macOS: Cmd+Q, not just closing the window), open it again, then uninstall Content Analysis in the Plugins directory and install it again. The app reads the marketplace only when it starts, so without the restart it reinstalls the old version. Confirmed on 5.0.0-beta.5 → beta.6 (macOS, November 2026). Every release bumps the `version` field, because update mechanisms key on it; the installed version is visible with
 
 ```bash
 ls ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/
@@ -69,17 +73,20 @@ ls ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/
 **Verify the install** — the cache is a git clone of this repository, so the installed copy can be checked against GitHub without trusting the version label. Replace `<version>` with the directory `ls` printed:
 
 ```bash
-# 1. the clone is on the commit that is main on GitHub
-cat ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/<version>/.git/refs/heads/main
-git ls-remote https://github.com/PeterMalmkjaer/content-analysis-plugin.git refs/heads/main
+# 1. the clone is on the commit of the release tag
+git -C ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/<version> rev-parse HEAD
+git ls-remote https://github.com/PeterMalmkjaer/content-analysis-plugin.git 'refs/tags/v<version>^{}'
 
-# 2. no second copy of the plugin under another marketplace
+# 2. the skill text is the released one (compare with the SHA-256 in CHANGELOG.md)
+shasum -a 256 ~/.codex/plugins/cache/content-analysis-plugin/content-analysis/<version>/skills/content-analysis/SKILL.md
+
+# 3. no second copy of the plugin under another marketplace
 ls -d ~/.codex/plugins/cache/*/*content-analysis* 2>/dev/null
 ```
 
-The two hashes in step 1 must match; step 2 must print exactly one path. Then ask ChatGPT, with the plugin active, to quote the sentence in the skill that defines `RESULT: INCOMPLETE` and to give the plugin version — a cached copy proves the files are there, only the answer proves the app is using them.
+The two hashes in step 1 must match, step 2 must print the checksum the changelog gives for that version, and step 3 must print exactly one path. Step 1 assumes the cache is a git clone when the marketplace points at a tag. That held with Codex CLI 0.169.0, installing 5.0.0-beta.7 from GitHub (16 November 2026); it has not yet been confirmed in the ChatGPT app, and step 2 works either way. Then ask ChatGPT, with the plugin active, to quote the sentence in the skill that defines `RESULT: INCOMPLETE` and to give the plugin version — a cached copy proves the files are there, only the answer proves the app is using them.
 
-**Codex CLI** — OpenAI documents `codex plugin marketplace add PeterMalmkjaer/content-analysis-plugin --ref main` and `codex plugin marketplace upgrade content-analysis-plugin` for adding and refreshing a marketplace; installing a plugin then goes through the CLI's plugin browser. These commands are taken from the documentation and have not been run by the author (no Codex CLI install); if they fail, use the Plugins directory and please open an issue with what you saw.
+**Codex CLI** — OpenAI documents `codex plugin marketplace add PeterMalmkjaer/content-analysis-plugin --ref main` and `codex plugin marketplace upgrade content-analysis-plugin` for adding and refreshing a marketplace. In Codex CLI 0.169.0 the plugin is then installed with `codex plugin add content-analysis@content-analysis-plugin`. Adding the marketplace from GitHub and `codex plugin add` were run with Codex CLI 0.169.0 on 16 November 2026, and the tagged commit was installed (see the changelog); `marketplace upgrade` has not been run and is taken from the documentation. If the commands fail, use the Plugins directory and please open an issue with what you saw.
 
 The skill activates automatically when you describe a content-analysis task.
 
@@ -128,7 +135,7 @@ Provides an eight-step workflow:
 
 ### Claude command: `/content-analysis`
 
-Run `/content-analysis` to start a content-analysis session directly. Optionally pass arguments describing your documents or research focus.
+Run `/content-analysis` to start a content-analysis session directly. Optionally pass arguments describing your documents or research focus. From 5.0.0-beta.7 the command pre-approves no tools: Claude asks, according to your own settings, before it writes files or runs the validator.
 
 ---
 
@@ -211,12 +218,16 @@ Any commercial use — including integration into paid products, consulting serv
 
 ---
 
+## Security
+
+This copy is plain-text instructions only (the validator script is in the repository); it has no hooks, no MCP servers and no network calls of its own. [SECURITY.md](SECURITY.md) says what it contains and how to report a problem.
+
 ## Validating an analysis
 
-`scripts/validate_coding.py` checks a finished coding for traceability: every excerpt is found verbatim in its source, every document in the manifest is coded, every code exists in the codebook, assignments are unique, and the frequency table can be regenerated from the rows. It needs only Python 3; `openpyxl` is optional for reading `.xlsx` directly. `examples/minimal/` is a known-good fixture on which it must pass.
+The output validator `scripts/validate_coding.py` is not included in this copy; it is in the repository: <https://github.com/PeterMalmkjaer/content-analysis-plugin/tree/v5.0.0-beta.8/scripts>. It checks a finished coding for traceability: every excerpt is found verbatim in its source, every document in the manifest is coded, every code exists in the codebook, assignments are unique, and the frequency table can be regenerated from the rows. It needs only Python 3; `openpyxl` is optional for reading `.xlsx` directly. In the repository, `examples/minimal/` is a known-good fixture on which it must pass.
 
 ## Citation
 
 If you use this plugin in academic work, please cite:
 
-> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.6) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin
+> Malmkjaer, P. (2026). *Content Analysis Plugin* (Version 5.0.0-beta.8) [Computer software]. https://github.com/PeterMalmkjaer/content-analysis-plugin

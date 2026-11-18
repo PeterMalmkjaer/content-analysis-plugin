@@ -2,6 +2,8 @@
 
 **Status of this note.** The figures below are reported by an external evaluation run outside this repository (9–10 September 2026) and have not been reproduced by the author. They are recorded here so that the changes made in response to them (see `CHANGELOG.md`, Unreleased) can be traced to their trigger. They are not a benchmark result of the plugin: no benchmark protocol, dataset licence or scoring script is part of this repository yet.
 
+**Update, 13 November 2026.** The evaluation's four reports and its protocol are now published in [`2026-09-beta3-external/`](2026-09-beta3-external/). They were written by an AI and carry a notice saying so. Their headline figures have been recomputed from the evaluation's coded data and match; what that check does and does not cover is set out in the README of that folder. The reports give an F1 of 60.1 for the interview transcripts and 63.1 for the AC-ICT extracts, which this note did not state. The rest of this note is unchanged.
+
 ## Corpora and reported figures
 
 | Corpus | What was measured | Reported |

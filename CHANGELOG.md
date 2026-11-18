@@ -5,6 +5,38 @@ All notable changes to the Content Analysis Plugin will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.0-beta.8] - 2026-11-16
+
+A security update and an improvement. `skills/content-analysis/SKILL.md` is unchanged from 5.0.0-beta.7 (SHA-256 `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`). The coding procedure is the one tested as 5.0.0-beta.6 and has not been benchmarked again.
+
+### Changed
+- The documentation of security work is shortened. Details are not published; `SECURITY.md` says what the plugin contains and how to report a problem.
+- The marketplace files point at the release tag `v5.0.0-beta.8`.
+
+## [5.0.0-beta.7] - 2026-11-16
+
+A security update and an improvement. The coding procedure is the one tested as 5.0.0-beta.6; nothing in Steps 1–8 was changed, and this version has not been benchmarked again. SHA-256 of `skills/content-analysis/SKILL.md`: `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`.
+
+### Security
+- Security update to the skill and to the `/content-analysis` command.
+- `SECURITY.md` added.
+
+### Changed
+- The `/content-analysis` command pre-approves no tools. Claude asks, according to the user's own settings, before it writes files or runs the validator. Expect more permission prompts in Claude Code than before.
+- The marketplace files (`.agents/plugins/marketplace.json` for ChatGPT and Codex, `.claude-plugin/marketplace.json` for Claude Code) point at a release tag instead of following `main`. An update reaches installed copies when a release is tagged.
+- `.claude-plugin/plugin.json`: `icon`, `documentationUrl`, `supportUrl`, `privacyPolicyUrl` and `termsOfServiceUrl` for the directory listing; the icon file is added at `.claude-plugin/icon.png`.
+- README: the update instructions for ChatGPT and Codex now say to quit the app completely before reinstalling (confirmed on beta.5 → beta.6); the install check compares with the release tag and with the checksum above.
+
+### Known limitations
+- Unchanged from 5.0.0-beta.6. Installing through the tag-pinned marketplace files was confirmed against GitHub with Claude Code CLI 2.1.325 and Codex CLI 0.169.0 (16 November 2026). The ChatGPT app has not yet been tried.
+
+### Documentation
+- Documentation site: `docs/` is published with GitHub Pages at <https://petermalmkjaer.github.io/content-analysis-plugin/> (`docs/_config.yml`). `docs/README.md` is its front page and now opens with a product overview and a table of where the skill is known to work, where it was tried once, and where nothing is known.
+- `docs/README.md`: one way in to the documentation, showing how the test report, the benchmarks and the external evaluation fit together, with the conditions that apply to use on research material.
+- `docs/test-report-5.0.0-beta.6.md`: test report for 5.0.0-beta.6 with conclusion (pre-coder or supplementary coder; not stand-alone), method, results, assumptions, limitations, limits of use, conditions of use and recommended use. Written with an AI assistant and marked as such. Three figures in `docs/figures/`.
+- README: a notice below the preview-release note stating the verdict of the tests and pointing to `docs/`; links to the test report and to the external evaluation. `docs/benchmarks/README.md`: the reference to the external evaluation is now a link.
+- `docs/evaluations/2026-09-beta3-external/`: the four reports and the protocol of the external evaluation of 5.0.0-beta.3 (9 September 2026), previously only summarised. The reports were written by an AI and each carries a notice saying so. The folder's README states which of their figures were recomputed on 13 November 2026 (all recomputed figures match) and which were not. The coded data are not included. No change to the skill.
+
 ## [5.0.0-beta.6] - 2026-11-13
 
 Responds to the fresh-sample test of 5.0.0-beta.5 and was itself tested once, on 500 further comments, before release (`docs/benchmarks/2026-11-goemotions-beta6-second-fresh-test.md`; text and release rule frozen beforehand in `docs/benchmarks/protocol/protocol_addendum2.md`).

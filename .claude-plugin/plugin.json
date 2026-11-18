@@ -1,7 +1,8 @@
 {
   "name": "content-analysis",
-  "version": "5.0.0-beta.6",
+  "version": "5.0.0-beta.8",
   "description": "Scientific content analysis for academic research. Systematic coding, codebook development, frequency analysis, and thematic reporting following Krippendorff, Hsieh & Shannon, Mayring, with codebook thematic analysis.",
+  "icon": "./.claude-plugin/icon.png",
   "author": {
     "name": "Peter Malmkjaer",
     "email": "Peter.Malmkjaer@mail.dk",
@@ -9,6 +10,10 @@
   },
   "homepage": "https://github.com/PeterMalmkjaer/content-analysis-plugin",
   "repository": "https://github.com/PeterMalmkjaer/content-analysis-plugin",
+  "documentationUrl": "https://petermalmkjaer.github.io/content-analysis-plugin/",
+  "supportUrl": "https://github.com/PeterMalmkjaer/content-analysis-plugin/issues",
+  "privacyPolicyUrl": "https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/PRIVACY.md",
+  "termsOfServiceUrl": "https://github.com/PeterMalmkjaer/content-analysis-plugin/blob/main/TERMS.md",
   "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "content-analysis",
