@@ -11,6 +11,8 @@ Independent project by Peter Malmkjaer.
 
 > **Withdrawn versions.** All versions before 5.0.0-beta.3 (1.0.0, 1.1.0, 4.2.0, 4.2.1, 4.2.2, 4.3.0, 5.0.0-beta.1 and 5.0.0-beta.2) are withdrawn and should no longer be used. No test of them against human coding has been documented. They remain in the repository's history so that earlier work can be traced. If you have coded material with a withdrawn version, treat that coding as untested: state which version you used, and consider coding the material again with the current version.
 
+> **Update recommended.** Versions up to and including 5.0.0-beta.6 let Claude run commands and write files without asking. From 5.0.0-beta.7 Claude asks first. This is a security improvement; we recommend updating to 5.0.0-beta.8. The Claude plugin directory offers 5.0.0-beta.4 until its review of 5.0.0-beta.8 is complete. In Claude Code you can update now from this repository: `claude plugin update content-analysis@content-analysis-plugin`, or install as described under [Installation](#installation).
+
 **Version:** 5.0.0-beta.8 · **Overview and documentation:** <https://petermalmkjaer.github.io/content-analysis-plugin/>
 
 ---
