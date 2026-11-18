@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Withdrawn on 16 November 2026. All versions before 5.0.0-beta.3 (1.0.0, 1.1.0, 4.2.0, 4.2.1, 4.2.2, 4.3.0, 5.0.0-beta.1 and 5.0.0-beta.2) are withdrawn and should no longer be used. No test of them against human coding has been documented. They remain in the repository's history so that earlier work can be traced. If you have coded material with a withdrawn version, treat that coding as untested: state which version you used, and consider coding the material again with the current version. Their entries below are marked `[WITHDRAWN]`.
 
+## Update recommended
+
+Versions up to and including 5.0.0-beta.6 let Claude run commands and write files without asking. From 5.0.0-beta.7 Claude asks first. This is a security improvement; we recommend updating to 5.0.0-beta.8. The Claude plugin directory offers 5.0.0-beta.4 until its review of 5.0.0-beta.8 is complete.
+
 ## [5.0.0-beta.8] - 2026-11-16
 
 A security update and an improvement. `skills/content-analysis/SKILL.md` is unchanged from 5.0.0-beta.7 (SHA-256 `18a63590da3ead9c45f9d097f86bef850ba1c312248430adb96727d9e20d8999`). The coding procedure is the one tested as 5.0.0-beta.6 and has not been benchmarked again.
